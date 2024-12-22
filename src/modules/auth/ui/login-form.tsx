@@ -1,9 +1,11 @@
 import { Trello } from "lucide-react";
-import { Button } from "@/shared/ui/button";
 import { Link } from "react-router-dom";
+
+import { Button } from "@/shared/ui/button";
+
+import { useLogin } from "../hooks/use-login";
 import { AuthLayout } from "../layouts/auth-layout";
 import { AuthInput } from "./auth-input";
-import { useLogin } from "../hooks/use-login";
 
 export const LoginForm = () => {
   const { register, formErrors, onSubmit, error } = useLogin();

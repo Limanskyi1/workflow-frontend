@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
 import Cookies from "js-cookie";
 
 interface AuthState {
@@ -43,17 +44,9 @@ const authSlice = createSlice({
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
     },
-    logout: (state) => {
-      state.accessToken = null;
-      state.refreshToken = null;
-      state.isAuthenticated = false;
-
-      Cookies.remove("accessToken");
-      Cookies.remove("refreshToken");
-    },
   },
 });
 
-export const { setTokens, removeTokens, logout } = authSlice.actions;
+export const { setTokens, removeTokens } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -3,8 +3,11 @@ export default {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
+	'./widgets/**/*.{ts,tsx}',
+	'./shared/**/*.{ts,tsx}',
+	'./features/**/*.{ts,tsx}',
+	'./modules/**/*.{ts,tsx}',
 	"./src/**/*.{js,jsx,ts,tsx,html}",
   ],
   theme: {
@@ -58,6 +61,6 @@ export default {
   		}
   	}
   },
-  // eslint-disable-next-line no-undef, @typescript-eslint/no-require-imports
+//   eslint-disable-next-line no-undef, @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 };

@@ -1,7 +1,8 @@
-import { Button } from "@/shared/ui/button";
-import { cn } from "@/shared/utils/cn";
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
+
+import { Button } from "@/shared/ui/button";
+import { cn } from "@/shared/utils/cn";
 
 interface SidebarLinkProps {
   name: string;

@@ -1,7 +1,9 @@
 import { Moon, Sun } from "lucide-react";
-import { Button } from "@/shared/ui/button";
-import { useTheme } from "../hooks/use-theme";
 import { HTMLAttributes } from "react";
+
+import { Button } from "@/shared/ui/button";
+
+import { useTheme } from "../hooks/use-theme";
 
 interface ThemeToggleProps extends HTMLAttributes<HTMLButtonElement> {}
 

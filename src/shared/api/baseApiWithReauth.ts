@@ -3,8 +3,11 @@ import {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-import { setTokens, logout } from "@/modules/auth/model/slice/auth-slice";
+
 import Cookies from "js-cookie";
+
+import { removeTokens, setTokens } from "@/modules/auth/model/slice/auth-slice";
+
 import { baseQuery } from "./baseApi";
 
 export const baseQueryWithReauth: BaseQueryFn<
@@ -27,15 +30,17 @@ export const baseQueryWithReauth: BaseQueryFn<
       );
 
       if (refreshResult.data) {
-        const { accessToken, refreshToken: newRefreshToken } =
-          refreshResult.data as { accessToken: string; refreshToken: string };
-        api.dispatch(setTokens({ accessToken, refreshToken: newRefreshToken }));
+        const { access_token, refresh_token: newRefreshToken } =
+          refreshResult.data as { access_token: string; refresh_token: string };
+        api.dispatch(
+          setTokens({ access_token, refresh_token: newRefreshToken }),
+        );
         result = await baseQuery(args, api, extraOptions);
       } else {
-        api.dispatch(logout());
+        api.dispatch(removeTokens());
       }
     } else {
-      api.dispatch(logout());
+      api.dispatch(removeTokens());
     }
   }
 

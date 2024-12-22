@@ -1,10 +1,12 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
-import { ThemeProvider } from "@/features/theming";
-import { Provider } from "react-redux";
-import { store } from "./store";
-import { Toaster } from "@/shared/ui/toast/toaster";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+
+import { ThemeProvider } from "@/features/theming";
+import { Toaster } from "@/shared/ui/toast/toaster";
+
+import { router } from "./router";
+import { store } from "./store";
 
 const App = () => {
   return (

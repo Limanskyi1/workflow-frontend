@@ -1,4 +1,5 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import Cookies from "js-cookie";
 
 export const baseQuery = fetchBaseQuery({

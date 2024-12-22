@@ -1,6 +1,7 @@
+import { FC } from "react";
+
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
-import { FC } from "react";
 
 interface AuthInputProps {
   id: string;
