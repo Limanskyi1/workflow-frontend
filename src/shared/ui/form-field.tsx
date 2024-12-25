@@ -3,24 +3,24 @@ import { FC } from "react";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
 
-interface AuthInputProps {
+interface FormFieldProps {
   id: string;
   type: string;
-  label: string;
   register: any;
+  label?: string;
   error?: string;
 }
 
-export const AuthInput: FC<AuthInputProps> = ({
+export const FormField: FC<FormFieldProps> = ({
   id,
   type,
-  label,
   register,
+  label,
   error,
 }) => {
   return (
     <div>
-      <Label htmlFor={id}>{label}</Label>
+      {label && <Label htmlFor={id} className="mb-2 block">{label}</Label>}
       <Input id={id} type={type} {...register} />
       {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>

@@ -25,7 +25,6 @@ export const useLogin = () => {
   const onSubmit = handleSubmit(async (data: LoginDto) => {
     try {
       const response = await login(data).unwrap();
-      console.log(response);
       dispatch(setTokens(response));
       navigate("/");
       toast(TOAST_CONFIG.loginSuccess);

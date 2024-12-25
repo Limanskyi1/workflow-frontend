@@ -2,10 +2,10 @@ import { Trello } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/shared/ui/button";
+import { FormField } from "@/shared/ui/form-field";
 
 import { useRegister } from "../hooks/use-register";
 import { AuthLayout } from "../layouts/auth-layout";
-import { AuthInput } from "./auth-input";
 
 export const RegisterForm = () => {
   const { register, formErrors, onSubmit, error } = useRegister();
@@ -21,7 +21,7 @@ export const RegisterForm = () => {
         </div>
         <form className="mt-8 space-y-6" onSubmit={onSubmit}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
-            <AuthInput
+            <FormField
               id="name"
               type="name"
               label="Name"
@@ -30,7 +30,7 @@ export const RegisterForm = () => {
               })}
               error={formErrors.name?.message}
             />
-            <AuthInput
+            <FormField
               id="email"
               type="email"
               label="Email"
@@ -43,7 +43,7 @@ export const RegisterForm = () => {
               })}
               error={formErrors.email?.message}
             />
-            <AuthInput
+            <FormField
               id="password"
               type="password"
               label="Password"

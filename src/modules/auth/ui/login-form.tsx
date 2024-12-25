@@ -2,10 +2,10 @@ import { Trello } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/shared/ui/button";
+import { FormField } from "@/shared/ui/form-field";
 
 import { useLogin } from "../hooks/use-login";
 import { AuthLayout } from "../layouts/auth-layout";
-import { AuthInput } from "./auth-input";
 
 export const LoginForm = () => {
   const { register, formErrors, onSubmit, error } = useLogin();
@@ -21,7 +21,7 @@ export const LoginForm = () => {
         </div>
         <form className="mt-8 space-y-6" onSubmit={onSubmit}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
-            <AuthInput
+            <FormField
               id="email"
               type="email"
               label="Email"
@@ -34,7 +34,7 @@ export const LoginForm = () => {
               })}
               error={formErrors.email?.message}
             />
-            <AuthInput
+            <FormField
               id="password"
               type="password"
               label="Password"
