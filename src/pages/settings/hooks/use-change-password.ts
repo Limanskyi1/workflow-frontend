@@ -8,9 +8,9 @@ import { useToast } from "@/shared/hooks/use-toast";
 import { ApiError } from "@/shared/types";
 
 interface ChangePasswordData {
-  "current-password": string;
-  "new-password": string;
-  "confirm-new-password": string;
+  currentPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
 }
 
 export const useChangePassword = () => {
@@ -30,8 +30,8 @@ export const useChangePassword = () => {
 
   const onSubmit = handleSubmit(async (data: ChangePasswordData) => {
     const credentials: UpdateUserPasswordDto = {
-      currentPassword: data["current-password"],
-      newPassword: data["new-password"],
+      currentPassword: data.currentPassword,
+      newPassword: data.newPassword,
     };
     try {
       await changeUserPassword(credentials).unwrap();

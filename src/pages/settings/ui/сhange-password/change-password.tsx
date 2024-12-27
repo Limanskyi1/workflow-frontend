@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { FormField } from "@/shared/ui/form-field";
+import { InputFactory } from "@/shared/ui/input/input-factory";
 
 import { useChangePassword } from "../../hooks/use-change-password";
 
@@ -23,46 +23,49 @@ export const ChangePassword = () => {
       </CardHeader>
       <CardContent>
         <form className="space-y-4" onSubmit={onSubmit}>
-          <FormField
-            id="current-password"
-            type="password"
-            label="Current password"
-            register={register("current-password", {
+          <InputFactory
+            variant="labelAndError"
+            options={{
+              label: "Current password",
+              error: formErrors.currentPassword?.message,
+            }}
+            register={register("currentPassword", {
               required: "Current password is required",
               minLength: {
                 value: 6,
                 message: "Password must be at least 6 characters",
               },
             })}
-            error={formErrors["current-password"]?.message}
           />
-          <FormField
-            id="new-password"
-            type="password"
-            label="New password"
-            register={register("new-password", {
+          <InputFactory
+            variant="labelAndError"
+            options={{
+              label: "New password",
+              error: formErrors.newPassword?.message,
+            }}
+            register={register("newPassword", {
               required: "New password is required",
               minLength: {
                 value: 6,
                 message: "Password must be at least 6 characters",
               },
             })}
-            error={formErrors["new-password"]?.message}
           />
-          <FormField
-            id="confirm-new-password"
-            type="password"
-            label="Confirm new password"
-            register={register("confirm-new-password", {
+          <InputFactory
+            variant="labelAndError"
+            options={{
+              label: "Confirm new password",
+              error: formErrors.confirmNewPassword?.message,
+            }}
+            register={register("confirmNewPassword", {
               required: "Confirm password is required",
               minLength: {
                 value: 6,
                 message: "Password must be at least 6 characters",
               },
               validate: (value) =>
-                value === watch("new-password") || "Passwords do not match",
+                value === watch("newPassword") || "Passwords do not match",
             })}
-            error={formErrors["confirm-new-password"]?.message}
           />
           {error && <p className="text-red-500">{error}</p>}
           <Button type="submit">Update password</Button>

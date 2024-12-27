@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { HomePage } from "@/pages/home";
+import { DashboardPage } from "@/pages/dashboard/ui/dashboard-page";
 import { LoginPage } from "@/pages/login";
 import { RegisterPage } from "@/pages/register";
 import { SettingsPage } from "@/pages/settings";
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         path: "",
         element: (
           <RequireAuth>
-            <HomePage />
+            <DashboardPage />
           </RequireAuth>
         ),
       },

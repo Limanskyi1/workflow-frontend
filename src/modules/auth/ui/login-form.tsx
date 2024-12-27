@@ -1,11 +1,12 @@
-import { Trello } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/shared/ui/button";
-import { FormField } from "@/shared/ui/form-field";
+import { InputFactory } from "@/shared/ui/input/input-factory";
 
 import { useLogin } from "../hooks/use-login";
 import { AuthLayout } from "../layouts/auth-layout";
+import { AuthError } from "./auth-error/auth-error";
+import { AuthHeader } from "./auth-header/auth-header";
 
 export const LoginForm = () => {
   const { register, formErrors, onSubmit, error } = useLogin();
@@ -13,18 +14,15 @@ export const LoginForm = () => {
   return (
     <AuthLayout>
       <div className="w-full max-w-md space-y-8">
-        <div className="flex flex-col items-center">
-          <Trello className="h-12 w-12" />
-          <h2 className="mt-6 text-center text-3xl font-bold">
-            Sign in to Workflow
-          </h2>
-        </div>
+        <AuthHeader text="Sign in to Workflow" />
         <form className="mt-8 space-y-6" onSubmit={onSubmit}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
-            <FormField
-              id="email"
-              type="email"
-              label="Email"
+            <InputFactory
+              variant="labelAndError"
+              options={{
+                label: "Email",
+                error: formErrors.email?.message,
+              }}
               register={register("email", {
                 required: "Email is required",
                 pattern: {
@@ -32,12 +30,14 @@ export const LoginForm = () => {
                   message: "Invalid email address",
                 },
               })}
-              error={formErrors.email?.message}
             />
-            <FormField
-              id="password"
+            <InputFactory
+              variant="labelAndError"
               type="password"
-              label="Password"
+              options={{
+                label: "Password",
+                error: formErrors.password?.message,
+              }}
               register={register("password", {
                 required: "Password is required",
                 minLength: {
@@ -45,7 +45,6 @@ export const LoginForm = () => {
                   message: "Password must be at least 6 characters",
                 },
               })}
-              error={formErrors.password?.message}
             />
           </div>
 
@@ -53,9 +52,7 @@ export const LoginForm = () => {
             Sign in
           </Button>
 
-          {error && (
-            <p className="mt-1 text-sm text-red-600 text-center">{error}</p>
-          )}
+          <AuthError errorText={error || undefined} />
 
           <p className="text-center text-sm">
             Don&apos;t have an account?{" "}

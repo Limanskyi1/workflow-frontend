@@ -1,9 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
-import { UserDto } from "../model/types/user.dto";
-import { UpdateUserDto } from "../model/types/update-user.dto";
+
 import { UpdateUserPasswordDto } from "../model/types/update-user-password.dto";
+import { UpdateUserDto } from "../model/types/update-user.dto";
+import { UserDto } from "../model/types/user.dto";
 
 export const userApi = createApi({
   reducerPath: "userApi",
@@ -22,14 +23,18 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
-    changeUserPassword: builder.mutation<UserDto,UpdateUserPasswordDto>({
+    changeUserPassword: builder.mutation<UserDto, UpdateUserPasswordDto>({
       query: (credentials) => ({
         url: `/users/change-password`,
         method: "PATCH",
         body: credentials,
       }),
-    })
+    }),
   }),
 });
 
-export const { useGetMeQuery , useUpdateUserMutation, useChangeUserPasswordMutation} = userApi;
+export const {
+  useGetMeQuery,
+  useUpdateUserMutation,
+  useChangeUserPasswordMutation,
+} = userApi;

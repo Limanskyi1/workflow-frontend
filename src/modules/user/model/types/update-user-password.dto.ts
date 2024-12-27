@@ -1,4 +1,4 @@
 export type UpdateUserPasswordDto = {
-    currentPassword: string;
-    newPassword: string;
+  currentPassword: string;
+  newPassword: string;
 };

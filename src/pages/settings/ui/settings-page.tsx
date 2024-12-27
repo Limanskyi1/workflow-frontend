@@ -17,7 +17,7 @@ export const SettingsPage = () => {
           onSubmit={onSubmitProfileSettings}
         />
       )}
-      <ChangePassword/>
+      <ChangePassword />
     </main>
   );
 };

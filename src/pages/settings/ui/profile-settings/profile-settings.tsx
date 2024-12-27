@@ -1,7 +1,6 @@
-import { Label } from "@radix-ui/react-label";
-
 import { useForm } from "react-hook-form";
 
+import { UpdateUserDto } from "@/modules/user/model/types/update-user.dto";
 import { Button } from "@/shared/ui/button";
 import {
   Card,
@@ -10,15 +9,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { FormField } from "@/shared/ui/form-field";
-import { UpdateUserDto } from "@/modules/user/model/types/update-user.dto";
+import { InputFactory } from "@/shared/ui/input/input-factory";
 
 interface ProfileSettingsProps {
   defaultData: UpdateUserDto | null;
   onSubmit: (data: UpdateUserDto) => void;
 }
 
-export const ProfileSettings = ({ defaultData , onSubmit }: ProfileSettingsProps) => {
+export const ProfileSettings = ({
+  defaultData,
+  onSubmit,
+}: ProfileSettingsProps) => {
   const {
     register,
     handleSubmit,
@@ -36,14 +37,13 @@ export const ProfileSettings = ({ defaultData , onSubmit }: ProfileSettingsProps
       <CardContent>
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <FormField
-              id="name"
-              type="text"
-              error={formErrors.name?.message}
-              register={register("name", {
-                required: "Name is required",
-              })}
+            <InputFactory
+              variant="labelAndError"
+              options={{
+                label: "Name",
+                error: formErrors.name?.message,
+              }}
+              register={register("name", { required: "Name is required" })}
             />
           </div>
           <Button type="submit">Save changes</Button>
