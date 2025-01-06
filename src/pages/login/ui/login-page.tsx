@@ -1,4 +1,4 @@
-import { LoginForm } from "@/modules/auth/ui/login-form";
+import { LoginForm } from "@/modules/auth";
 
 export const LoginPage = () => {
   return <LoginForm />;

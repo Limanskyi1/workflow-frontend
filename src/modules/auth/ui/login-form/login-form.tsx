@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
 import { InputFactory } from "@/shared/ui/input/input-factory";
 
-import { useLogin } from "../hooks/use-login";
-import { AuthLayout } from "../layouts/auth-layout";
-import { AuthError } from "./auth-error/auth-error";
-import { AuthHeader } from "./auth-header/auth-header";
+import { useLogin } from "../../hooks/use-login";
+import { AuthLayout } from "../../layouts/auth-layout";
+import { AuthError } from "../auth-error/auth-error";
+import { AuthHeader } from "../auth-header/auth-header";
 
 export const LoginForm = () => {
   const { register, formErrors, onSubmit, error } = useLogin();

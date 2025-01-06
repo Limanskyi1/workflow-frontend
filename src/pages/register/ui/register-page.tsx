@@ -1,4 +1,4 @@
-import { RegisterForm } from "@/modules/auth/ui/register-form";
+import { RegisterForm } from "@/modules/auth";
 
 export const RegisterPage = () => {
   return <RegisterForm />;

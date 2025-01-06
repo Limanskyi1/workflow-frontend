@@ -8,6 +8,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["@testing-library/jest-dom"],
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
   }
 }
