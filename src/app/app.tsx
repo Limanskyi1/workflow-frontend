@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
 import { ThemeProvider } from "@/features/theming";
-import { Toaster } from "@/shared/ui/toast/toaster";
+import { Toaster } from "@/features/toast";
 
 import { router } from "./router";
 import { store } from "./store";

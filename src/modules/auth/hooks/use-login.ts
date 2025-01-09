@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { TOAST_CONFIG } from "@/shared/consts/toast-config";
+import { TOAST_CONFIG, useToast } from "@/features/toast";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { useToast } from "@/shared/hooks/use-toast";
 
 import { useLoginMutation } from "../api/auth-api";
 import { setTokens } from "../model/slice/auth-slice";

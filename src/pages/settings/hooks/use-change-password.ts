@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 
 import { useChangeUserPasswordMutation } from "@/modules/user/api/user-api";
 import { UpdateUserPasswordDto } from "@/modules/user/model/types/update-user-password.dto";
-import { TOAST_CONFIG } from "@/shared/consts/toast-config";
-import { useToast } from "@/shared/hooks/use-toast";
+import { TOAST_CONFIG } from "@/features/toast/consts/toast-config";
+import { useToast } from "@/features/toast/hooks/use-toast";
 import { ApiError } from "@/shared/types";
 
 interface ChangePasswordData {

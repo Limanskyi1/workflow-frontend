@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { TOAST_CONFIG } from "@/shared/consts/toast-config";
+import { TOAST_CONFIG, useToast } from "@/features/toast";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { toast } from "@/shared/hooks/use-toast";
 
 import { useRegisterMutation } from "../api/auth-api";
 import { setTokens } from "../model/slice/auth-slice";
 import { RegisterDto } from "../model/types/register.dto";
 
 export const useRegister = () => {
+  const { toast } = useToast();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);

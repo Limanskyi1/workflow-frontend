@@ -11,9 +11,10 @@ export const DashboardPage = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">{dashboard?.title}</h1>
-      <Dashboard />
-    </div>
+    <Dashboard
+      title={dashboard?.title || ""}
+      columns={dashboard?.columns || []}
+      id={dashboard?.id || 0}
+    />
   );
 };

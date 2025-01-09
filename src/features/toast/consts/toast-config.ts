@@ -15,4 +15,12 @@ export const TOAST_CONFIG = {
     title: "Password changed",
     description: "Your password has been changed successfully.",
   },
+  dashboardTitleUpdateSuccess: {
+    title: "Update successful",
+    description: "Your dashboard title has been updated successfully.",
+  },
+  dashboardTitleUpdateWithError: {
+    title: "Update error",
+    description: "Your dashboard title has not been updated successfully.",
+  }
 };
