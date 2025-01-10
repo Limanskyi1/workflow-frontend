@@ -1,17 +1,26 @@
 import { Task as TaskType } from "@/modules/task/model/types/task";
+import { TaskCard } from "@/modules/task/ui/task-card";
 import { TaskStatus } from "@/shared/types";
+
+import { ColumnTitle } from "./column-title/column-title";
 
 interface ColumnProps {
   status: TaskStatus;
   tasks: TaskType[];
 }
 
-export const Column = ({ status, tasks }: ColumnProps) => {
+export const Column = ({ status, tasks = [] }: ColumnProps) => {
   return (
     <div className="space-y-4 rounded-lg border bg-card p-2">
-      <h2 className="font-semibold text-sm">
-        {status.replace("_", " ")} ({tasks.length})
-      </h2>
+      <ColumnTitle status={status} tasksLength={tasks.length} />
+      {tasks.map((task) => (
+        <TaskCard
+          key={task.id}
+          title={task.title}
+          description={task.description}
+          priority={task.priority}
+        />
+      ))}
     </div>
   );
 };
