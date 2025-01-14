@@ -1,4 +1,5 @@
-import { TaskStatus } from "@/shared/types";
+import { TaskStatus } from "@/modules/task/model/types/task-status";
+
 
 interface ColumnTitleProps {
   status: TaskStatus;

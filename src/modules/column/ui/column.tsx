@@ -1,8 +1,8 @@
 import { Task as TaskType } from "@/modules/task/model/types/task";
 import { TaskCard } from "@/modules/task/ui/task-card";
-import { TaskStatus } from "@/shared/types";
 
 import { ColumnTitle } from "./column-title/column-title";
+import { TaskStatus } from "@/modules/task/model/types/task-status";
 
 interface ColumnProps {
   status: TaskStatus;

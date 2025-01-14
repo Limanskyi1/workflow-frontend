@@ -10,7 +10,6 @@ import { AuthHeader } from "../auth-header/auth-header";
 
 export const LoginForm = () => {
   const { register, formErrors, onSubmit, error } = useLogin();
-
   return (
     <AuthLayout>
       <div className="w-full max-w-md space-y-8">
