@@ -1,6 +1,5 @@
 import { TaskPriority } from "../model/types/task-priority";
 
-
 export const priorityColors: Record<TaskPriority, string> = {
   LOWEST: 'bg-green-500/10 text-green-500',
   LOW: 'bg-green-500/10 text-green-500',

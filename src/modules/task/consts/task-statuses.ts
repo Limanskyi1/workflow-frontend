@@ -1,6 +1,6 @@
 import { TaskStatus } from "../model/types/task-status";
 
-interface TaskStatusesItem {
+export interface TaskStatusesItem {
   value: TaskStatus;
   label: string;
 }

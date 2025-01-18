@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { TaskPriority } from "../model/types/task-priority";
 
-interface TaskPrioritiesItem {
+export interface TaskPrioritiesItem {
   value: TaskPriority;
   label: string;
   icon: ReactNode;

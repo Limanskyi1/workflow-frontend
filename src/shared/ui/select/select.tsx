@@ -9,25 +9,38 @@ import {
   SelectValue,
 } from "./default-select";
 
-interface SelectProps {
-  options: {
-    value: string;
-    label: string;
-    icon?: ReactNode;
-  }[];
-  defaultValue: {
-    value: string;
-    label: string;
-    icon?: ReactNode;
-  };
-  className?: string;
+interface SelectOption {
+  value: string;
+  label: string;
+  icon?: ReactNode;
 }
 
-export const Select = ({ options, defaultValue, className }: SelectProps) => {
+interface SelectProps<OptionType extends SelectOption> {
+  options: OptionType[];
+  value?: OptionType;
+  className?: string;
+  onChange?: (value: OptionType) => void;
+}
+
+export const Select = <OptionType extends SelectOption>({
+  options,
+  value,
+  className,
+  onChange,
+  ...rest 
+}: SelectProps<OptionType>) => {
+
+  const defaultValue = value ? value.label : "";
+
   return (
-    <SelectDefault>
+    <SelectDefault onValueChange={(val) => {
+      const selectedOption = options.find((option) => option.value === val);
+      if (selectedOption && onChange) {
+        onChange(selectedOption);
+      }
+    }} value={value ? value.value : ""} {...rest}>
       <SelectTrigger className={className}>
-        <SelectValue placeholder={defaultValue.label} />
+        <SelectValue placeholder={defaultValue} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
@@ -43,3 +56,4 @@ export const Select = ({ options, defaultValue, className }: SelectProps) => {
     </SelectDefault>
   );
 };
+

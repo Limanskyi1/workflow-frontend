@@ -1,5 +1,8 @@
-import { useForm } from "react-hook-form";
+import { Plus } from "lucide-react";
+import { Controller } from "react-hook-form";
 
+import { Button } from "@/shared/ui/button";
+import { DatePicker } from "@/shared/ui/date-picker";
 import {
   Dialog,
   DialogContent,
@@ -7,9 +10,15 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 import { InputFactory } from "@/shared/ui/input/input-factory";
+import { Label } from "@/shared/ui/label";
 import { Select } from "@/shared/ui/select/select";
-import { taskStatuses } from "../../consts/task-statuses";
-import { taskPriorities } from "../../consts/task-priorities";
+
+import {
+  TaskPrioritiesItem,
+  taskPriorities,
+} from "../../consts/task-priorities";
+import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
+import { useAddTaskModal } from "../../hooks/use-add-task-modal";
 
 interface AddTaskModalProps {
   isOpen: boolean;
@@ -17,16 +26,7 @@ interface AddTaskModalProps {
 }
 
 export const AddTaskModal = ({ isOpen, close }: AddTaskModalProps) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors: formErrors },
-  } = useForm();
-
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
-
+  const { register, formErrors, control, onSubmit } = useAddTaskModal(close);
   return (
     <Dialog open={isOpen}>
       <DialogContent className="sm:max-w-[425px]" close={close}>
@@ -48,14 +48,63 @@ export const AddTaskModal = ({ isOpen, close }: AddTaskModalProps) => {
             variant="labelAndError"
             options={{
               label: "Description",
-              error: formErrors.title?.message,
+              error: formErrors.description?.message,
             }}
             register={register("description", {
               required: "Description is required",
             })}
           />
-          <Select options={taskStatuses} defaultValue={taskStatuses[0]}/>
-          <Select options={taskPriorities} defaultValue={taskPriorities[0]}/>
+          <div>
+            <Label className="mb-2 block" htmlFor="status">
+              Status
+            </Label>
+            <Controller
+              name="status"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  options={taskStatuses}
+                  value={taskStatuses.find(
+                    (status) => status?.value === field.value?.value,
+                  )}
+                  onChange={(selectedOption: TaskStatusesItem) =>
+                    field.onChange(selectedOption)
+                  }
+                />
+              )}
+            />
+          </div>
+          <div>
+            <Label className="mb-2 block" htmlFor="priority">
+              Priority
+            </Label>
+            <Controller
+              name="priority"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  options={taskPriorities}
+                  value={taskPriorities.find(
+                    (priority) => priority?.value === field.value?.value,
+                  )}
+                  onChange={(selectedOption: TaskPrioritiesItem) =>
+                    field.onChange(selectedOption)
+                  }
+                />
+              )}
+            />
+          </div>
+          <Controller
+            name="dueDate"
+            control={control}
+            render={({ field }) => (
+              <DatePicker date={field.value} setDate={field.onChange} />
+            )}
+          />
+          <Button className="w-fit ml-auto">
+            <Plus />
+            <span>Add task</span>
+          </Button>
         </form>
       </DialogContent>
     </Dialog>

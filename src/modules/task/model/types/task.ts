@@ -1,4 +1,5 @@
-import { TaskPriority, TaskStatus } from "@/shared/types";
+import { TaskPriority } from "./task-priority";
+import { TaskStatus } from "./task-status";
 
 export interface Task {
     id: number;
@@ -6,7 +7,7 @@ export interface Task {
     description: string;
     priority: TaskPriority;
     status: TaskStatus;
-    dueDate: string;
+    dueDate?: string;
     authorId: number;
     boardId: number;
     columnId: number;
