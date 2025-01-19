@@ -19,6 +19,7 @@ export const Column = ({ status, tasks = [] }: ColumnProps) => {
           title={task.title}
           description={task.description}
           priority={task.priority}
+          id={task.id}
         />
       ))}
     </div>

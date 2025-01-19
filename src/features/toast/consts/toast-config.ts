@@ -22,5 +22,13 @@ export const TOAST_CONFIG = {
   dashboardTitleUpdateWithError: {
     title: "Update error",
     description: "Your dashboard title has not been updated successfully.",
-  }
+  },
+  deleteTaskSuccess: {
+    title: "Delete successful",
+    description: "Your task has been deleted successfully.",
+  },
+  deleteTaskWithError: {
+    title: "Delete error",
+    description: "Your task has not been deleted.",
+  },
 };

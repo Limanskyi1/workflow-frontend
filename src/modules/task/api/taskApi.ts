@@ -26,7 +26,22 @@ export const tasksApi = createApi({
         }
       },
     }),
+    deleteTask: builder.mutation({
+      query: (taskId: number) => ({
+        url: `/tasks/${taskId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Dashboard", "Tasks"],
+      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(dashboardApi.util.invalidateTags(["Dashboard"]));
+        } catch (error) {
+          console.error("Error creating task", error);
+        }
+      },
+    })
   }),
 });
 
-export const { useCreateTaskMutation } = tasksApi;
+export const { useCreateTaskMutation, useDeleteTaskMutation } = tasksApi;
