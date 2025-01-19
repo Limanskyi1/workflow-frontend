@@ -9,16 +9,13 @@ export const TrashTaskBadge = ({
   onClick: () => void;
   setIsTrashVisible: (value: boolean) => void;
 }) => {
-
-
   const handleClick = () => {
     setIsTrashVisible(!isTrashVisible);
     onClick();
-  }
+  };
   return (
     <div
-      className={
-        `border border-primary/10 p-1 rounded-md cursor-pointer transition ease-in-out hover:scale-125 
+      className={`border border-primary/10 p-1 rounded-md cursor-pointer transition ease-in-out hover:scale-125 
             ${isTrashVisible ? "opacity-100" : "opacity-0"}
         `}
       onClick={handleClick}

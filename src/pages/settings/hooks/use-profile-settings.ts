@@ -1,10 +1,10 @@
+import { TOAST_CONFIG } from "@/features/toast/consts/toast-config";
+import { useToast } from "@/features/toast/hooks/use-toast";
 import {
   useGetMeQuery,
   useUpdateUserMutation,
 } from "@/modules/user/api/user-api";
 import { UpdateUserDto } from "@/modules/user/model/types/update-user.dto";
-import { TOAST_CONFIG } from "@/features/toast/consts/toast-config";
-import { useToast } from "@/features/toast/hooks/use-toast";
 
 export const useProfileSettings = () => {
   const { toast } = useToast();

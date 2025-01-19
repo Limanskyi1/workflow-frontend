@@ -1,9 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
+import { dashboardApi } from "@/modules/dashboard/api/dashboard-api";
 import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
 
 import { CreateTask } from "../model/types/create-task";
-import { dashboardApi } from "@/modules/dashboard/api/dashboard-api";
 
 export const tasksApi = createApi({
   reducerPath: "tasksApi",
@@ -40,7 +40,7 @@ export const tasksApi = createApi({
           console.error("Error creating task", error);
         }
       },
-    })
+    }),
   }),
 });
 

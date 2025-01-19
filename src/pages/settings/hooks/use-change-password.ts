@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { useChangeUserPasswordMutation } from "@/modules/user/api/user-api";
-import { UpdateUserPasswordDto } from "@/modules/user/model/types/update-user-password.dto";
 import { TOAST_CONFIG } from "@/features/toast/consts/toast-config";
 import { useToast } from "@/features/toast/hooks/use-toast";
+import { useChangeUserPasswordMutation } from "@/modules/user/api/user-api";
+import { UpdateUserPasswordDto } from "@/modules/user/model/types/update-user-password.dto";
 import { ApiError } from "@/shared/types";
 
 interface ChangePasswordData {

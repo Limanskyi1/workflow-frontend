@@ -1,5 +1,5 @@
 export type TaskStatus =
-    "IN_BOX"
+  | "IN_BOX"
   | "TO_DO"
   | "IN_PROGRESS"
   | "WAITING"

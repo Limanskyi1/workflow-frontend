@@ -40,7 +40,7 @@ export const Dashboard = ({ title, columns, id }: DashboardProps) => {
         ))}
       </div>
       {isAddTaskModalOpen && (
-        <AddTaskModal isOpen={isAddTaskModalOpen} close={handleCloseModal}/>
+        <AddTaskModal isOpen={isAddTaskModalOpen} close={handleCloseModal} />
       )}
     </section>
   );

@@ -1,16 +1,15 @@
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { SelectSingleEventHandler } from "react-day-picker";
 
 import { cn } from "../utils/cn";
 import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import { SelectSingleEventHandler } from "react-day-picker";
-
 
 interface DatePickerProps {
-    date: Date | undefined;
-    setDate: (date: Date) => void;
+  date: Date | undefined;
+  setDate: (date: Date) => void;
 }
 
 export const DatePicker = ({ date, setDate }: DatePickerProps) => {

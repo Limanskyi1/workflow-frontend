@@ -1,7 +1,8 @@
-import { useOutsideClick } from "@/shared/hooks/use-outside-click";
-import { InputFactory } from "@/shared/ui/input/input-factory";
 import { Check, X } from "lucide-react";
 import { useRef } from "react";
+
+import { useOutsideClick } from "@/shared/hooks/use-outside-click";
+import { InputFactory } from "@/shared/ui/input/input-factory";
 
 interface EditModeProps {
   register: any;

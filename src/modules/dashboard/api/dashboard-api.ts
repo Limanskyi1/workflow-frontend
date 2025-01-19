@@ -25,4 +25,5 @@ export const dashboardApi = createApi({
   }),
 });
 
-export const { useGetMyDashboardQuery , useUpdateDashboardMutation} = dashboardApi;
+export const { useGetMyDashboardQuery, useUpdateDashboardMutation } =
+  dashboardApi;

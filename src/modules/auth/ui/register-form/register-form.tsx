@@ -5,8 +5,8 @@ import { InputFactory } from "@/shared/ui/input/input-factory";
 
 import { useRegister } from "../../hooks/use-register";
 import { AuthLayout } from "../../layouts/auth-layout";
-import { AuthHeader } from "../auth-header/auth-header";
 import { AuthError } from "../auth-error/auth-error";
+import { AuthHeader } from "../auth-header/auth-header";
 
 export const RegisterForm = () => {
   const { register, formErrors, onSubmit, error } = useRegister();

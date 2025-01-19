@@ -12,7 +12,9 @@ export const InputWithLabelAndError = forwardRef<
 >(({ label, error, className, register, ...props }, ref) => {
   return (
     <div className="input-wrapper">
-      <Label className="mb-2 block" htmlFor={label.toLocaleLowerCase()}>{label}</Label>
+      <Label className="mb-2 block" htmlFor={label.toLocaleLowerCase()}>
+        {label}
+      </Label>
       <Input
         ref={ref}
         className={cn(className)}

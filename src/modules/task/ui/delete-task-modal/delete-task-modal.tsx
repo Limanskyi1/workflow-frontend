@@ -1,3 +1,5 @@
+import { DialogDescription } from "@radix-ui/react-dialog";
+
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -6,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/dialog";
-import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface DeleteTaskModalProps {
   taskId: number;
@@ -16,14 +17,19 @@ interface DeleteTaskModalProps {
   onCancel: () => void;
 }
 
-export const DeleteTaskModal = ({taskId, isOpen, close ,onDelete,onCancel}: DeleteTaskModalProps) => {
-
+export const DeleteTaskModal = ({
+  taskId,
+  isOpen,
+  close,
+  onDelete,
+  onCancel,
+}: DeleteTaskModalProps) => {
   const handleDeleteTask = () => {
     onDelete();
     close();
   };
 
-  if(!isOpen){
+  if (!isOpen) {
     return null;
   }
 
@@ -33,10 +39,14 @@ export const DeleteTaskModal = ({taskId, isOpen, close ,onDelete,onCancel}: Dele
         <DialogHeader>
           <DialogTitle>Deleting a task</DialogTitle>
         </DialogHeader>
-        <DialogDescription>Are you sure you want to delete this task #{taskId}?</DialogDescription>
+        <DialogDescription>
+          Are you sure you want to delete this task #{taskId}?
+        </DialogDescription>
         <DialogFooter>
-            <Button onClick={onCancel}>Cancel</Button>
-            <Button variant="destructive" onClick={handleDeleteTask}>Delete</Button>
+          <Button onClick={onCancel}>Cancel</Button>
+          <Button variant="destructive" onClick={handleDeleteTask}>
+            Delete
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

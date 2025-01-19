@@ -3,8 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "@/modules/auth";
 import { authApi } from "@/modules/auth/api/auth-api";
 import { dashboardApi } from "@/modules/dashboard/api/dashboard-api";
-import { userApi } from "@/modules/user/api/user-api";
 import { tasksApi } from "@/modules/task/api/taskApi";
+import { userApi } from "@/modules/user/api/user-api";
 
 export const store = configureStore({
   reducer: {

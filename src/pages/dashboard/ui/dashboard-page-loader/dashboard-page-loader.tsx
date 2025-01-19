@@ -28,9 +28,9 @@ export const DashboardPageLoader = () => {
       <Skeleton className="h-8 w-[250px] mb-3" />
       <div className="grid grid-cols-5 gap-4 h-full">
         <DashboardColumnSkeleton />
-        <DashboardColumnSkeleton itemsCount={2}/>
+        <DashboardColumnSkeleton itemsCount={2} />
         <DashboardColumnSkeleton />
-        <DashboardColumnSkeleton itemsCount={3}/>
+        <DashboardColumnSkeleton itemsCount={3} />
         <DashboardColumnSkeleton />
       </div>
     </div>
