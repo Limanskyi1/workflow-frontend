@@ -7,7 +7,7 @@ export interface Task {
   description: string;
   priority: TaskPriority;
   status: TaskStatus;
-  dueDate?: string;
+  dueDate?: Date;
   authorId: number;
   boardId: number;
   columnId: number;

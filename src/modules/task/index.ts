@@ -1,1 +1,2 @@
-export { AddTaskModal } from "./ui/add-task-modal/add-task-modal";
+export { TaskModalCreate } from "./ui/task-modal-create/task-modal-create";
+export { TaskCard } from "./ui/task-card/task-card";

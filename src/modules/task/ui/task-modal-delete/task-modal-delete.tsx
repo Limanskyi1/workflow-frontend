@@ -9,33 +9,37 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-interface DeleteTaskModalProps {
+interface TaskModalDeleteProps {
   taskId: number;
-  isOpen: boolean;
-  close: () => void;
+  onClose: () => void;
   onDelete: () => void;
   onCancel: () => void;
 }
 
-export const DeleteTaskModal = ({
+export const TaskModalDelete = ({
   taskId,
-  isOpen,
-  close,
+  onClose,
   onDelete,
   onCancel,
-}: DeleteTaskModalProps) => {
+}: TaskModalDeleteProps) => {
   const handleDeleteTask = () => {
     onDelete();
-    close();
+    onClose();
   };
 
-  if (!isOpen) {
-    return null;
+  const handleClose = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onClose();
+  }
+
+  const handleCancel = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onCancel();
   }
 
   return (
-    <Dialog open={isOpen}>
-      <DialogContent className="sm:max-w-[425px]" close={close}>
+    <Dialog open>
+      <DialogContent className="sm:max-w-[425px]" close={handleClose}>
         <DialogHeader>
           <DialogTitle>Deleting a task</DialogTitle>
         </DialogHeader>
@@ -43,7 +47,7 @@ export const DeleteTaskModal = ({
           Are you sure you want to delete this task #{taskId}?
         </DialogDescription>
         <DialogFooter>
-          <Button onClick={onCancel}>Cancel</Button>
+          <Button onClick={handleCancel}>Cancel</Button>
           <Button variant="destructive" onClick={handleDeleteTask}>
             Delete
           </Button>

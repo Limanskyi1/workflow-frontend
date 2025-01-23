@@ -41,7 +41,10 @@ export const tasksApi = createApi({
         }
       },
     }),
+    getTaskById: builder.query({
+      query: (taskId: number) => `/tasks/${taskId}`,
+    })
   }),
 });
 
-export const { useCreateTaskMutation, useDeleteTaskMutation } = tasksApi;
+export const { useCreateTaskMutation, useDeleteTaskMutation , useGetTaskByIdQuery} = tasksApi;

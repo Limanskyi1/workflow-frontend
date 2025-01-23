@@ -1,6 +1,6 @@
+import { TaskCard } from "@/modules/task";
 import { Task as TaskType } from "@/modules/task/model/types/task";
 import { TaskStatus } from "@/modules/task/model/types/task-status";
-import { TaskCard } from "@/modules/task/ui/task-card";
 
 import { ColumnTitle } from "./column-title/column-title";
 

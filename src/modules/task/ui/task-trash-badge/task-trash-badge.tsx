@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
 
-export const TrashTaskBadge = ({
+export const TaskTrashBadge = ({
   isTrashVisible,
   onClick,
   setIsTrashVisible,
@@ -9,7 +9,8 @@ export const TrashTaskBadge = ({
   onClick: () => void;
   setIsTrashVisible: (value: boolean) => void;
 }) => {
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
     setIsTrashVisible(!isTrashVisible);
     onClick();
   };
@@ -18,7 +19,7 @@ export const TrashTaskBadge = ({
       className={`border border-primary/10 p-1 rounded-md cursor-pointer transition ease-in-out hover:scale-125 
             ${isTrashVisible ? "opacity-100" : "opacity-0"}
         `}
-      onClick={handleClick}
+        onClick={(event) => handleClick(event)}
     >
       <Trash2 stroke="red" width={16} height={16} />
     </div>
