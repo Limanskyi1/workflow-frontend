@@ -19,7 +19,7 @@ export const TaskTrashBadge = ({
       className={`border border-primary/10 p-1 rounded-md cursor-pointer transition ease-in-out hover:scale-125 
             ${isTrashVisible ? "opacity-100" : "opacity-0"}
         `}
-        onClick={(event) => handleClick(event)}
+      onClick={(event) => handleClick(event)}
     >
       <Trash2 stroke="red" width={16} height={16} />
     </div>

@@ -88,7 +88,6 @@ FormItem.displayName = "FormItem";
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
-// eslint-disable-next-line react/prop-types
 >(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 

@@ -32,7 +32,7 @@ export const tasksApi = createApi({
         method: "DELETE",
       }),
       invalidatesTags: ["Dashboard", "Tasks"],
-      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
           dispatch(dashboardApi.util.invalidateTags(["Dashboard"]));
@@ -43,8 +43,12 @@ export const tasksApi = createApi({
     }),
     getTaskById: builder.query({
       query: (taskId: number) => `/tasks/${taskId}`,
-    })
+    }),
   }),
 });
 
-export const { useCreateTaskMutation, useDeleteTaskMutation , useGetTaskByIdQuery} = tasksApi;
+export const {
+  useCreateTaskMutation,
+  useDeleteTaskMutation,
+  useGetTaskByIdQuery,
+} = tasksApi;

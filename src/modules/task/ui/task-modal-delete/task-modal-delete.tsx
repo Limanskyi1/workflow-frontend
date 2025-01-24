@@ -30,12 +30,12 @@ export const TaskModalDelete = ({
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
     onClose();
-  }
+  };
 
   const handleCancel = (event: React.MouseEvent) => {
     event.stopPropagation();
     onCancel();
-  }
+  };
 
   return (
     <Dialog open>

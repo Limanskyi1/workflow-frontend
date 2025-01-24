@@ -27,7 +27,6 @@ type TaskFormSchema<T> = T extends CreateTask
   ? TaskFormBaseSchema
   : Partial<TaskFormBaseSchema>;
 
-
 interface TaskFormProps<T extends CreateTask | UpdateTask> {
   defaultValues: TaskFormSchema<T>;
   onSubmit: (data: T) => Promise<void>;
@@ -37,7 +36,7 @@ interface TaskFormProps<T extends CreateTask | UpdateTask> {
 export const TaskForm = <T extends CreateTask | UpdateTask>({
   defaultValues,
   onSubmit,
-  callbackAfterSubmit
+  callbackAfterSubmit,
 }: TaskFormProps<T>) => {
   const {
     register,
@@ -50,11 +49,11 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
 
   const onSubmitHandler = handleSubmit((data) => {
     const dataToSend: Partial<CreateTask> = {
-        title: data.title,
-        description: data.description,
-        status: data.status?.value,
-        priority: data.priority?.value ,
-        dueDate: data.dueDate,
+      title: data.title,
+      description: data.description,
+      status: data.status?.value,
+      priority: data.priority?.value,
+      dueDate: data.dueDate,
     };
     onSubmit(dataToSend as T);
     callbackAfterSubmit?.();

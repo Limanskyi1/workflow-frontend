@@ -16,7 +16,6 @@ const DialogClose = DialogPrimitive.Close;
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
-// eslint-disable-next-line react/prop-types
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
@@ -34,7 +33,6 @@ const DialogContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
     close: (event?: any) => void;
   }
-// eslint-disable-next-line react/prop-types
 >(({ className, children, close, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
@@ -87,7 +85,6 @@ DialogFooter.displayName = "DialogFooter";
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
-// eslint-disable-next-line react/prop-types
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
@@ -103,7 +100,6 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
-// eslint-disable-next-line react/prop-types
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}

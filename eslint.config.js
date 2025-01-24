@@ -11,13 +11,15 @@ export default [
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
   {
+    plugins: {
+      react: pluginReact,
+    },
     rules: {
-      "react/jsx-uses-react": "off",
+      "react/jsx-uses-react": "off", 
       "react/react-in-jsx-scope": "off",
       '@typescript-eslint/no-empty-object-type': 'off',
-      '@typescript-eslint/no-explicit-any' : 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
-  }
+  },
 ];
