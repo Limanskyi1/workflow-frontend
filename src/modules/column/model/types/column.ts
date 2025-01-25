@@ -1,5 +1,5 @@
-import { Task } from "@/modules/task/model/types/task";
-import { TaskStatus } from "@/modules/task/model/types/task-status";
+import { Task } from "@/modules/task";
+import { TaskStatus } from "@/modules/task";
 
 export interface Column {
   id: number;

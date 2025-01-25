@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import { UpdateUserDto } from "@/modules/user/model/types/update-user.dto";
+import { UpdateUserDto } from "@/modules/user";
 import { Button } from "@/shared/ui/button";
 import {
   Card,

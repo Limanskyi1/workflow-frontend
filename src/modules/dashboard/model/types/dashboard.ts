@@ -1,10 +1,10 @@
-import { Column } from "@/modules/column/model/types/column";
+import { ColumnType } from "@/modules/column";
 
 export interface Dashboard {
   id: number;
   title: string;
   ownerId: number;
-  columns: Column[];
+  columns: ColumnType[];
   createdAt: string;
   updatedAt: string;
 }

@@ -9,6 +9,7 @@ export default {
 	'./features/**/*.{ts,tsx}',
 	'./modules/**/*.{ts,tsx}',
 	"./src/**/*.{js,jsx,ts,tsx,html}",
+	"./index.html"
   ],
   theme: {
   	extend: {

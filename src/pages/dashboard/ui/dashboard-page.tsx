@@ -1,5 +1,5 @@
 import { Dashboard } from "@/modules/dashboard";
-import { useGetMyDashboardQuery } from "@/modules/dashboard/api/dashboard-api";
+import { useGetMyDashboardQuery } from "@/modules/dashboard";
 
 import { DashboardPageLoader } from "./dashboard-page-loader/dashboard-page-loader";
 

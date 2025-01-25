@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { DashboardPage } from "@/pages/dashboard/ui/dashboard-page";
+import { DashboardPage } from "@/pages/dashboard";
 import { LoginPage } from "@/pages/login";
 import { RegisterPage } from "@/pages/register";
 import { SettingsPage } from "@/pages/settings";

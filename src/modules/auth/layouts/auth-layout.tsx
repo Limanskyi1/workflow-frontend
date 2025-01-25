@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ThemeToggle } from "@/features/theming/ui/theme-toggle";
+import { ThemeToggle } from "@/features/theming";
 
 export const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (

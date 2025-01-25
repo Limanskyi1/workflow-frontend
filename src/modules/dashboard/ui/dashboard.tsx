@@ -1,8 +1,8 @@
 import { Plus } from "lucide-react";
 
 import { Column } from "@/modules/column";
-import { Column as ColumnType } from "@/modules/column/model/types/column";
-import { TaskModalCreate } from "@/modules/task/ui/task-modal-create/task-modal-create";
+import { ColumnType } from "@/modules/column";
+import { TaskModalCreate } from "@/modules/task";
 import { useModal } from "@/shared/hooks/use-modal";
 import { Button } from "@/shared/ui/button";
 

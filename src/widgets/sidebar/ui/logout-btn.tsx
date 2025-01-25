@@ -1,7 +1,7 @@
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { removeTokens } from "@/modules/auth/model/slice/auth-slice";
+import { removeTokens } from "@/modules/auth";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import {
   AlertDialog,

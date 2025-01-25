@@ -6,7 +6,7 @@ import {
 
 import Cookies from "js-cookie";
 
-import { removeTokens, setTokens } from "@/modules/auth/model/slice/auth-slice";
+import { removeTokens, setTokens } from "@/modules/auth";
 
 import { baseQuery } from "./baseApi";
 

@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/features/theming/ui/theme-toggle";
+import { ThemeToggle } from "@/features/theming";
 import { Logo } from "@/shared/ui/logo";
 
 import { NAVIGATION_CONFIG } from "../consts/navigation-config";

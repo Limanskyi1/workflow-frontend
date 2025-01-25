@@ -1,12 +1,11 @@
 import { TaskCard } from "@/modules/task";
-import { Task as TaskType } from "@/modules/task/model/types/task";
-import { TaskStatus } from "@/modules/task/model/types/task-status";
+import { Task, TaskStatus } from "@/modules/task";
 
 import { ColumnTitle } from "./column-title/column-title";
 
 interface ColumnProps {
   status: TaskStatus;
-  tasks: TaskType[];
+  tasks: Task[];
 }
 
 export const Column = ({ status, tasks = [] }: ColumnProps) => {

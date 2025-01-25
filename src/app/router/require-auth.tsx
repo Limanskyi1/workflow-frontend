@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-import { getIsAuthenticated } from "@/modules/auth/model/selectors";
+import { getIsAuthenticated } from "@/modules/auth";
 
 export const RequireAuth = ({ children }: { children: ReactNode }) => {
   const isAuthenticated = useSelector(getIsAuthenticated);
