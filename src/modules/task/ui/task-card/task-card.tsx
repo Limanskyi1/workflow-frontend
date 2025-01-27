@@ -8,6 +8,7 @@ import { useTask } from "../../hooks/use-task";
 import { TaskPriority } from "../../model/types/task-priority";
 import { convertPriorityToText } from "../../utils/convert-priority-to-text";
 import { TaskModalDelete } from "../task-modal-delete/task-modal-delete";
+import { TaskModalEdit } from "../task-modal-edit/task-modal-edit";
 import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
 
 interface TaskCardProps {
@@ -30,6 +31,12 @@ export const TaskCard = ({
   } = useModal();
 
   const {
+    isOpen: isEditModalOpen,
+    open: handleOpenEditModal,
+    close: handleCloseEditModal,
+  } = useModal();
+
+  const {
     isVisible: isTrashVisible,
     show: showTrash,
     hide: hideTrash,
@@ -43,6 +50,7 @@ export const TaskCard = ({
       className="p-3 cursor-pointer"
       onMouseEnter={showTrash}
       onMouseLeave={hideTrash}
+      onClick={handleOpenEditModal}
     >
       <div className="flex items-center justify-between mb-3">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
@@ -66,6 +74,7 @@ export const TaskCard = ({
           onCancel={handleCloseDeleteModal}
         />
       )}
+      {isEditModalOpen && <TaskModalEdit onClose={handleCloseEditModal} taskId={id}/>}
     </Card>
   );
 };

@@ -1,9 +1,11 @@
 import { TOAST_CONFIG, useToast } from "@/features/toast";
 
-import { useCreateTaskMutation, useDeleteTaskMutation } from "../api/taskApi";
+import { useCreateTaskMutation, useDeleteTaskMutation, useEditTaskMutation } from "../api/taskApi";
 import { CreateTask } from "../model/types/create-task";
+import { UpdateTask } from "../model/types/update-task";
 
 export const useTask = (taskId?: number) => {
+  const [editTask] = useEditTaskMutation();
   const [deleteTask] = useDeleteTaskMutation();
   const [createTask] = useCreateTaskMutation();
   const { toast } = useToast();
@@ -21,6 +23,23 @@ export const useTask = (taskId?: number) => {
     }
   };
 
+  const handleEditTask = async (data:UpdateTask) => {
+    if(!taskId){
+      throw new Error("Task id is undefined");
+    }
+    const resp = {
+      task:data,
+      id:taskId,
+    }
+    console.log(resp);
+    try {
+      const task = await editTask(resp).unwrap();
+      console.log(task);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleCreateTask = async (data: CreateTask) => {
     const { title, description, status, priority, dueDate } = data;
     const dataToSend: CreateTask = {
@@ -31,7 +50,8 @@ export const useTask = (taskId?: number) => {
       dueDate,
     };
     try {
-      await createTask(dataToSend).unwrap();
+      const task = await createTask(dataToSend).unwrap();
+      console.log(task);
     } catch (error) {
       console.log(error);
     }
@@ -40,5 +60,6 @@ export const useTask = (taskId?: number) => {
   return {
     handleDeleteTask,
     handleCreateTask,
+    handleEditTask,
   };
 };
