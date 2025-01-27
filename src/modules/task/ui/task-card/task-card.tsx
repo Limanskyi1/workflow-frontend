@@ -74,7 +74,9 @@ export const TaskCard = ({
           onCancel={handleCloseDeleteModal}
         />
       )}
-      {isEditModalOpen && <TaskModalEdit onClose={handleCloseEditModal} taskId={id}/>}
+      {isEditModalOpen && (
+        <TaskModalEdit onClose={handleCloseEditModal} taskId={id} />
+      )}
     </Card>
   );
 };

@@ -5,4 +5,3 @@ export { getIsAuthenticated } from "./model/selectors/index";
 export { authApi } from "./api/auth-api";
 export { removeTokens } from "./model/slice/auth-slice";
 export { setTokens } from "./model/slice/auth-slice";
-

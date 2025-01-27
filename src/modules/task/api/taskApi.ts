@@ -49,7 +49,11 @@ export const tasksApi = createApi({
         method: "PATCH",
         body: task,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Task", id }, "Dashboard", "Tasks"],
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Task", id },
+        "Dashboard",
+        "Tasks",
+      ],
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;

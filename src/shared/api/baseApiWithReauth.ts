@@ -6,11 +6,10 @@ import {
 
 import Cookies from "js-cookie";
 
-import { baseQuery } from "./baseApi";
-
 // eslint-disable-next-line no-restricted-imports
 import { removeTokens, setTokens } from "@/modules/auth/model/slice/auth-slice";
 
+import { baseQuery } from "./baseApi";
 
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
