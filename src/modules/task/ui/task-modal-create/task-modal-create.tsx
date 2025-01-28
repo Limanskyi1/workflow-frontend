@@ -28,6 +28,7 @@ export const TaskModalCreate = ({ onClose }: TaskModalCreateProps) => {
           <DialogTitle>Create task</DialogTitle>
         </DialogHeader>
         <TaskForm
+          mode="create"
           defaultValues={taskFormValuesDefault}
           onSubmit={handleCreateTask}
           callbackAfterSubmit={onClose}

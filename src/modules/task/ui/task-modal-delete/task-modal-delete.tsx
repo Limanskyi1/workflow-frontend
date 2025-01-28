@@ -22,10 +22,6 @@ export const TaskModalDelete = ({
   onDelete,
   onCancel,
 }: TaskModalDeleteProps) => {
-  const handleDeleteTask = () => {
-    onDelete();
-    onClose();
-  };
 
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -35,6 +31,11 @@ export const TaskModalDelete = ({
   const handleCancel = (event: React.MouseEvent) => {
     event.stopPropagation();
     onCancel();
+  };
+
+  const handleDelete = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onDelete();
   };
 
   return (
@@ -48,7 +49,10 @@ export const TaskModalDelete = ({
         </DialogDescription>
         <DialogFooter>
           <Button onClick={handleCancel}>Cancel</Button>
-          <Button variant="destructive" onClick={handleDeleteTask}>
+          <Button
+            variant="destructive"
+            onClick={handleDelete}
+          >
             Delete
           </Button>
         </DialogFooter>

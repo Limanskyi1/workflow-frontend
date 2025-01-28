@@ -31,7 +31,7 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
     description: task?.description,
     status: taskStatuses.find((status) => status.value === task?.status),
     priority: taskPriorities.find(
-      (priority) => priority.value === task?.priority
+      (priority) => priority.value === task?.priority,
     ),
     dueDate: task?.dueDate,
   };
@@ -47,6 +47,7 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
               <DialogTitle>Edit task</DialogTitle>
             </DialogHeader>
             <TaskForm
+              mode="edit"
               defaultValues={defaultValues}
               onSubmit={handleEditTask}
               callbackAfterSubmit={onClose}

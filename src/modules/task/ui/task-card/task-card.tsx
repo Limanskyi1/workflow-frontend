@@ -7,6 +7,7 @@ import { priorityColors } from "../../consts/priority-colors";
 import { useTask } from "../../hooks/use-task";
 import { TaskPriority } from "../../model/types/task-priority";
 import { convertPriorityToText } from "../../utils/convert-priority-to-text";
+import { TaskDateBadge } from "../task-date-badge/task-date-badge";
 import { TaskModalDelete } from "../task-modal-delete/task-modal-delete";
 import { TaskModalEdit } from "../task-modal-edit/task-modal-edit";
 import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
@@ -16,6 +17,7 @@ interface TaskCardProps {
   description: string;
   priority: TaskPriority;
   id: number;
+  dueDate?: Date;
 }
 
 export const TaskCard = ({
@@ -23,6 +25,7 @@ export const TaskCard = ({
   description,
   priority,
   id,
+  dueDate,
 }: TaskCardProps) => {
   const {
     isOpen: isDeleteModalOpen,
@@ -47,12 +50,12 @@ export const TaskCard = ({
 
   return (
     <Card
-      className="p-3 cursor-pointer"
+      className="p-3 cursor-pointer flex flex-col"
       onMouseEnter={showTrash}
       onMouseLeave={hideTrash}
       onClick={handleOpenEditModal}
     >
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         <TaskTrashBadge
           isTrashVisible={isTrashVisible}
@@ -63,7 +66,11 @@ export const TaskCard = ({
       <CardDescription className="text-sm p-0 mb-2">
         {description}
       </CardDescription>
-      <Badge variant="secondary" className={priorityColors[priority]}>
+      {dueDate && <TaskDateBadge taskDueDate={dueDate} />}
+      <Badge
+        variant="secondary"
+        className={`${priorityColors[priority]} w-fit`}
+      >
         {convertPriorityToText(priority)}
       </Badge>
       {isDeleteModalOpen && (

@@ -32,7 +32,6 @@ export const DatePicker = ({ date, setDate }: DatePickerProps) => {
           mode="single"
           selected={date}
           onSelect={setDate as SelectSingleEventHandler}
-          initialFocus
         />
       </PopoverContent>
     </Popover>

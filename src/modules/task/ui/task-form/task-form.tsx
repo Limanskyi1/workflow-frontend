@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import { Controller, useForm } from "react-hook-form";
 
 import { Button } from "@/shared/ui/button";
@@ -28,12 +27,14 @@ type TaskFormSchema<T> = T extends CreateTask
   : Partial<TaskFormBaseSchema>;
 
 interface TaskFormProps<T extends CreateTask | UpdateTask> {
+  mode: "create" | "edit";
   defaultValues: TaskFormSchema<T>;
   onSubmit: (data: T) => Promise<void>;
   callbackAfterSubmit?: () => void;
 }
 
 export const TaskForm = <T extends CreateTask | UpdateTask>({
+  mode,
   defaultValues,
   onSubmit,
   callbackAfterSubmit,
@@ -129,8 +130,7 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
         )}
       />
       <Button className="w-fit ml-auto" type="submit">
-        <Plus />
-        Create
+        {mode === "edit" ? "Update" : "Create"}
       </Button>
     </form>
   );
