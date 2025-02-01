@@ -19,7 +19,9 @@ export const TaskDateBadge = ({ taskDueDate }: { taskDueDate: Date }) => {
       className="p-1 w-fit mb-3 flex items-center gap-2"
     >
       <Calendar width={14} height={14} />
-      <span className="font-extrabold color/primary opacity-60">{formatDate(taskDueDate)}</span>
+      <span className="font-extrabold color/primary opacity-60">
+        {formatDate(taskDueDate)}
+      </span>
     </Badge>
   );
 };

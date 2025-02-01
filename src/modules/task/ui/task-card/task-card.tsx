@@ -1,7 +1,7 @@
 import { useModal } from "@/shared/hooks/use-modal";
 import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
-import { Card, CardDescription, CardTitle } from "@/shared/ui/card";
+import { Card, CardTitle } from "@/shared/ui/card";
 
 import { priorityColors } from "../../consts/priority-colors";
 import { useTask } from "../../hooks/use-task";
@@ -14,19 +14,12 @@ import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
 
 interface TaskCardProps {
   title: string;
-  description: string;
   priority: TaskPriority;
   id: number;
   dueDate?: Date;
 }
 
-export const TaskCard = ({
-  title,
-  description,
-  priority,
-  id,
-  dueDate,
-}: TaskCardProps) => {
+export const TaskCard = ({ title, priority, id, dueDate }: TaskCardProps) => {
   const {
     isOpen: isDeleteModalOpen,
     open: handleOpenDeleteModal,
@@ -56,16 +49,13 @@ export const TaskCard = ({
       onClick={handleOpenEditModal}
     >
       <div className="flex items-center justify-between mb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        <CardTitle className="text-sm font-extrabold">{title}</CardTitle>
         <TaskTrashBadge
           isTrashVisible={isTrashVisible}
           setIsTrashVisible={toggleTrash}
           onClick={handleOpenDeleteModal}
         />
       </div>
-      <CardDescription className="text-sm p-0 mb-2">
-        {description}
-      </CardDescription>
       {dueDate && <TaskDateBadge taskDueDate={dueDate} />}
       <Badge
         variant="secondary"

@@ -23,7 +23,7 @@ export const TaskModalCreate = ({ onClose }: TaskModalCreateProps) => {
 
   return (
     <Dialog open>
-      <DialogContent className="sm:max-w-[425px]" close={handleClose}>
+      <DialogContent className="sm:max-w-[625px]" close={handleClose}>
         <DialogHeader>
           <DialogTitle>Create task</DialogTitle>
         </DialogHeader>

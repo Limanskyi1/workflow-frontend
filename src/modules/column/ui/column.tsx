@@ -16,7 +16,6 @@ export const Column = ({ status, tasks = [] }: ColumnProps) => {
         <TaskCard
           key={task.id}
           title={task.title}
-          description={task.description}
           priority={task.priority}
           id={task.id}
           dueDate={task.dueDate}

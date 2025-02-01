@@ -1,0 +1,89 @@
+.quill {
+  min-height: 20px;
+  border: 1px solid hsl(var(--input));
+  border-radius: var(--radius);
+}
+.ql-toolbar{
+  display: none;
+}
+.ql-toolbar.ql-snow {
+  padding: 0.5rem;
+  padding-bottom: 0;
+  border: unset;
+}
+
+.ql-container.ql-snow {
+  font-family: inherit;
+  color: hsl(var(--foreground));
+  line-height: 1.5;
+  height: unset;
+  border: unset;
+}
+
+.ql-editor {
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--card);
+  color: hsl(var(--foreground));
+  outline: none;
+  cursor: default;
+  transition: background-color 0.2s;
+  padding: 8px 16px;
+  &:hover{
+    background-color: hsl(var(--input));
+  }
+  * {
+    cursor: default;
+  }
+  p {
+    font-size: 16px;
+  }
+  ol , ul{
+    padding: 0;
+  }
+}
+
+.ql-snow .ql-picker {
+  color: hsl(var(--foreground));
+}
+
+.ql-snow .ql-stroke {
+  stroke: hsl(var(--foreground));
+}
+
+.ql-snow .ql-fill {
+  fill: hsl(var(--foreground));
+}
+
+.ql-snow .ql-picker-options {
+  background-color: var(--card);
+  color: hsl(var(--foreground));
+  border-radius: var(--radius);
+}
+
+.ql-snow .ql-picker-item:hover,
+.ql-snow .ql-picker-item.ql-active {
+  background-color: var(--muted);
+}
+
+.ql-snow .ql-picker-label:hover,
+.ql-snow .ql-picker-label.ql-active {
+  background-color: var(--muted);
+}
+
+.activeQuill{
+  .ql-toolbar{
+    display: block;
+  }
+  .ql-editor{
+    &:hover{
+      background-color: unset;
+    }
+  }
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before{
+  font-size: 16px;
+  color: hsl(var(--foreground));
+  opacity: 0.5;
+}

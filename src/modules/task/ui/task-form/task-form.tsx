@@ -13,6 +13,7 @@ import {
 import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
 import { CreateTask } from "../../model/types/create-task";
 import { UpdateTask } from "../../model/types/update-task";
+import { TaskDescriptionEditor } from "../task-description-editor/task-description-editor";
 
 interface TaskFormBaseSchema {
   title: string;
@@ -48,6 +49,8 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
     defaultValues: defaultValues as TaskFormBaseSchema,
   });
 
+  
+
   const onSubmitHandler = handleSubmit((data) => {
     const dataToSend: Partial<CreateTask> = {
       title: data.title,
@@ -72,16 +75,26 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
           required: "Title is required",
         })}
       />
-      <InputFactory
-        variant="labelAndError"
-        options={{
-          label: "Description",
-          error: formErrors.description?.message,
-        }}
-        register={register("description", {
-          required: "Description is required",
-        })}
-      />
+      <div>
+        <Label className="mb-2 block" htmlFor="description">
+          Description
+        </Label>
+        <Controller
+          name="description"
+          control={control}
+          rules={{
+            required: "Description is required",
+          }}
+          render={({ field }) => (
+            <TaskDescriptionEditor value={field.value} onChange={field.onChange} />
+          )}
+        />
+        {formErrors.description && (
+          <p className="text-red-500 text-sm mt-2">
+            {formErrors.description.message}
+          </p>
+        )}
+      </div>
       <div>
         <Label className="mb-2 block" htmlFor="status">
           Status
