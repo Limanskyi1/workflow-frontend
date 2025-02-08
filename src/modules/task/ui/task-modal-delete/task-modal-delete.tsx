@@ -1,5 +1,3 @@
-import { DialogDescription } from "@radix-ui/react-dialog";
-
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -7,6 +5,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/shared/ui/dialog";
 
 interface TaskModalDeleteProps {

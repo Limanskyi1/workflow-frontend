@@ -38,7 +38,7 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
 
   return (
     <Dialog open>
-      <DialogContent className="sm:max-w-[425px]" close={handleClose}>
+      <DialogContent className="sm:max-w-[625px]" close={handleClose}>
         {isLoading ? (
           <TaskModalEdit.Loader />
         ) : (
