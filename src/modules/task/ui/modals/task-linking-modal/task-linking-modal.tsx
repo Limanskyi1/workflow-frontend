@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { TaskMultiSelect } from "./task-multi-select";
+import { TaskMultiSelect } from "../../task-multi-select";
 
 interface TaskLinkingModalProps {
   onClose: () => void;
@@ -22,7 +22,7 @@ export const TaskLinkingModal = ({ onClose }: TaskLinkingModalProps) => {
   return (
     <Dialog open>
       <DialogContent
-        className="sm:max-w-[425px]"
+        className="sm:max-w-[625px]"
         close={handleClose}
         onClick={(e) => e.stopPropagation()}
       >
@@ -35,7 +35,7 @@ export const TaskLinkingModal = ({ onClose }: TaskLinkingModalProps) => {
           <Button variant="ghost" onClick={handleClose}>
             Cancel
           </Button>
-          <Button disabled>Binding</Button>
+          <Button>Binding</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

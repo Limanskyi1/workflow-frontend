@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import { TOAST_CONFIG, useToast } from "@/features/toast";
 
 import {
@@ -62,8 +64,8 @@ export const useTask = (taskId?: number) => {
   };
 
   return {
-    handleDeleteTask,
-    handleCreateTask,
-    handleEditTask,
+    handleDeleteTask: useCallback(handleDeleteTask, [taskId]),
+    handleCreateTask: useCallback(handleCreateTask, []),
+    handleEditTask: useCallback(handleEditTask, [taskId]),
   };
 };

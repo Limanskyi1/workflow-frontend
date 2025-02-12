@@ -8,19 +8,21 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
+import { useTask } from "../../../hooks/use-task";
+
 interface TaskModalDeleteProps {
   taskId: number;
   onClose: () => void;
-  onDelete: () => void;
   onCancel: () => void;
 }
 
 export const TaskModalDelete = ({
   taskId,
   onClose,
-  onDelete,
   onCancel,
 }: TaskModalDeleteProps) => {
+  const { handleDeleteTask } = useTask(taskId);
+
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
     onClose();
@@ -33,12 +35,16 @@ export const TaskModalDelete = ({
 
   const handleDelete = (event: React.MouseEvent) => {
     event.stopPropagation();
-    onDelete();
+    handleDeleteTask();
   };
 
   return (
     <Dialog open>
-      <DialogContent className="sm:max-w-[425px]" close={handleClose} onClick={(e) => e.stopPropagation()}>
+      <DialogContent
+        className="sm:max-w-[425px]"
+        close={handleClose}
+        onClick={(e) => e.stopPropagation()}
+      >
         <DialogHeader>
           <DialogTitle>Deleting a task</DialogTitle>
         </DialogHeader>

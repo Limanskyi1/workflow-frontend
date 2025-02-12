@@ -1,4 +1,5 @@
 import { MoreVertical } from "lucide-react";
+import { MouseEvent } from "react";
 
 import { Button } from "@/shared/ui/button";
 import {
@@ -7,7 +8,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { MouseEvent } from "react";
 
 interface TaskActionsMenuProps {
   isOpen: boolean;

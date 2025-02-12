@@ -12,10 +12,18 @@ const PopoverAnchor = PopoverPrimitive.Anchor;
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & { portalled?: boolean }
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
+    portalled?: boolean;
+  }
 >(
   (
-    { className, align = "center", sideOffset = 4, portalled = false, ...props },
+    {
+      className,
+      align = "center",
+      sideOffset = 4,
+      portalled = false,
+      ...props
+    },
     ref,
   ) => {
     if (!portalled) {

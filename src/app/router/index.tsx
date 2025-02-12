@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { DashboardPage } from "@/pages/dashboard";
 import { LoginPage } from "@/pages/login";
+import { NotFoundPage } from "@/pages/not-found";
 import { RegisterPage } from "@/pages/register";
 import { SettingsPage } from "@/pages/settings";
-import { NotFoundPage } from "@/pages/not-found";
 
 import { RootLayout } from "../layouts/root-layout";
 import { RequireAuth } from "./require-auth";
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: (<NotFoundPage/>),
+        element: <NotFoundPage />,
       },
     ],
   },

@@ -12,7 +12,7 @@ export const useVisibility = (initialVisibility = false) => {
   }, []);
 
   const toggle = useCallback(() => {
-    setIsVisible((prev) => !prev)
+    setIsVisible((prev) => !prev);
   }, []);
 
   return {
