@@ -49,8 +49,6 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
     defaultValues: defaultValues as TaskFormBaseSchema,
   });
 
-  
-
   const onSubmitHandler = handleSubmit((data) => {
     const dataToSend: Partial<CreateTask> = {
       title: data.title,
@@ -86,7 +84,10 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
             required: "Description is required",
           }}
           render={({ field }) => (
-            <TaskDescriptionEditor value={field.value} onChange={field.onChange} />
+            <TaskDescriptionEditor
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
         {formErrors.description && (

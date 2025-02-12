@@ -6,14 +6,19 @@ import { Button } from "@/shared/ui/button";
 
 import "./task-description-editor.scss";
 
-
-export function TaskDescriptionEditor({value,onChange}: {value: string, onChange: (value: string) => void}) {
+export function TaskDescriptionEditor({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
   const [isToolbarVisible, setIsToolbarVisible] = useState(false);
   const [initialValue, setInitialValue] = useState("");
 
   const handleOpen = () => {
     if (!isToolbarVisible) {
-      setInitialValue(value); 
+      setInitialValue(value);
     }
     setIsToolbarVisible(true);
   };
@@ -29,9 +34,11 @@ export function TaskDescriptionEditor({value,onChange}: {value: string, onChange
     setIsToolbarVisible(false);
   };
 
-
   return (
-    <div onClick={handleOpen} className={`${isToolbarVisible ? "activeQuill" : ""}`}>
+    <div
+      onClick={handleOpen}
+      className={`${isToolbarVisible ? "activeQuill" : ""}`}
+    >
       <ReactQuill
         theme="snow"
         value={value}

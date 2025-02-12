@@ -2,10 +2,10 @@ import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/shared/ui/dialog";
 
 interface TaskModalDeleteProps {
@@ -38,7 +38,7 @@ export const TaskModalDelete = ({
 
   return (
     <Dialog open>
-      <DialogContent className="sm:max-w-[425px]" close={handleClose}>
+      <DialogContent className="sm:max-w-[425px]" close={handleClose} onClick={(e) => e.stopPropagation()}>
         <DialogHeader>
           <DialogTitle>Deleting a task</DialogTitle>
         </DialogHeader>

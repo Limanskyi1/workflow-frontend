@@ -7,12 +7,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
+import { MouseEvent } from "react";
 
 interface TaskActionsMenuProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   onClickDelete: () => void;
   onClickLink: () => void;
+  hideAll: () => void;
 }
 
 export const TaskActionsMenu = ({
@@ -20,26 +22,25 @@ export const TaskActionsMenu = ({
   setIsOpen,
   onClickDelete,
   onClickLink,
+  hideAll,
 }: TaskActionsMenuProps) => {
-  const handleClickTrigger = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const handleClickTrigger = (e: MouseEvent) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
-
-  const handleClickDelete = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const handleClickDelete = (e: MouseEvent) => {
+    e.stopPropagation();
     onClickDelete();
     setIsOpen(false);
-  }
+  };
 
-  const handleClickLink = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const handleClickLink = (e: MouseEvent) => {
+    e.stopPropagation();
     onClickLink();
     setIsOpen(false);
-  }
-
-
+    hideAll();
+  };
 
   return (
     <DropdownMenu open={isOpen} modal={false}>
@@ -49,8 +50,12 @@ export const TaskActionsMenu = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={handleClickLink}>Link the task</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleClickDelete}>Delete the task</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleClickLink}>
+          Link the task
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={handleClickDelete}>
+          Delete the task
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

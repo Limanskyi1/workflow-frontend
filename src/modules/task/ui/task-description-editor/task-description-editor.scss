@@ -3,7 +3,7 @@
   border: 1px solid hsl(var(--input));
   border-radius: var(--radius);
 }
-.ql-toolbar{
+.ql-toolbar {
   display: none;
 }
 .ql-toolbar.ql-snow {
@@ -29,7 +29,7 @@
   cursor: default;
   transition: background-color 0.2s;
   padding: 8px 16px;
-  &:hover{
+  &:hover {
     background-color: hsl(var(--input));
   }
   * {
@@ -38,7 +38,8 @@
   p {
     font-size: 16px;
   }
-  ol , ul{
+  ol,
+  ul {
     padding: 0;
   }
 }
@@ -71,18 +72,18 @@
   background-color: var(--muted);
 }
 
-.activeQuill{
-  .ql-toolbar{
+.activeQuill {
+  .ql-toolbar {
     display: block;
   }
-  .ql-editor{
-    &:hover{
+  .ql-editor {
+    &:hover {
       background-color: unset;
     }
   }
 }
 
-.quill > .ql-container > .ql-editor.ql-blank::before{
+.quill > .ql-container > .ql-editor.ql-blank::before {
   font-size: 16px;
   color: hsl(var(--foreground));
   opacity: 0.5;

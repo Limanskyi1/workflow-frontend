@@ -55,7 +55,7 @@ export const TaskCard = ({ title, priority, id, dueDate }: TaskCardProps) => {
 
   const { handleDeleteTask } = useTask(id);
 
-  const onMouseLeave = () => {
+  const hideAll = () => {
     hideButtons();
     hideActions();
   };
@@ -64,20 +64,20 @@ export const TaskCard = ({ title, priority, id, dueDate }: TaskCardProps) => {
     <Card
       className="p-3 cursor-pointer flex flex-col hover:bg-accent/40 transition ease-in-out"
       onMouseEnter={showButtons}
-      onMouseLeave={onMouseLeave}
-      onClick={handleOpenEditModal}
+      onMouseLeave={hideAll}
+      onClick={(event) => handleOpenEditModal(event)}
     >
       <div className="flex items-center justify-between mb-2">
         <CardTitle className="text-sm font-extrabold">{title}</CardTitle>
         <div
           className={`flex gap-2 ${isButtonsVisible ? "opacity-100" : "opacity-0"}`}
-          onMouseEnter={showButtons}
         >
           <TaskActionsMenu
             isOpen={isActionsVisible}
             setIsOpen={toggleActions}
             onClickDelete={handleOpenDeleteModal}
             onClickLink={handleOpenLinkingModal}
+            hideAll={hideAll}
           />
           <TaskTrashBadge
             setIsTrashVisible={toggleButtons}
@@ -103,7 +103,9 @@ export const TaskCard = ({ title, priority, id, dueDate }: TaskCardProps) => {
       {isEditModalOpen && (
         <TaskModalEdit onClose={handleCloseEditModal} taskId={id} />
       )}
-      {isLinkingModalOpen && <TaskLinkingModal onClose={handleCloseLinkingModal}/>}
+      {isLinkingModalOpen && (
+        <TaskLinkingModal onClose={handleCloseLinkingModal} />
+      )}
     </Card>
   );
 };
