@@ -11,9 +11,8 @@ import {
   taskPriorities,
 } from "../../consts/task-priorities";
 import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
-import { CreateTask } from "../../model/types/create-task";
-import { UpdateTask } from "../../model/types/update-task";
 import { TaskDescriptionEditor } from "../task-description-editor/task-description-editor";
+import { CreateTask, UpdateTask } from "../../model/types";
 
 interface TaskFormBaseSchema {
   title: string;

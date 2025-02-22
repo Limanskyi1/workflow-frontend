@@ -3,9 +3,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { dashboardApi } from "@/modules/dashboard";
 import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
 
-import { CreateTask } from "../model/types/create-task";
-import { Task } from "../model/types/task";
-import { UpdateTask } from "../model/types/update-task";
+import { CreateTask, Task, UpdateTask } from "../model/types";
 
 export const tasksApi = createApi({
   reducerPath: "tasksApi",
@@ -67,6 +65,20 @@ export const tasksApi = createApi({
       query: (taskId: number) => `/tasks/${taskId}`,
       providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
     }),
+    getAllWithoutRelations: builder.query<Pick<Task, "id" | "title">[], void>({
+      query: () => `/tasks/without-relations`,
+      transformResponse: (res: Task[]) =>
+        res.map((task) => {
+          return {
+            id: task.id,
+            title: task.title,
+          };
+        }),
+    }),
+    getRelatedTasks: builder.query<Task[], number>({
+      query: (taskId: number) => `/tasks/${taskId}/related`,
+      providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
+    })
   }),
 });
 
@@ -75,4 +87,6 @@ export const {
   useEditTaskMutation,
   useDeleteTaskMutation,
   useGetTaskByIdQuery,
+  useGetAllWithoutRelationsQuery,
+  useGetRelatedTasksQuery,
 } = tasksApi;

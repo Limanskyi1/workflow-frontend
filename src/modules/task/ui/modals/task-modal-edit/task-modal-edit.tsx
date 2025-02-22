@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +14,7 @@ import { taskPriorities } from "../../../consts/task-priorities";
 import { taskStatuses } from "../../../consts/task-statuses";
 import { useTask } from "../../../hooks/use-task";
 import { TaskForm } from "../../task-form/task-form";
+import { RelatedTasks } from "./related-tasks";
 
 interface TaskModalEditProps {
   taskId: number;
@@ -20,6 +24,7 @@ interface TaskModalEditProps {
 export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
   const { data: task, isLoading } = useGetTaskByIdQuery(taskId);
   const { handleEditTask } = useTask(taskId);
+  const [mode, setMode] = useState<"edit" | "related">("edit");
 
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -44,14 +49,19 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle>Edit task</DialogTitle>
+              <DialogTitle>Task #{taskId}</DialogTitle>
             </DialogHeader>
-            <TaskForm
-              mode="edit"
-              defaultValues={defaultValues}
-              onSubmit={handleEditTask}
-              callbackAfterSubmit={onClose}
-            />
+            {mode === "edit" ? (
+              <>
+                <TaskForm
+                  mode="edit"
+                  defaultValues={defaultValues}
+                  onSubmit={handleEditTask}
+                  callbackAfterSubmit={onClose}
+                />
+                <Button onClick={() => setMode("related")} variant="ghost" className="w-fit ml-auto">Show related tasks</Button>
+              </>
+            ) : <RelatedTasks taskId={taskId}/>}
           </>
         )}
       </DialogContent>

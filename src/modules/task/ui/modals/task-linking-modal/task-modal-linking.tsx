@@ -7,14 +7,24 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { TaskMultiSelect } from "../../task-multi-select";
+import { useTaskModalLinking } from "../../../hooks/use-task-modal-linking";
+import { TaskMultiSelect } from "../../task-multi-select/task-multi-select";
+import { MouseEvent } from "react";
 
 interface TaskLinkingModalProps {
+  taskId: number;
   onClose: () => void;
 }
 
-export const TaskLinkingModal = ({ onClose }: TaskLinkingModalProps) => {
-  const handleClose = (event: React.MouseEvent) => {
+export const TaskModalLinking = ({ taskId,onClose }: TaskLinkingModalProps) => {
+  const {
+    selectedTasks,
+    handleAddTask,
+    handleRemoveTask,
+    handleCreateLinking,
+  } = useTaskModalLinking(taskId);
+
+  const handleClose = (event: MouseEvent) => {
     event.stopPropagation();
     onClose();
   };
@@ -30,12 +40,17 @@ export const TaskLinkingModal = ({ onClose }: TaskLinkingModalProps) => {
         <DialogDescription>
           Bind tasks to link the work in a project
         </DialogDescription>
-        <TaskMultiSelect />
+        <TaskMultiSelect
+          selectedTasks={selectedTasks}
+          handleAddTask={handleAddTask}
+          handleRemoveTask={handleRemoveTask}
+          currentTaskId={taskId}
+        />
         <DialogFooter>
           <Button variant="ghost" onClick={handleClose}>
             Cancel
           </Button>
-          <Button>Binding</Button>
+          <Button onClick={handleCreateLinking}>Binding</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

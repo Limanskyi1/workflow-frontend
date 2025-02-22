@@ -4,9 +4,9 @@ import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";
 
 import { priorityColors } from "../../consts/priority-colors";
-import { TaskPriority } from "../../model/types/task-priority";
+import { TaskPriority } from "../../model/types";
 import { convertPriorityToText } from "../../utils/convert-priority-to-text";
-import { TaskModals } from "../modals/task-modals/task-modals";
+import { TaskModals } from "../modals";
 import { TaskActionsMenu } from "../task-actions-menu";
 import { TaskDateBadge } from "../task-date-badge/task-date-badge";
 import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
@@ -48,7 +48,10 @@ export const TaskCard = ({ title, priority, id, dueDate }: TaskCardProps) => {
       className="p-3 cursor-pointer flex flex-col hover:bg-accent/40 transition ease-in-out"
       onMouseEnter={showButtons}
       onMouseLeave={hideAll}
-      onClick={(event) => modalsControls.edit.open(event)}
+      onClick={(event) => {
+        modalsControls.edit.open(event);
+        hideAll();
+      }}
     >
       <div className="flex items-center justify-between mb-2">
         <CardTitle className="text-sm font-extrabold">{title}</CardTitle>

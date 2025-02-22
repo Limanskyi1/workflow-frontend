@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { TaskPriority } from "../model/types/task-priority";
+import { TaskPriority } from "../model/types";
 
 export interface TaskPrioritiesItem {
   value: TaskPriority;

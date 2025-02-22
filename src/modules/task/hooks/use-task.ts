@@ -7,8 +7,7 @@ import {
   useDeleteTaskMutation,
   useEditTaskMutation,
 } from "../api/taskApi";
-import { CreateTask } from "../model/types/create-task";
-import { UpdateTask } from "../model/types/update-task";
+import { CreateTask, UpdateTask } from "../model/types";
 
 export const useTask = (taskId?: number) => {
   const [editTask] = useEditTaskMutation();

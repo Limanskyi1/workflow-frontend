@@ -1,4 +1,4 @@
-import { TaskPriority } from "../model/types/task-priority";
+import { TaskPriority } from "../model/types";
 
 export const convertPriorityToText = (priority: TaskPriority) => {
   if (!priority) {

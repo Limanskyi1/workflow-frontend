@@ -1,6 +1,6 @@
-import { TaskLinkingModal } from "../task-linking-modal/task-linking-modal";
-import { TaskModalDelete } from "../task-modal-delete/task-modal-delete";
-import { TaskModalEdit } from "../task-modal-edit/task-modal-edit";
+import { TaskModalLinking } from "./task-linking-modal/task-modal-linking";
+import { TaskModalDelete } from "./task-modal-delete/task-modal-delete";
+import { TaskModalEdit } from "./task-modal-edit/task-modal-edit";
 
 interface TaskModalsProps {
   id: number;
@@ -13,6 +13,7 @@ interface TaskModalsProps {
 }
 
 export const TaskModals = (props: TaskModalsProps) => {
+  
   const {
     id,
     isDeleteModalOpen,
@@ -33,10 +34,10 @@ export const TaskModals = (props: TaskModalsProps) => {
         />
       )}
       {isEditModalOpen && (
-        <TaskModalEdit onClose={handleCloseEditModal} taskId={id} />
+        <TaskModalEdit onClose={handleCloseEditModal} taskId={id}/>
       )}
       {isLinkingModalOpen && (
-        <TaskLinkingModal onClose={handleCloseLinkingModal} />
+        <TaskModalLinking onClose={handleCloseLinkingModal} taskId={id}/>
       )}
     </>
   );
