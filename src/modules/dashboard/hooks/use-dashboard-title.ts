@@ -21,7 +21,7 @@ export const useDashboardTitle = (id: number, title: string) => {
 
   const onHover = () => setIsHovered(true);
   const onLeave = () => setIsHovered(false);
-  
+
   const setEditMode = (isEditable: boolean) => setIsEditing(isEditable);
 
   const onSubmit = handleSubmit(async (data) => {

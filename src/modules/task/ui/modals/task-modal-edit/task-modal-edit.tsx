@@ -59,9 +59,17 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
                   onSubmit={handleEditTask}
                   callbackAfterSubmit={onClose}
                 />
-                <Button onClick={() => setMode("related")} variant="ghost" className="w-fit ml-auto">Show related tasks</Button>
+                <Button
+                  onClick={() => setMode("related")}
+                  variant="ghost"
+                  className="w-fit ml-auto"
+                >
+                  Show related tasks
+                </Button>
               </>
-            ) : <RelatedTasks taskId={taskId}/>}
+            ) : (
+              <RelatedTasks taskId={taskId} />
+            )}
           </>
         )}
       </DialogContent>

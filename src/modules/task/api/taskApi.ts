@@ -78,7 +78,7 @@ export const tasksApi = createApi({
     getRelatedTasks: builder.query<Task[], number>({
       query: (taskId: number) => `/tasks/${taskId}/related`,
       providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
-    })
+    }),
   }),
 });
 

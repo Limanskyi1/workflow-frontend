@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -9,14 +11,16 @@ import {
 
 import { useTaskModalLinking } from "../../../hooks/use-task-modal-linking";
 import { TaskMultiSelect } from "../../task-multi-select/task-multi-select";
-import { MouseEvent } from "react";
 
 interface TaskLinkingModalProps {
   taskId: number;
   onClose: () => void;
 }
 
-export const TaskModalLinking = ({ taskId,onClose }: TaskLinkingModalProps) => {
+export const TaskModalLinking = ({
+  taskId,
+  onClose,
+}: TaskLinkingModalProps) => {
   const {
     selectedTasks,
     handleAddTask,

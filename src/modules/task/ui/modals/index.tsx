@@ -13,7 +13,6 @@ interface TaskModalsProps {
 }
 
 export const TaskModals = (props: TaskModalsProps) => {
-  
   const {
     id,
     isDeleteModalOpen,
@@ -34,10 +33,10 @@ export const TaskModals = (props: TaskModalsProps) => {
         />
       )}
       {isEditModalOpen && (
-        <TaskModalEdit onClose={handleCloseEditModal} taskId={id}/>
+        <TaskModalEdit onClose={handleCloseEditModal} taskId={id} />
       )}
       {isLinkingModalOpen && (
-        <TaskModalLinking onClose={handleCloseLinkingModal} taskId={id}/>
+        <TaskModalLinking onClose={handleCloseLinkingModal} taskId={id} />
       )}
     </>
   );

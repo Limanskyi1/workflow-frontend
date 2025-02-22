@@ -2,6 +2,7 @@ import { Check, X } from "lucide-react";
 
 import { Button } from "@/shared/ui/button";
 import { CommandItem } from "@/shared/ui/command";
+
 import { Task } from "../../model/types";
 
 export interface TaskOptionViewProps {

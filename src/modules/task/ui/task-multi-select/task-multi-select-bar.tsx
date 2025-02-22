@@ -11,7 +11,6 @@ export const TaskMultiSelectBar = ({
   selectedTasks: Pick<Task, "title" | "id">[];
   handleRemoveTask: (id: number) => void;
 }) => {
-    
   const renderBar = () => {
     if (selectedTasks.length === 0) {
       return <span className="text-sm text-primary/60">Search for tasks</span>;
@@ -28,7 +27,7 @@ export const TaskMultiSelectBar = ({
       ));
     }
   };
-  
+
   return (
     <div
       className={classNames(
