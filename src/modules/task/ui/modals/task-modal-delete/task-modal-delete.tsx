@@ -23,8 +23,8 @@ export const TaskModalDelete = ({
 }: TaskModalDeleteProps) => {
   const { handleDeleteTask } = useTask(taskId);
 
-  const handleClose = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const handleClose = (event?: React.MouseEvent) => {
+    event?.stopPropagation();
     onClose();
   };
 
@@ -36,6 +36,7 @@ export const TaskModalDelete = ({
   const handleDelete = (event: React.MouseEvent) => {
     event.stopPropagation();
     handleDeleteTask();
+    handleClose();
   };
 
   return (

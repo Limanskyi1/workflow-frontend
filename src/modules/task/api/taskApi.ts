@@ -79,6 +79,22 @@ export const tasksApi = createApi({
       query: (taskId: number) => `/tasks/${taskId}/related`,
       providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
     }),
+    createTasksRelation: builder.mutation({
+      query: (taskIds: Task["id"][]) => ({
+        url: "/task-relations",
+        method: "POST",
+        body: { taskIds },
+      }),
+      invalidatesTags: ["Dashboard", "Tasks"],
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(dashboardApi.util.invalidateTags(["Dashboard"]));
+        } catch (error) {
+          console.error("Error creating task", error);
+        }
+      },
+    }),
   }),
 });
 
@@ -89,4 +105,5 @@ export const {
   useGetTaskByIdQuery,
   useGetAllWithoutRelationsQuery,
   useGetRelatedTasksQuery,
+  useCreateTasksRelationMutation,
 } = tasksApi;

@@ -1,9 +1,9 @@
 import { Plus } from "lucide-react";
+import { memo } from "react";
 
-import { TaskCard, TaskModalCreate } from "@/modules/task";
+import { useModals } from "@/features/modals";
+import { TaskCard } from "@/modules/task";
 import { Task, TaskStatus } from "@/modules/task";
-import { useModal } from "@/shared/hooks/use-modal";
-import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Button } from "@/shared/ui/button";
 
 import { ColumnTitle } from "./column-title/column-title";
@@ -13,26 +13,12 @@ interface ColumnProps {
   tasks: Task[];
 }
 
-export const Column = ({ status, tasks = [] }: ColumnProps) => {
-  const {
-    isOpen: isAddTaskModalOpen,
-    open: handleOpenTaskModal,
-    close: handleCloseTaskModal,
-  } = useModal();
-
-  const {
-    isVisible: isButtonVisible,
-    show: showButton,
-    hide: hideButton,
-  } = useVisibility();
+export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
+ 
+  const { handleOpenAddTaskModal } = useModals();
 
   return (
-    <div
-      className="space-y-4 rounded-lg border bg-card p-2"
-      onMouseEnter={showButton}
-      onMouseLeave={hideButton}
-      onClick={hideButton}
-    >
+    <div className="space-y-4 rounded-lg border bg-card p-2 group">
       <ColumnTitle status={status} tasksLength={tasks.length} />
       {tasks.map((task) => (
         <TaskCard
@@ -40,18 +26,18 @@ export const Column = ({ status, tasks = [] }: ColumnProps) => {
           title={task.title}
           priority={task.priority}
           id={task.id}
+          taskRelationId={task.taskRelationId}
           dueDate={task.dueDate}
         />
       ))}
       <Button
-        className={`w-full flex justify-start ${isButtonVisible ? "opacity-100" : "opacity-0"}`}
-        onClick={handleOpenTaskModal}
+        className={`w-full flex justify-start opacity-0 group-hover:opacity-100 transition`}
+        onClick={handleOpenAddTaskModal}
         variant="ghost"
       >
         <Plus />
         <span>Create task</span>
       </Button>
-      {isAddTaskModalOpen && <TaskModalCreate onClose={handleCloseTaskModal} />}
     </div>
   );
-};
+});

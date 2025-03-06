@@ -61,7 +61,7 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
   });
 
   return (
-    <form className="flex flex-col gap-2" onSubmit={onSubmitHandler}>
+    <form className="flex flex-col gap-2" onSubmit={onSubmitHandler} onClick={(e) => e.stopPropagation()}>
       <InputFactory
         variant="labelAndError"
         options={{

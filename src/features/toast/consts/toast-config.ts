@@ -31,4 +31,12 @@ export const TOAST_CONFIG = {
     title: "Delete error",
     description: "Your task has not been deleted.",
   },
+  linkTasksSuccess: {
+    title: "Linking successful",
+    description: "Tasks have been linked successfully.",
+  },
+  linkTasksWithError: {
+    title: "Linking error",
+    description: "Tasks have not been linked.",
+  },
 };

@@ -4,12 +4,13 @@ export interface Task {
   description: string;
   priority: TaskPriority;
   status: TaskStatus;
-  dueDate?: Date;
   authorId: number;
   boardId: number;
   columnId: number;
   createdAt: string;
   updatedAt: string;
+  taskRelationId: number | null;
+  dueDate?: Date;
 }
 
 export type CreateTask = Pick<

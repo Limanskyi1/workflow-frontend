@@ -15,6 +15,7 @@ interface TaskActionsMenuProps {
   onClickDelete: () => void;
   onClickLink: () => void;
   hideAll: () => void;
+  taskRelationId: number | null;
 }
 
 export const TaskActionsMenu = ({
@@ -23,6 +24,7 @@ export const TaskActionsMenu = ({
   onClickDelete,
   onClickLink,
   hideAll,
+  taskRelationId,
 }: TaskActionsMenuProps) => {
   const handleClickTrigger = (e: MouseEvent) => {
     e.stopPropagation();
@@ -50,7 +52,7 @@ export const TaskActionsMenu = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={handleClickLink}>
+        <DropdownMenuItem onClick={handleClickLink} disabled={taskRelationId !== null}>
           Link the task
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleClickDelete}>

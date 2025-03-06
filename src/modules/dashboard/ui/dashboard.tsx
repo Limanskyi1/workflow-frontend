@@ -2,11 +2,10 @@ import { Plus } from "lucide-react";
 
 import { Column } from "@/modules/column";
 import { ColumnType } from "@/modules/column";
-import { TaskModalCreate } from "@/modules/task";
-import { useModal } from "@/shared/hooks/use-modal";
 import { Button } from "@/shared/ui/button";
 
 import { DashboardTitle } from "./dashboard-title/dashboard-title";
+import { useModals } from "@/features/modals";
 
 interface DashboardProps {
   id: number;
@@ -15,16 +14,14 @@ interface DashboardProps {
 }
 
 export const Dashboard = ({ title, columns, id }: DashboardProps) => {
-  const {
-    isOpen: isAddTaskModalOpen,
-    open: handleOpenTaskModal,
-    close: handleCloseTaskModal,
-  } = useModal();
+
+  const { handleOpenAddTaskModal } = useModals();
+
   return (
     <section className="h-full flex flex-col">
       <div className="flex items-center justify-between">
         <DashboardTitle title={title} id={id} />
-        <Button onClick={handleOpenTaskModal}>
+        <Button onClick={handleOpenAddTaskModal}>
           <Plus />
           <span>Add task</span>
         </Button>
@@ -34,7 +31,6 @@ export const Dashboard = ({ title, columns, id }: DashboardProps) => {
           <Column key={column.id} status={column.status} tasks={column.tasks} />
         ))}
       </div>
-      {isAddTaskModalOpen && <TaskModalCreate onClose={handleCloseTaskModal} />}
     </section>
   );
 };

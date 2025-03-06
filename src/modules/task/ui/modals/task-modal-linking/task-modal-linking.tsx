@@ -40,7 +40,9 @@ export const TaskModalLinking = ({
         close={handleClose}
         onClick={(e) => e.stopPropagation()}
       >
-        <DialogTitle>Selecting a task for linking</DialogTitle>
+        <DialogTitle>
+          Select tasks for linking with the task #{taskId}
+        </DialogTitle>
         <DialogDescription>
           Bind tasks to link the work in a project
         </DialogDescription>
@@ -54,7 +56,16 @@ export const TaskModalLinking = ({
           <Button variant="ghost" onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={handleCreateLinking}>Binding</Button>
+          <Button
+            onClick={async () => {
+              const isCreated = await handleCreateLinking();
+              if (isCreated) {
+                onClose();
+              }
+            }}
+          >
+            Binding
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

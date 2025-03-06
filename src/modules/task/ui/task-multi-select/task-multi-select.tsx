@@ -24,6 +24,11 @@ export const TaskMultiSelect = (props: TaskMultiSelectProps) => {
 
   const [open, setOpen] = useState(false);
 
+  const taskOptions = tasks.filter(
+    (task) =>
+      !selectedTasks.some((t) => t.id === task.id) && task.id !== currentTaskId,
+  );
+
   return (
     <Popover open={open} onOpenChange={setOpen} modal={false}>
       <PopoverTrigger>
@@ -36,15 +41,17 @@ export const TaskMultiSelect = (props: TaskMultiSelectProps) => {
         <Command onClick={(e) => e.stopPropagation()}>
           <CommandList>
             <CommandGroup>
-              {isLoading && !tasks ? (
+              {isLoading ? (
                 <LoaderCircle
                   className="animate-spin duration-[2000] mx-auto"
                   fill="primary"
                 />
+              ) : taskOptions.length === 0 ? (
+                <p className="text-center text-sm text-gray-500">
+                  No tasks available
+                </p>
               ) : (
-                tasks.map((task) => {
-                  if (selectedTasks.find((t) => t.id === task.id)) return null;
-                  if (currentTaskId === task.id) return null;
+                taskOptions.map((task) => {
                   return (
                     <TaskOption
                       key={task.id}

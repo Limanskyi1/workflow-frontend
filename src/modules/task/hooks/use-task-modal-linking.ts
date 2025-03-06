@@ -1,7 +1,14 @@
 import { useState } from "react";
 
+import { TOAST_CONFIG, useToast } from "@/features/toast";
+
+import { useCreateTasksRelationMutation } from "../api/taskApi";
+import { Task } from "../model/types";
+
 export const useTaskModalLinking = (taskId: number) => {
-  const [selectedTasks, setSelectedTasks] = useState<any[]>([]);
+  const [selectedTasks, setSelectedTasks] = useState<Task[]>([]);
+  const [createTasksRelation] = useCreateTasksRelationMutation();
+  const { toast } = useToast();
 
   const handleAddTask = (task: any) => {
     if (!selectedTasks.some((t) => t.id === task.id)) {
@@ -15,10 +22,17 @@ export const useTaskModalLinking = (taskId: number) => {
     );
   };
 
-  const handleCreateLinking = () => {
+  const handleCreateLinking = async () => {
     const taskIds = selectedTasks.map((task) => task.id);
-    console.log([taskId, ...taskIds]);
-    return [taskId, ...taskIds];
+    try {
+      await createTasksRelation([taskId, ...taskIds]);
+      toast(TOAST_CONFIG.linkTasksSuccess);
+      return true;
+    } catch (error) {
+      console.error("Failed to create linking", error);
+      toast(TOAST_CONFIG.linkTasksWithError);
+      return false;
+    }
   };
 
   return {
