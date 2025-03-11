@@ -1,11 +1,11 @@
 import { Plus } from "lucide-react";
 
+import { useModals } from "@/features/modals";
 import { Column } from "@/modules/column";
 import { ColumnType } from "@/modules/column";
 import { Button } from "@/shared/ui/button";
 
 import { DashboardTitle } from "./dashboard-title/dashboard-title";
-import { useModals } from "@/features/modals";
 
 interface DashboardProps {
   id: number;
@@ -14,7 +14,6 @@ interface DashboardProps {
 }
 
 export const Dashboard = ({ title, columns, id }: DashboardProps) => {
-
   const { handleOpenAddTaskModal } = useModals();
 
   return (

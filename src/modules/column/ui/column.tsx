@@ -14,7 +14,6 @@ interface ColumnProps {
 }
 
 export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
- 
   const { handleOpenAddTaskModal } = useModals();
 
   return (

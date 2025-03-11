@@ -48,7 +48,11 @@ export const Select = <OptionType extends SelectOption>({
       <SelectContent onClick={(e) => e.stopPropagation()}>
         <SelectGroup>
           {options.map((option, index) => (
-            <SelectItem key={index} value={option.value} className="cursor-pointer hover:bg-gray-100/10">
+            <SelectItem
+              key={index}
+              value={option.value}
+              className="cursor-pointer hover:bg-gray-100/10"
+            >
               <div className="flex items-center gap-2">
                 {option.icon ? option.icon : null} {option.label}
               </div>

@@ -52,7 +52,10 @@ export const TaskActionsMenu = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={handleClickLink} disabled={taskRelationId !== null}>
+        <DropdownMenuItem
+          onClick={handleClickLink}
+          disabled={taskRelationId !== null}
+        >
           Link the task
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleClickDelete}>

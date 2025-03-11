@@ -6,6 +6,9 @@ const config: Config = {
   testEnvironment: 'jsdom',
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx', 'js', 'jsx'],
   setupFilesAfterEnv: ['./src/setupTests.ts'],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
 };
 
 export default config;

@@ -1,20 +1,28 @@
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/shared/ui/button";
 import { InputFactory } from "@/shared/ui/input/input-factory";
 
-import { useLogin } from "../../hooks/use-login";
+import { useLogin } from "../../hooks/use-login/use-login";
 import { AuthLayout } from "../../layouts/auth-layout";
+import { LoginDto } from "../../model/types/login.dto";
 import { AuthError } from "../auth-error/auth-error";
 import { AuthHeader } from "../auth-header/auth-header";
 
 export const LoginForm = () => {
-  const { register, formErrors, onSubmit, error } = useLogin();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+  } = useForm<LoginDto>();
+  const { onSubmit, error } = useLogin();
+  console.log(error);
   return (
     <AuthLayout>
       <div className="w-full max-w-md space-y-8">
         <AuthHeader text="Sign in to Workflow" />
-        <form className="mt-8 space-y-6" onSubmit={onSubmit}>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
             <InputFactory
               variant="labelAndError"
