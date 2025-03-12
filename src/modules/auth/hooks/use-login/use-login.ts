@@ -22,13 +22,12 @@ export const useLogin = () => {
       navigate("/");
       toast(TOAST_CONFIG.loginSuccess);
     } catch (error: any) {
-      console.error(error);
       setError(error?.data?.message || "An unknown error occurred");
     }
   };
 
   return {
     error,
-    onSubmit
+    onSubmit,
   };
 };

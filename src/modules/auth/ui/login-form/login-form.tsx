@@ -17,7 +17,6 @@ export const LoginForm = () => {
     formState: { errors: formErrors },
   } = useForm<LoginDto>();
   const { onSubmit, error } = useLogin();
-  console.log(error);
   return (
     <AuthLayout>
       <div className="w-full max-w-md space-y-8">
