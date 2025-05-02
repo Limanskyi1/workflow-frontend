@@ -13,7 +13,6 @@ interface TaskActionsMenuProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   onClickDelete: () => void;
-  onClickLink: () => void;
   hideAll: () => void;
   taskRelationId: number | null;
 }
@@ -22,9 +21,6 @@ export const TaskActionsMenu = ({
   isOpen,
   setIsOpen,
   onClickDelete,
-  onClickLink,
-  hideAll,
-  taskRelationId,
 }: TaskActionsMenuProps) => {
   const handleClickTrigger = (e: MouseEvent) => {
     e.stopPropagation();
@@ -37,13 +33,6 @@ export const TaskActionsMenu = ({
     setIsOpen(false);
   };
 
-  const handleClickLink = (e: MouseEvent) => {
-    e.stopPropagation();
-    onClickLink();
-    setIsOpen(false);
-    hideAll();
-  };
-
   return (
     <DropdownMenu open={isOpen} modal={false}>
       <DropdownMenuTrigger asChild className="p-1" onClick={handleClickTrigger}>
@@ -52,12 +41,6 @@ export const TaskActionsMenu = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={handleClickLink}
-          disabled={taskRelationId !== null}
-        >
-          Link the task
-        </DropdownMenuItem>
         <DropdownMenuItem onClick={handleClickDelete}>
           Delete the task
         </DropdownMenuItem>

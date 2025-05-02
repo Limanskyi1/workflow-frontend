@@ -65,36 +65,6 @@ export const tasksApi = createApi({
       query: (taskId: number) => `/tasks/${taskId}`,
       providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
     }),
-    getAllWithoutRelations: builder.query<Pick<Task, "id" | "title">[], void>({
-      query: () => `/tasks/without-relations`,
-      transformResponse: (res: Task[]) =>
-        res.map((task) => {
-          return {
-            id: task.id,
-            title: task.title,
-          };
-        }),
-    }),
-    getRelatedTasks: builder.query<Task[], number>({
-      query: (taskId: number) => `/tasks/${taskId}/related`,
-      providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
-    }),
-    createTasksRelation: builder.mutation({
-      query: (taskIds: Task["id"][]) => ({
-        url: "/task-relations",
-        method: "POST",
-        body: { taskIds },
-      }),
-      invalidatesTags: ["Dashboard", "Tasks"],
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          dispatch(dashboardApi.util.invalidateTags(["Dashboard"]));
-        } catch (error) {
-          console.error("Error creating task", error);
-        }
-      },
-    }),
   }),
 });
 
@@ -103,7 +73,4 @@ export const {
   useEditTaskMutation,
   useDeleteTaskMutation,
   useGetTaskByIdQuery,
-  useGetAllWithoutRelationsQuery,
-  useGetRelatedTasksQuery,
-  useCreateTasksRelationMutation,
 } = tasksApi;

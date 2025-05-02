@@ -10,12 +10,12 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme;
-  toogleTheme: () => void;
+  toggleTheme: () => void;
 };
 
 const initialState: ThemeProviderState = {
   theme: "dark",
-  toogleTheme: () => {},
+  toggleTheme: () => {},
 };
 
 export const ThemeProviderContext =
@@ -43,14 +43,14 @@ export function ThemeProvider({
     }
   }, [theme]);
 
-  const toogleTheme = (): void => {
+  const toggleTheme = (): void => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem(storageKey, newTheme);
   };
 
   return (
-    <ThemeProviderContext.Provider {...props} value={{ theme, toogleTheme }}>
+    <ThemeProviderContext.Provider {...props} value={{ theme, toggleTheme }}>
       {children}
     </ThemeProviderContext.Provider>
   );

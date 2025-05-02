@@ -28,9 +28,8 @@ export const TaskCard = ({
   dueDate,
 }: TaskCardProps) => {
   const {
-    handleOpenDeleteTaskModal,
-    handleOpenEditTaskModal,
-    handleOpenLinkingTaskModal,
+    openDeleteTaskModal,
+    openEditTaskModal,
   } = useModals();
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -70,7 +69,7 @@ export const TaskCard = ({
       onMouseEnter={(e) => onMouseEnter(e)}
       onMouseLeave={onMouseLeave}
       onClick={() => {
-        handleOpenEditTaskModal(id);
+        openEditTaskModal(id);
         hideAll();
       }}
     >
@@ -82,14 +81,13 @@ export const TaskCard = ({
           <TaskActionsMenu
             isOpen={isActionsVisible}
             setIsOpen={toggleActions}
-            onClickDelete={() => handleOpenDeleteTaskModal(id)}
-            onClickLink={() => handleOpenLinkingTaskModal(id)}
+            onClickDelete={() => openDeleteTaskModal(id)}
             hideAll={hideAll}
             taskRelationId={taskRelationId}
           />
           <TaskTrashBadge
             setIsTrashVisible={toggleButtons}
-            onClick={() => handleOpenDeleteTaskModal(id)}
+            onClick={() => openDeleteTaskModal(id)}
           />
         </div>
       </div>

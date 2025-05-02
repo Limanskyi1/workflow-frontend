@@ -11,9 +11,9 @@ import { LoginDto } from "../../model/types/login.dto";
 export const useLogin = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [error, setError] = useState<string | null>(null);
-  const { toast } = useToast();
   const [login] = useLoginMutation();
+  const { toast } = useToast();
+  const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (data: LoginDto) => {
     try {

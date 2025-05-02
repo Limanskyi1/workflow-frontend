@@ -4,8 +4,8 @@ import {
   TaskModalCreate,
   TaskModalDelete,
   TaskModalEdit,
-  TaskModalLinking,
 } from "@/modules/task";
+import { useModalState } from "../hooks/use-modal-state";
 
 interface ModalContextType {
   isAddTaskModalOpen: boolean;
@@ -13,16 +13,12 @@ interface ModalContextType {
   handleCloseAddTaskModal: () => void;
 
   isOpenDeleteTaskModal: boolean;
-  handleOpenDeleteTaskModal: (taskId: number) => void;
-  handleCloseDeleteTaskModal: () => void;
+  openDeleteTaskModal: (taskId: number) => void;
+  closeDeleteTaskModal: () => void;
 
   isOpenEditTaskModal: boolean;
-  handleOpenEditTaskModal: (taskId: number) => void;
-  handleCloseEditTaskModal: () => void;
-
-  isOpenLinkingTaskModal: boolean;
-  handleOpenLinkingTaskModal: (taskId: number) => void;
-  handleCloseLinkingTaskModal: () => void;
+  openEditTaskModal: (taskId: number) => void;
+  closeEditTaskModal: () => void;
 }
 
 export const ModalsContext = createContext<ModalContextType | undefined>(
@@ -36,55 +32,18 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
   const handleCloseAddTaskModal = () => setIsAddTaskModalOpen(false);
 
   // Delete task modal
-  const [deleteTaskModal, setDeleteTaskModal] = useState<{
-    isOpen: boolean;
-    taskId: number | null;
-  }>({
-    isOpen: false,
-    taskId: null,
-  });
-
-  const handleOpenDeleteTaskModal = (taskId: number) => {
-    setDeleteTaskModal({ isOpen: true, taskId });
-  };
-
-  const handleCloseDeleteTaskModal = () => {
-    setDeleteTaskModal({ isOpen: false, taskId: null });
-  };
+  const {
+    modalState: deleteTaskModal,
+    open: openDeleteTaskModal,
+    close: closeDeleteTaskModal,
+  } = useModalState();
 
   // Edit task modal
-  const [editTaskModal, setEditTaskModal] = useState<{
-    isOpen: boolean;
-    taskId: number | null;
-  }>({
-    isOpen: false,
-    taskId: null,
-  });
-
-  const handleOpenEditTaskModal = (taskId: number) => {
-    setEditTaskModal({ isOpen: true, taskId });
-  };
-
-  const handleCloseEditTaskModal = () => {
-    setEditTaskModal({ isOpen: false, taskId: null });
-  };
-
-  // Linking task modal
-  const [linkingTaskModal, setLinkingTaskModal] = useState<{
-    isOpen: boolean;
-    taskId: number | null;
-  }>({
-    isOpen: false,
-    taskId: null,
-  });
-
-  const handleOpenLinkingTaskModal = (taskId: number) => {
-    setLinkingTaskModal({ isOpen: true, taskId });
-  };
-
-  const handleCloseLinkingTaskModal = () => {
-    setLinkingTaskModal({ isOpen: false, taskId: null });
-  };
+  const {
+    modalState: editTaskModal,
+    open: openEditTaskModal,
+    close: closeEditTaskModal,
+  } = useModalState();
 
   return (
     <ModalsContext.Provider
@@ -93,14 +52,11 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
         handleOpenAddTaskModal,
         handleCloseAddTaskModal,
         isOpenDeleteTaskModal: deleteTaskModal.isOpen,
-        handleOpenDeleteTaskModal,
-        handleCloseDeleteTaskModal,
+        openDeleteTaskModal,
+        closeDeleteTaskModal,
         isOpenEditTaskModal: editTaskModal.isOpen,
-        handleOpenEditTaskModal,
-        handleCloseEditTaskModal,
-        isOpenLinkingTaskModal: linkingTaskModal.isOpen,
-        handleOpenLinkingTaskModal,
-        handleCloseLinkingTaskModal,
+        openEditTaskModal,
+        closeEditTaskModal,
       }}
     >
       {children}
@@ -110,20 +66,14 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
       {deleteTaskModal.isOpen && (
         <TaskModalDelete
           taskId={deleteTaskModal.taskId as number}
-          onClose={handleCloseDeleteTaskModal}
-          onCancel={handleCloseDeleteTaskModal}
+          onClose={closeDeleteTaskModal}
+          onCancel={closeDeleteTaskModal}
         />
       )}
       {editTaskModal.isOpen && (
         <TaskModalEdit
-          onClose={handleCloseEditTaskModal}
+          onClose={closeEditTaskModal}
           taskId={editTaskModal.taskId as number}
-        />
-      )}
-      {linkingTaskModal.isOpen && (
-        <TaskModalLinking
-          onClose={handleCloseLinkingTaskModal}
-          taskId={linkingTaskModal.taskId as number}
         />
       )}
     </ModalsContext.Provider>
