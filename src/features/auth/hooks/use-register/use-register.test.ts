@@ -33,7 +33,7 @@ describe("useLogin hook", () => {
         refresh_token: "test_refresh",
       }),
     });
-    
+
     (useAppDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
     (useRegisterMutation as jest.Mock).mockReturnValue([mockRegisterMutation]);
@@ -52,11 +52,13 @@ describe("useLogin hook", () => {
     });
 
     expect(mockRegisterMutation).toHaveBeenCalledWith({
-        name: "test",
-        email: "test@example.com",
-        password: "password",
+      name: "test",
+      email: "test@example.com",
+      password: "password",
     });
-    expect(mockRegisterMutation.mock.results[0].value.unwrap).toHaveBeenCalled();
+    expect(
+      mockRegisterMutation.mock.results[0].value.unwrap,
+    ).toHaveBeenCalled();
     expect(mockDispatch).toHaveBeenCalledWith({
       type: "auth/setTokens",
       payload: {
@@ -69,7 +71,6 @@ describe("useLogin hook", () => {
   });
 
   it("failed login", async () => {
-
     const wrongData = {
       name: "test",
       email: "test@example.com",
@@ -77,16 +78,16 @@ describe("useLogin hook", () => {
     };
 
     const { result } = renderHook(() => useRegister());
-  
+
     const error = new Error("Test error");
     mockRegisterMutation.mockReturnValue({
       unwrap: jest.fn().mockRejectedValue(error),
     });
-  
+
     await act(async () => {
       await result.current.onSubmit(wrongData);
     });
-  
+
     expect(mockRegisterMutation).toHaveBeenCalledWith(wrongData);
     expect(mockRegisterMutation).toHaveBeenCalled();
     expect(result.current.error).not.toBeNull();

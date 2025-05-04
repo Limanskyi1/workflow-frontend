@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 
 import { useRegisterMutation } from "../../api/auth-api";
 import { setTokens } from "../../model/slice/auth-slice";
-import { RegisterDto } from "../../model/types/register.dto";
+import { Register } from "../../model/types";
 
 export const useRegister = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ export const useRegister = () => {
   const [registration] = useRegisterMutation();
   const { toast } = useToast();
 
-  const onSubmit = async (data: RegisterDto) => {
+  const onSubmit = async (data: Register) => {
     try {
       const response = await registration(data).unwrap();
       dispatch(setTokens(response));

@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { baseApi } from "@/shared/api/baseApi";
+
 import { authApi, authReducer } from "@/features/auth";
 import { dashboardApi } from "@/modules/dashboard";
 import { tasksApi } from "@/modules/task";
+import { baseApi } from "@/shared/api/baseApi";
 
 export const store = configureStore({
   reducer: {

@@ -11,7 +11,6 @@ import { AuthError } from "../auth-error/auth-error";
 import { AuthHeader } from "../auth-header/auth-header";
 
 export const RegisterForm = () => {
-  
   const {
     register,
     handleSubmit,

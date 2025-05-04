@@ -1,7 +1,7 @@
-import { TOAST_CONFIG } from "@/features/toast";
-import { useToast } from "@/features/toast";
 import { useGetMeQuery, useUpdateUserMutation } from "@/entities/user";
 import { UpdateUserDto } from "@/entities/user";
+import { TOAST_CONFIG } from "@/features/toast";
+import { useToast } from "@/features/toast";
 
 export const useProfileSettings = () => {
   const { toast } = useToast();

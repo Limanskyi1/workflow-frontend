@@ -69,23 +69,22 @@ describe("useLogin hook", () => {
   });
 
   it("failed login", async () => {
-
     const wrongData = {
       email: "test@example.com",
       password: "wrong_password",
     };
 
     const { result } = renderHook(() => useLogin());
-  
+
     const error = new Error("Test error");
     mockLoginMutation.mockReturnValue({
       unwrap: jest.fn().mockRejectedValue(error),
     });
-  
+
     await act(async () => {
       await result.current.onSubmit(wrongData);
     });
-  
+
     expect(mockLoginMutation).toHaveBeenCalledWith(wrongData);
     expect(mockLoginMutation).toHaveBeenCalled();
     expect(result.current.error).not.toBeNull();

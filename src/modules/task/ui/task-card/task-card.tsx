@@ -27,10 +27,7 @@ export const TaskCard = ({
   taskRelationId,
   dueDate,
 }: TaskCardProps) => {
-  const {
-    openDeleteTaskModal,
-    openEditTaskModal,
-  } = useModals();
+  const { openDeleteTaskModal, openEditTaskModal } = useModals();
 
   const cardRef = useRef<HTMLDivElement>(null);
 

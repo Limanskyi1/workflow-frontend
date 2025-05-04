@@ -8,7 +8,10 @@ import {
 import Cookies from "js-cookie";
 
 // eslint-disable-next-line no-restricted-imports
-import { removeTokens, setTokens } from "@/features/auth/model/slice/auth-slice";
+import {
+  removeTokens,
+  setTokens,
+} from "@/features/auth/model/slice/auth-slice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3000",
