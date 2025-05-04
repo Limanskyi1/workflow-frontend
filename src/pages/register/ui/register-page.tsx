@@ -1,4 +1,4 @@
-import { RegisterForm } from "@/modules/auth";
+import { RegisterForm } from "@/features/auth";
 
 export const RegisterPage = () => {
   return <RegisterForm />;

@@ -1,22 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-import { authApi, authReducer } from "@/modules/auth";
+import { baseApi } from "@/shared/api/baseApi";
+import { authApi, authReducer } from "@/features/auth";
 import { dashboardApi } from "@/modules/dashboard";
 import { tasksApi } from "@/modules/task";
-import { userApi } from "@/modules/user";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    [baseApi.reducerPath]: baseApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
-    [userApi.reducerPath]: userApi.reducer,
     [dashboardApi.reducerPath]: dashboardApi.reducer,
     [tasksApi.reducerPath]: tasksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
+      .concat(baseApi.middleware)
       .concat(authApi.middleware)
-      .concat(userApi.middleware)
       .concat(dashboardApi.middleware)
       .concat(tasksApi.middleware),
 });

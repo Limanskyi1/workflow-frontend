@@ -1,6 +1,6 @@
 import { useProfileSettings } from "../hooks/use-profile-settings";
 import { ProfileSettings } from "./profile-settings/profile-settings";
-import { ChangePassword } from "./сhange-password/change-password";
+import { ChangePassword } from "@/features/change-password";
 
 export const SettingsPage = () => {
   const { isLoading, userData, onSubmitProfileSettings } = useProfileSettings();

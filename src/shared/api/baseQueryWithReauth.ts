@@ -2,14 +2,24 @@ import {
   BaseQueryFn,
   FetchArgs,
   FetchBaseQueryError,
+  fetchBaseQuery,
 } from "@reduxjs/toolkit/query";
 
 import Cookies from "js-cookie";
 
 // eslint-disable-next-line no-restricted-imports
-import { removeTokens, setTokens } from "@/modules/auth/model/slice/auth-slice";
+import { removeTokens, setTokens } from "@/features/auth/model/slice/auth-slice";
 
-import { baseQuery } from "./baseApi";
+const baseQuery = fetchBaseQuery({
+  baseUrl: "http://localhost:3000",
+  prepareHeaders: (headers) => {
+    const token = Cookies.get("accessToken");
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+    return headers;
+  },
+});
 
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,

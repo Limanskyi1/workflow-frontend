@@ -1,14 +1,9 @@
-import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQueryWithReauth } from "./baseQueryWithReauth";
 
-import Cookies from "js-cookie";
-
-export const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000",
-  prepareHeaders: (headers) => {
-    const token = Cookies.get("accessToken");
-    if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
-    }
-    return headers;
-  },
-});
+export const baseApi = createApi({
+  reducerPath: "baseApi",
+  baseQuery: baseQueryWithReauth,
+  tagTypes: ["Users"],
+  endpoints: () => ({}),
+})

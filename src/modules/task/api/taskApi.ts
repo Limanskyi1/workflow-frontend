@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { dashboardApi } from "@/modules/dashboard";
-import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
+import { baseQueryWithReauth } from "@/shared/api/baseQueryWithReauth";
 
 import { CreateTask, Task, UpdateTask } from "../model/types";
 

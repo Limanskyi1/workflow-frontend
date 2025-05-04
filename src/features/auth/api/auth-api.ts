@@ -1,8 +1,8 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
+import { baseQueryWithReauth } from "@/shared/api/baseQueryWithReauth";
 
-import { LoginDto } from "../model/types/login.dto";
+import { LoginDto } from "../model/types/login";
 import { RegisterDto } from "../model/types/register.dto";
 
 export const authApi = createApi({

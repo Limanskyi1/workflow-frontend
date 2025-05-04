@@ -6,7 +6,7 @@ import { InputFactory } from "@/shared/ui/input/input-factory";
 
 import { useLogin } from "../../hooks/use-login/use-login";
 import { AuthLayout } from "../../layouts/auth-layout";
-import { LoginDto } from "../../model/types/login.dto";
+import { Login } from "../../model/types";
 import { AuthError } from "../auth-error/auth-error";
 import { AuthHeader } from "../auth-header/auth-header";
 
@@ -15,7 +15,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<LoginDto>();
+  } = useForm<Login>();
   const { onSubmit, error } = useLogin();
   return (
     <AuthLayout>

@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-import { baseQueryWithReauth } from "@/shared/api/baseApiWithReauth";
+import { baseQueryWithReauth } from "@/shared/api/baseQueryWithReauth";
 
 import { Dashboard } from "../model/types/dashboard";
 import { UpdateDashboard } from "../model/types/update-dashboard";

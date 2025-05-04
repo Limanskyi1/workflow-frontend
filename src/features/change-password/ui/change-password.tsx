@@ -1,3 +1,5 @@
+import { useForm } from "react-hook-form";
+
 import { Button } from "@/shared/ui/button";
 import {
   Card,
@@ -8,10 +10,27 @@ import {
 } from "@/shared/ui/card";
 import { InputFactory } from "@/shared/ui/input/input-factory";
 
-import { useChangePassword } from "../../hooks/use-change-password";
+import { useChangePassword } from "../hooks/use-change-password";
+
+interface ChangePasswordData {
+  currentPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}
 
 export const ChangePassword = () => {
-  const { error, onSubmit, formErrors, register, watch } = useChangePassword();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors },
+    watch,
+    reset,
+  } = useForm<ChangePasswordData>({
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
+  });
+
+  const { error, changePassword } = useChangePassword();
 
   return (
     <Card className="mt-8">
@@ -22,7 +41,13 @@ export const ChangePassword = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4" onSubmit={onSubmit}>
+        <form
+          className="space-y-4"
+          onSubmit={handleSubmit(async (data) => {
+            await changePassword(data);
+            reset();
+          })}
+        >
           <InputFactory
             variant="labelAndError"
             options={{
