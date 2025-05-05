@@ -6,10 +6,10 @@ import {
 } from "@/shared/ui/dialog";
 import { Skeleton } from "@/shared/ui/skeleton";
 
-import { useGetTaskByIdQuery } from "../../../api/taskApi";
+import { useGetTaskByIdQuery } from "@/entities/task/api/taskApi";
 import { taskPriorities } from "../../../consts/task-priorities";
 import { taskStatuses } from "../../../consts/task-statuses";
-import { useTask } from "../../../hooks/use-task";
+import { useTask } from "../../../../../entities/task/hooks/use-task";
 import { TaskForm } from "../../task-form/task-form";
 
 interface TaskModalEditProps {

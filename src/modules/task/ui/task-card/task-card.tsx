@@ -6,8 +6,7 @@ import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";
 
 import { priorityColors } from "../../consts/priority-colors";
-import { TaskPriority } from "../../model/types";
-import { convertPriorityToText } from "../../utils/convert-priority-to-text";
+import { TaskPriority } from "../../../../entities/task/model/types";
 import { TaskActionsMenu } from "../task-actions-menu";
 import { TaskDateBadge } from "../task-date-badge/task-date-badge";
 import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
@@ -93,7 +92,7 @@ export const TaskCard = ({
         variant="secondary"
         className={`${priorityColors[priority]} w-fit`}
       >
-        {convertPriorityToText(priority)}
+        {priority.toLowerCase()}
       </Badge>
     </Card>
   );

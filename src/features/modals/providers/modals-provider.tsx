@@ -1,10 +1,8 @@
 import { ReactNode, createContext, useState } from "react";
 
-import {
-  TaskModalCreate,
-  TaskModalDelete,
-  TaskModalEdit,
-} from "@/modules/task";
+import { TaskCreateModal } from "@/features/task-create";
+import { TaskDeleteModal } from "@/features/task-delete";
+import { TaskModalEdit } from "@/modules/task";
 
 import { useModalState } from "../hooks/use-modal-state";
 
@@ -62,10 +60,10 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
     >
       {children}
       {isAddTaskModalOpen && (
-        <TaskModalCreate onClose={handleCloseAddTaskModal} />
+        <TaskCreateModal onClose={handleCloseAddTaskModal} />
       )}
       {deleteTaskModal.isOpen && (
-        <TaskModalDelete
+        <TaskDeleteModal
           taskId={deleteTaskModal.taskId as number}
           onClose={closeDeleteTaskModal}
           onCancel={closeDeleteTaskModal}

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { LoaderCircle } from "lucide-react";
 
-import { Task } from "../../model/types";
+import { Task } from "../../../../entities/task/model/types";
 import { TaskOption } from "./task-option";
 
 export const TaskMultiSelectBar = ({

@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom";
 
 import { ModalsProvider } from "@/features/modals";
 import { ThemeProvider } from "@/features/theming";
-import { Toaster } from "@/features/toast";
+import { Toaster } from "@/shared/lib/toast";
 
 import { router } from "./router";
 import { store } from "./store";

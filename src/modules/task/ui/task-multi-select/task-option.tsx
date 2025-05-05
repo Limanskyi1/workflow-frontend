@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { CommandItem } from "@/shared/ui/command";
 
-import { Task } from "../../model/types";
+import { Task } from "../../../../entities/task/model/types";
 
 export interface TaskOptionViewProps {
   id: number;

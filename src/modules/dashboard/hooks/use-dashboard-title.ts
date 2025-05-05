@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { TOAST_CONFIG, useToast } from "@/features/toast";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 
 import { useUpdateDashboardMutation } from "../api/dashboard-api";
 import { UpdateDashboard } from "../model/types/update-dashboard";

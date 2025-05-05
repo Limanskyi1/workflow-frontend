@@ -5,15 +5,15 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { taskFormValuesDefault } from "../../../consts/task-form-values-default";
-import { useTask } from "../../../hooks/use-task";
-import { TaskForm } from "../../task-form/task-form";
+import { taskFormValuesDefault } from "../../../modules/task/consts/task-form-values-default";
+import { useTask } from "../../../entities/task/hooks/use-task";
+import { TaskForm } from "../../../modules/task/ui/task-form/task-form";
 
-interface TaskModalCreateProps {
+interface TaskCreateModalProps {
   onClose: () => void;
 }
 
-export const TaskModalCreate = ({ onClose }: TaskModalCreateProps) => {
+export const TaskCreateModal = ({ onClose }: TaskCreateModalProps) => {
   const { handleCreateTask } = useTask();
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();

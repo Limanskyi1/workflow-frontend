@@ -8,19 +8,19 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { useTask } from "../../../hooks/use-task";
+import { useTask } from "@/entities/task";
 
-interface TaskModalDeleteProps {
+interface TaskDeleteModalProps {
   taskId: number;
   onClose: () => void;
   onCancel: () => void;
 }
 
-export const TaskModalDelete = ({
+export const TaskDeleteModal = ({
   taskId,
   onClose,
   onCancel,
-}: TaskModalDeleteProps) => {
+}: TaskDeleteModalProps) => {
   const { handleDeleteTask } = useTask(taskId);
 
   const handleClose = (event?: React.MouseEvent) => {

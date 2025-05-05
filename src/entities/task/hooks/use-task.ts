@@ -1,13 +1,8 @@
 import { useCallback } from "react";
 
-import { TOAST_CONFIG, useToast } from "@/features/toast";
-
-import {
-  useCreateTaskMutation,
-  useDeleteTaskMutation,
-  useEditTaskMutation,
-} from "../api/taskApi";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 import { CreateTask, UpdateTask } from "../model/types";
+import { useCreateTaskMutation, useDeleteTaskMutation, useEditTaskMutation } from "@/entities/task/api/taskApi";
 
 export const useTask = (taskId?: number) => {
   const [editTask] = useEditTaskMutation();
@@ -36,7 +31,7 @@ export const useTask = (taskId?: number) => {
       task: data,
       id: taskId,
     };
-    console.log(resp);
+    
     try {
       const task = await editTask(resp).unwrap();
       console.log(task);
@@ -55,8 +50,7 @@ export const useTask = (taskId?: number) => {
       dueDate,
     };
     try {
-      const task = await createTask(dataToSend).unwrap();
-      console.log(task);
+      await createTask(dataToSend).unwrap();
     } catch (error) {
       console.log(error);
     }

@@ -6,7 +6,7 @@ import { InputFactory } from "@/shared/ui/input/input-factory";
 
 import { useRegister } from "../../hooks/use-register/use-register";
 import { AuthLayout } from "../../layouts/auth-layout";
-import { RegisterDto } from "../../model/types/register.dto";
+import { Register } from "../../model/types";
 import { AuthError } from "../auth-error/auth-error";
 import { AuthHeader } from "../auth-header/auth-header";
 
@@ -15,7 +15,7 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<RegisterDto>();
+  } = useForm<Register>();
 
   const { onSubmit, error } = useRegister();
 

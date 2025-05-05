@@ -1,4 +1,4 @@
-import { TaskStatus } from "../model/types";
+import { TaskStatus } from "../../../entities/task/model/types";
 
 export interface TaskStatusesItem {
   value: TaskStatus;

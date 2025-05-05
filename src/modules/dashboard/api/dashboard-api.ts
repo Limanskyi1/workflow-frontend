@@ -1,14 +1,9 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-
-import { baseQueryWithReauth } from "@/shared/api/baseQueryWithReauth";
+import { baseApi } from "@/shared/api/baseApi";
 
 import { Dashboard } from "../model/types/dashboard";
 import { UpdateDashboard } from "../model/types/update-dashboard";
 
-export const dashboardApi = createApi({
-  reducerPath: "dashboardApi",
-  baseQuery: baseQueryWithReauth,
-  tagTypes: ["Dashboard"],
+export const dashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getMyDashboard: builder.query<Dashboard, void>({
       query: () => "/boards/my",
@@ -24,6 +19,5 @@ export const dashboardApi = createApi({
     }),
   }),
 });
-
 export const { useGetMyDashboardQuery, useUpdateDashboardMutation } =
   dashboardApi;

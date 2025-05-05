@@ -1,14 +1,14 @@
 import { useGetMeQuery, useUpdateUserMutation } from "@/entities/user";
-import { UpdateUserDto } from "@/entities/user";
-import { TOAST_CONFIG } from "@/features/toast";
-import { useToast } from "@/features/toast";
+import { UpdateUser } from "@/entities/user";
+import { TOAST_CONFIG } from "@/shared/lib/toast";
+import { useToast } from "@/shared/lib/toast";
 
 export const useProfileSettings = () => {
   const { toast } = useToast();
   const { data: userData, isLoading } = useGetMeQuery();
   const [updateUser] = useUpdateUserMutation();
 
-  const onSubmitProfileSettings = async (profileFormData: UpdateUserDto) => {
+  const onSubmitProfileSettings = async (profileFormData: UpdateUser) => {
     try {
       const updatedUser = {
         ...userData,

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TOAST_CONFIG, useToast } from "@/features/toast";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 
 import { useRegisterMutation } from "../../api/auth-api";

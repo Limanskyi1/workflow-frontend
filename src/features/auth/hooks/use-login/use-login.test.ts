@@ -2,7 +2,7 @@ import { act, renderHook } from "@testing-library/react";
 
 import { useNavigate } from "react-router-dom";
 
-import { useToast } from "@/features/toast";
+import { useToast } from "@/shared/lib/toast";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 
 import { useLoginMutation } from "../../api/auth-api";
@@ -13,7 +13,7 @@ jest.mock("../../api/auth-api", () => ({ useLoginMutation: jest.fn() }));
 jest.mock("@/shared/hooks/use-app-dispatch", () => ({
   useAppDispatch: jest.fn(),
 }));
-jest.mock("@/features/toast", () => ({
+jest.mock("@/shared/lib/toast", () => ({
   useToast: jest.fn(),
   TOAST_CONFIG: { loginSuccess: "Login successful" },
 }));

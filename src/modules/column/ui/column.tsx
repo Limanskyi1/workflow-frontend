@@ -6,8 +6,6 @@ import { TaskCard } from "@/modules/task";
 import { Task, TaskStatus } from "@/modules/task";
 import { Button } from "@/shared/ui/button";
 
-import { ColumnTitle } from "./column-title/column-title";
-
 interface ColumnProps {
   status: TaskStatus;
   tasks: Task[];
@@ -18,7 +16,9 @@ export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
 
   return (
     <div className="space-y-4 rounded-lg border bg-card p-2 group">
-      <ColumnTitle status={status} tasksLength={tasks.length} />
+      <h2 className="font-semibold text-sm mb-3">
+        {status.replace("_", " ")} ({tasks.length})
+      </h2>
       {tasks.map((task) => (
         <TaskCard
           key={task.id}

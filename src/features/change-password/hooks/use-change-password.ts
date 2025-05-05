@@ -4,8 +4,8 @@ import {
   UpdateUserPassword,
   useChangeUserPasswordMutation,
 } from "@/entities/user";
-import { TOAST_CONFIG } from "@/features/toast";
-import { useToast } from "@/features/toast";
+import { TOAST_CONFIG } from "@/shared/lib/toast";
+import { useToast } from "@/shared/lib/toast";
 import { ApiError } from "@/shared/types";
 
 interface ChangePasswordData {
