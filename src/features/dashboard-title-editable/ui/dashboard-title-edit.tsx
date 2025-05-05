@@ -1,31 +1,43 @@
 import { Check, X } from "lucide-react";
 import { useRef } from "react";
+import { useForm } from "react-hook-form";
 
+import { UpdateDashboard } from "@/entities/dashboard/model/types";
 import { useOutsideClick } from "@/shared/hooks/use-outside-click";
 import { InputFactory } from "@/shared/ui/input/input-factory";
 
 interface EditModeProps {
-  register: any;
-  reset: any;
+  title: string;
   setEditMode: (isEditable: boolean) => void;
-  onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  onSubmit: (data: UpdateDashboard) => Promise<void>;
 }
 
-export const DashboardTitleEditMode = ({
+export const DashboardTitleEdit = ({
+  title,
   setEditMode,
-  register,
-  reset,
   onSubmit,
 }: EditModeProps) => {
   const titleRef = useRef<HTMLFormElement>(null);
+
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues: {
+      title,
+    },
+  });
+
   useOutsideClick(titleRef, () => {
     reset();
     setEditMode(false);
   });
+
   return (
     <form
       className="flex items-center justify-between max-w-[300px] gap-2"
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        setEditMode(false);
+        reset();
+      })}
       ref={titleRef}
     >
       <InputFactory

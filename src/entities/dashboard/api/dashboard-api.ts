@@ -1,7 +1,6 @@
 import { baseApi } from "@/shared/api/baseApi";
 
-import { Dashboard } from "../model/types/dashboard";
-import { UpdateDashboard } from "../model/types/update-dashboard";
+import { Dashboard, UpdateDashboard } from "../model/types";
 
 export const dashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,11 +8,11 @@ export const dashboardApi = baseApi.injectEndpoints({
       query: () => "/boards/my",
       providesTags: ["Dashboard"],
     }),
-    updateDashboard: builder.mutation<Dashboard, UpdateDashboard>({
-      query: (body: UpdateDashboard) => ({
-        url: `/boards/${body.id}`,
+    updateDashboard: builder.mutation({
+      query: ({ data, id }: { data: UpdateDashboard; id: number }) => ({
+        url: `/boards/${id}`,
         method: "PATCH",
-        body,
+        body: data,
       }),
       invalidatesTags: ["Dashboard"],
     }),

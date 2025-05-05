@@ -6,12 +6,12 @@ import { InputFactory } from "@/shared/ui/input/input-factory";
 import { Label } from "@/shared/ui/label";
 import { Select } from "@/shared/ui/select/select";
 
+import { CreateTask, UpdateTask } from "../../../../entities/task/model/types";
 import {
   TaskPrioritiesItem,
   taskPriorities,
 } from "../../consts/task-priorities";
 import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
-import { CreateTask, UpdateTask } from "../../../../entities/task/model/types";
 import { TaskDescriptionEditor } from "../task-description-editor/task-description-editor";
 
 interface TaskFormBaseSchema {

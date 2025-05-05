@@ -1,11 +1,10 @@
 import { Plus } from "lucide-react";
 
+import { DashboardTitle } from "@/features/dashboard-title-editable";
 import { useModals } from "@/features/modals";
 import { Column } from "@/modules/column";
 import { ColumnType } from "@/modules/column";
 import { Button } from "@/shared/ui/button";
-
-import { DashboardTitle } from "./dashboard-title/dashboard-title";
 
 interface DashboardProps {
   id: number;

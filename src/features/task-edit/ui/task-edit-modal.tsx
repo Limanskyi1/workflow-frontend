@@ -1,3 +1,6 @@
+import { useTask } from "@/entities/task";
+import { useGetTaskByIdQuery } from "@/entities/task/api/taskApi";
+import { TaskForm, taskPriorities, taskStatuses } from "@/modules/task";
 import {
   Dialog,
   DialogContent,
@@ -6,18 +9,12 @@ import {
 } from "@/shared/ui/dialog";
 import { Skeleton } from "@/shared/ui/skeleton";
 
-import { useGetTaskByIdQuery } from "@/entities/task/api/taskApi";
-import { taskPriorities } from "../../../consts/task-priorities";
-import { taskStatuses } from "../../../consts/task-statuses";
-import { useTask } from "../../../../../entities/task/hooks/use-task";
-import { TaskForm } from "../../task-form/task-form";
-
-interface TaskModalEditProps {
+interface TaskEditModalProps {
   taskId: number;
   onClose: () => void;
 }
 
-export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
+export const TaskEditModal = ({ taskId, onClose }: TaskEditModalProps) => {
   const { data: task, isLoading } = useGetTaskByIdQuery(taskId);
   const { handleEditTask } = useTask(taskId);
 
@@ -40,7 +37,7 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
     <Dialog open>
       <DialogContent className="sm:max-w-[625px]" close={handleClose}>
         {isLoading ? (
-          <TaskModalEdit.Loader />
+          <TaskEditModal.Loader />
         ) : (
           <>
             <DialogHeader>
@@ -59,7 +56,7 @@ export const TaskModalEdit = ({ taskId, onClose }: TaskModalEditProps) => {
   );
 };
 
-TaskModalEdit.Loader = () => {
+TaskEditModal.Loader = () => {
   return (
     <div className="space-y-4">
       <Skeleton className="h-[20px] mt-2 w-[50%]" />

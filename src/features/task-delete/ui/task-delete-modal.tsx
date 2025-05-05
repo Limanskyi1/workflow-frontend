@@ -1,3 +1,4 @@
+import { useTask } from "@/entities/task";
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -7,8 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/dialog";
-
-import { useTask } from "@/entities/task";
 
 interface TaskDeleteModalProps {
   taskId: number;

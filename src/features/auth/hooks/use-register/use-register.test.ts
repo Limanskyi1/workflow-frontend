@@ -2,8 +2,8 @@ import { act, renderHook } from "@testing-library/react";
 
 import { useNavigate } from "react-router-dom";
 
-import { useToast } from "@/shared/lib/toast";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { useToast } from "@/shared/lib/toast";
 
 import { useRegisterMutation } from "../../api/auth-api";
 import { useRegister } from "./use-register";

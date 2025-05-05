@@ -5,8 +5,8 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { taskFormValuesDefault } from "../../../modules/task/consts/task-form-values-default";
 import { useTask } from "../../../entities/task/hooks/use-task";
+import { taskFormValuesDefault } from "../../../modules/task/consts/task-form-values-default";
 import { TaskForm } from "../../../modules/task/ui/task-form/task-form";
 
 interface TaskCreateModalProps {

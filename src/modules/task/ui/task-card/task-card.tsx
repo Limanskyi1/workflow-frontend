@@ -5,8 +5,8 @@ import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";
 
-import { priorityColors } from "../../consts/priority-colors";
 import { TaskPriority } from "../../../../entities/task/model/types";
+import { priorityColors } from "../../consts/priority-colors";
 import { TaskActionsMenu } from "../task-actions-menu";
 import { TaskDateBadge } from "../task-date-badge/task-date-badge";
 import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";

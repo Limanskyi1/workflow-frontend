@@ -1,20 +1,16 @@
 import { Edit2 } from "lucide-react";
+import { useState } from "react";
 
 interface ViewModeProps {
   title: string;
-  isHovered: boolean;
-  onHover: () => void;
-  onLeave: () => void;
   setEditMode: (isEditable: boolean) => void;
 }
 
-export const DashboardTitleViewMode = ({
-  title,
-  isHovered,
-  onHover,
-  onLeave,
-  setEditMode,
-}: ViewModeProps) => {
+export const DashboardTitleView = ({ title, setEditMode }: ViewModeProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const onHover = () => setIsHovered(true);
+  const onLeave = () => setIsHovered(false);
+
   return (
     <div
       className="flex items-center justify-between max-w-[300px] gap-2 cursor-pointer"

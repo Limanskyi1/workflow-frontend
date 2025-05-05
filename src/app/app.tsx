@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
 import { ModalsProvider } from "@/features/modals";
-import { ThemeProvider } from "@/features/theming";
+import { ThemeProvider } from "@/shared/lib/theming";
 import { Toaster } from "@/shared/lib/toast";
 
 import { router } from "./router";

@@ -5,8 +5,8 @@ import { useState } from "react";
 import { Command, CommandGroup } from "@/shared/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
-import { useGetAllWithoutRelationsQuery } from "../../api/taskApi";
 import { Task } from "../../../../entities/task/model/types";
+import { useGetAllWithoutRelationsQuery } from "../../api/taskApi";
 import { TaskMultiSelectBar } from "./task-multi-select-bar";
 import { TaskOption } from "./task-option";
 
