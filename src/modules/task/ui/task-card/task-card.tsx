@@ -1,10 +1,10 @@
 import { MouseEvent, useRef } from "react";
 
-import { useModals } from "@/app/providers/modal";
 import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";
 
+import { useModals } from "../../../../app/providers/modal";
 import { TaskPriority } from "../../../../entities/task/model/types";
 import { priorityColors } from "../../consts/priority-colors";
 import { TaskActionsMenu } from "../task-actions-menu";

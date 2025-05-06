@@ -59,9 +59,7 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
-      {isAddTaskModalOpen && (
-        <TaskCreateModal onClose={closeAddTaskModal} />
-      )}
+      {isAddTaskModalOpen && <TaskCreateModal onClose={closeAddTaskModal} />}
       {deleteTaskModal.isOpen && (
         <TaskDeleteModal
           taskId={deleteTaskModal.taskId as number}

@@ -84,8 +84,7 @@ export const TaskForm = ({
             <Select
               options={taskStatuses}
               value={taskStatuses.find(
-                (status) =>
-                  status?.value === (field.value || "TO_DO"),
+                (status) => status?.value === (field.value || "TO_DO"),
               )}
               onChange={(selectedOption: TaskStatusesItem) =>
                 field.onChange(selectedOption.value)
@@ -105,8 +104,7 @@ export const TaskForm = ({
             <Select
               options={taskPriorities}
               value={taskPriorities.find(
-                (priority) =>
-                  priority?.value === (field.value || "LOW"),
+                (priority) => priority?.value === (field.value || "LOW"),
               )}
               onChange={(selectedOption: TaskPrioritiesItem) =>
                 field.onChange(selectedOption.value)
@@ -119,10 +117,7 @@ export const TaskForm = ({
         name="dueDate"
         control={control}
         render={({ field }) => (
-          <DatePicker
-            date={field?.value}
-            setDate={field.onChange}
-          />
+          <DatePicker date={field?.value} setDate={field.onChange} />
         )}
       />
       {button}
