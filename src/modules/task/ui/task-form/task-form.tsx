@@ -1,6 +1,6 @@
+import { ReactNode } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { Button } from "@/shared/ui/button";
 import { DatePicker } from "@/shared/ui/date-picker";
 import { InputFactory } from "@/shared/ui/input/input-factory";
 import { Label } from "@/shared/ui/label";
@@ -14,56 +14,30 @@ import {
 import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
 import { TaskDescriptionEditor } from "../task-description-editor/task-description-editor";
 
-interface TaskFormBaseSchema {
-  title: string;
-  description: string;
-  status: TaskStatusesItem;
-  priority: TaskPrioritiesItem;
-  dueDate?: Date;
+interface TaskFormProps {
+  defaultValues?: CreateTask | UpdateTask;
+  onSubmit: (data: any) => Promise<void>;
+  button: ReactNode;
 }
 
-type TaskFormSchema<T> = T extends CreateTask
-  ? TaskFormBaseSchema
-  : Partial<TaskFormBaseSchema>;
-
-interface TaskFormProps<T extends CreateTask | UpdateTask> {
-  mode: "create" | "edit";
-  defaultValues: TaskFormSchema<T>;
-  onSubmit: (data: T) => Promise<void>;
-  callbackAfterSubmit?: () => void;
-}
-
-export const TaskForm = <T extends CreateTask | UpdateTask>({
-  mode,
+export const TaskForm = ({
   defaultValues,
   onSubmit,
-  callbackAfterSubmit,
-}: TaskFormProps<T>) => {
+  button,
+}: TaskFormProps) => {
   const {
     register,
     handleSubmit,
     control,
     formState: { errors: formErrors },
-  } = useForm<TaskFormBaseSchema>({
-    defaultValues: defaultValues as TaskFormBaseSchema,
-  });
-
-  const onSubmitHandler = handleSubmit((data) => {
-    const dataToSend: Partial<CreateTask> = {
-      title: data.title,
-      description: data.description,
-      status: data.status?.value,
-      priority: data.priority?.value,
-      dueDate: data.dueDate,
-    };
-    onSubmit(dataToSend as T);
-    callbackAfterSubmit?.();
+  } = useForm({
+    defaultValues,
   });
 
   return (
     <form
       className="flex flex-col gap-2"
-      onSubmit={onSubmitHandler}
+      onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
     >
       <InputFactory
@@ -88,7 +62,7 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
           }}
           render={({ field }) => (
             <TaskDescriptionEditor
-              value={field.value}
+              value={field.value || ""}
               onChange={field.onChange}
             />
           )}
@@ -110,10 +84,11 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
             <Select
               options={taskStatuses}
               value={taskStatuses.find(
-                (status) => status?.value === field.value.value,
+                (status) =>
+                  status?.value === (field.value || "TO_DO"),
               )}
               onChange={(selectedOption: TaskStatusesItem) =>
-                field.onChange(selectedOption)
+                field.onChange(selectedOption.value)
               }
             />
           )}
@@ -130,10 +105,11 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
             <Select
               options={taskPriorities}
               value={taskPriorities.find(
-                (priority) => priority?.value === field.value.value,
+                (priority) =>
+                  priority?.value === (field.value || "LOW"),
               )}
               onChange={(selectedOption: TaskPrioritiesItem) =>
-                field.onChange(selectedOption)
+                field.onChange(selectedOption.value)
               }
             />
           )}
@@ -143,12 +119,13 @@ export const TaskForm = <T extends CreateTask | UpdateTask>({
         name="dueDate"
         control={control}
         render={({ field }) => (
-          <DatePicker date={field.value} setDate={field.onChange} />
+          <DatePicker
+            date={field?.value}
+            setDate={field.onChange}
+          />
         )}
       />
-      <Button className="w-fit ml-auto" type="submit">
-        {mode === "edit" ? "Update" : "Create"}
-      </Button>
+      {button}
     </form>
   );
 };

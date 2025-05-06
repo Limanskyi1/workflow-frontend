@@ -1,3 +1,5 @@
+import { CreateTask } from "@/entities/task/model/types";
+import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -5,16 +7,15 @@ import {
   DialogTitle,
 } from "@/shared/ui/dialog";
 
-import { useTask } from "../../../entities/task/hooks/use-task";
-import { taskFormValuesDefault } from "../../../modules/task/consts/task-form-values-default";
 import { TaskForm } from "../../../modules/task/ui/task-form/task-form";
+import { useTasks } from "@/entities/task";
 
 interface TaskCreateModalProps {
   onClose: () => void;
 }
 
 export const TaskCreateModal = ({ onClose }: TaskCreateModalProps) => {
-  const { handleCreateTask } = useTask();
+  const { createTask } = useTasks();
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
     onClose();
@@ -27,10 +28,22 @@ export const TaskCreateModal = ({ onClose }: TaskCreateModalProps) => {
           <DialogTitle>Create task</DialogTitle>
         </DialogHeader>
         <TaskForm
-          mode="create"
-          defaultValues={taskFormValuesDefault}
-          onSubmit={handleCreateTask}
-          callbackAfterSubmit={onClose}
+          onSubmit={async (data) => {
+            const task: CreateTask = {
+              title: data.title,
+              description: data.description,
+              status: data.status || "TO_DO",
+              priority: data.priority || "LOW",
+              dueDate: data.dueDate,
+            };
+            createTask(task);
+            onClose();
+          }}
+          button={
+            <Button className="w-fit ml-auto" type="submit">
+              Create
+            </Button>
+          }
         />
       </DialogContent>
     </Dialog>

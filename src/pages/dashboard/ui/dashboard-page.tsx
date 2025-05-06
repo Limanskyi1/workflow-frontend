@@ -10,11 +10,5 @@ export const DashboardPage = () => {
     return <DashboardPageLoader />;
   }
 
-  return (
-    <Dashboard
-      title={dashboard?.title || ""}
-      columns={dashboard?.columns || []}
-      id={dashboard?.id || 0}
-    />
-  );
+  return <Dashboard title={dashboard?.title || ""} id={dashboard?.id || 0} />;
 };

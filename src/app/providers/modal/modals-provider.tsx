@@ -4,12 +4,12 @@ import { TaskCreateModal } from "@/features/task-create";
 import { TaskDeleteModal } from "@/features/task-delete";
 import { TaskEditModal } from "@/features/task-edit";
 
-import { useModalState } from "../hooks/use-modal-state";
+import { useModalState } from "./hooks/use-modal-state";
 
 interface ModalContextType {
   isAddTaskModalOpen: boolean;
-  handleOpenAddTaskModal: () => void;
-  handleCloseAddTaskModal: () => void;
+  openAddTaskModal: () => void;
+  closeAddTaskModal: () => void;
 
   isOpenDeleteTaskModal: boolean;
   openDeleteTaskModal: (taskId: number) => void;
@@ -27,8 +27,8 @@ export const ModalsContext = createContext<ModalContextType | undefined>(
 export const ModalsProvider = ({ children }: { children: ReactNode }) => {
   // Add task modal
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
-  const handleOpenAddTaskModal = () => setIsAddTaskModalOpen(true);
-  const handleCloseAddTaskModal = () => setIsAddTaskModalOpen(false);
+  const openAddTaskModal = () => setIsAddTaskModalOpen(true);
+  const closeAddTaskModal = () => setIsAddTaskModalOpen(false);
 
   // Delete task modal
   const {
@@ -48,8 +48,8 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
     <ModalsContext.Provider
       value={{
         isAddTaskModalOpen,
-        handleOpenAddTaskModal,
-        handleCloseAddTaskModal,
+        openAddTaskModal,
+        closeAddTaskModal,
         isOpenDeleteTaskModal: deleteTaskModal.isOpen,
         openDeleteTaskModal,
         closeDeleteTaskModal,
@@ -60,7 +60,7 @@ export const ModalsProvider = ({ children }: { children: ReactNode }) => {
     >
       {children}
       {isAddTaskModalOpen && (
-        <TaskCreateModal onClose={handleCloseAddTaskModal} />
+        <TaskCreateModal onClose={closeAddTaskModal} />
       )}
       {deleteTaskModal.isOpen && (
         <TaskDeleteModal

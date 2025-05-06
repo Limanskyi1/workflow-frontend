@@ -1,10 +1,11 @@
 import { Plus } from "lucide-react";
 import { memo } from "react";
 
-import { useModals } from "@/features/modals";
 import { TaskCard } from "@/modules/task";
 import { Task, TaskStatus } from "@/modules/task";
 import { Button } from "@/shared/ui/button";
+
+import { useModals } from "../../../app/providers/modal";
 
 interface ColumnProps {
   status: TaskStatus;
@@ -12,7 +13,7 @@ interface ColumnProps {
 }
 
 export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
-  const { handleOpenAddTaskModal } = useModals();
+  const { openAddTaskModal } = useModals();
 
   return (
     <div className="space-y-4 rounded-lg border bg-card p-2 group">
@@ -31,7 +32,7 @@ export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
       ))}
       <Button
         className={`w-full flex justify-start opacity-0 group-hover:opacity-100 transition`}
-        onClick={handleOpenAddTaskModal}
+        onClick={openAddTaskModal}
         variant="ghost"
       >
         <Plus />

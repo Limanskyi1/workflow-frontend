@@ -1,6 +1,8 @@
-import { useTask } from "@/entities/task";
-import { useGetTaskByIdQuery } from "@/entities/task/api/taskApi";
-import { TaskForm, taskPriorities, taskStatuses } from "@/modules/task";
+import { useGetTaskByIdQuery } from "@/entities/task";
+import { useTasks } from "@/entities/task";
+import { UpdateTask } from "@/entities/task/model/types";
+import { TaskForm } from "@/modules/task";
+import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,21 +18,11 @@ interface TaskEditModalProps {
 
 export const TaskEditModal = ({ taskId, onClose }: TaskEditModalProps) => {
   const { data: task, isLoading } = useGetTaskByIdQuery(taskId);
-  const { handleEditTask } = useTask(taskId);
+  const { editTask } = useTasks();
 
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
     onClose();
-  };
-
-  const defaultValues = {
-    title: task?.title,
-    description: task?.description,
-    status: taskStatuses.find((status) => status.value === task?.status),
-    priority: taskPriorities.find(
-      (priority) => priority.value === task?.priority,
-    ),
-    dueDate: task?.dueDate,
   };
 
   return (
@@ -44,10 +36,29 @@ export const TaskEditModal = ({ taskId, onClose }: TaskEditModalProps) => {
               <DialogTitle>Task #{taskId}</DialogTitle>
             </DialogHeader>
             <TaskForm
-              mode="edit"
-              defaultValues={defaultValues}
-              onSubmit={handleEditTask}
-              callbackAfterSubmit={onClose}
+              defaultValues={{
+                title: task?.title,
+                description: task?.description,
+                status: task?.status,
+                priority: task?.priority,
+                dueDate: task?.dueDate,
+              }}
+              onSubmit={async (data) => {
+                const task: UpdateTask = {
+                  title: data.title,
+                  description: data.description,
+                  status: data.status || "TO_DO",
+                  priority: data.priority || "LOW",
+                  dueDate: data.dueDate,
+                };
+                editTask(taskId, task);
+                onClose();
+              }}
+              button={
+                <Button className="w-fit ml-auto" type="submit">
+                  Update
+                </Button>
+              }
             />
           </>
         )}

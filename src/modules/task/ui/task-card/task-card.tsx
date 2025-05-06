@@ -1,6 +1,6 @@
 import { MouseEvent, useRef } from "react";
 
-import { useModals } from "@/features/modals";
+import { useModals } from "@/app/providers/modal";
 import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";

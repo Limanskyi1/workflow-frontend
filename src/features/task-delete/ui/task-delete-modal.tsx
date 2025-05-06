@@ -1,4 +1,4 @@
-import { useTask } from "@/entities/task";
+import { useTasks } from "@/entities/task";
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
@@ -20,7 +20,7 @@ export const TaskDeleteModal = ({
   onClose,
   onCancel,
 }: TaskDeleteModalProps) => {
-  const { handleDeleteTask } = useTask(taskId);
+  const { deleteTask } = useTasks();
 
   const handleClose = (event?: React.MouseEvent) => {
     event?.stopPropagation();
@@ -34,7 +34,7 @@ export const TaskDeleteModal = ({
 
   const handleDelete = (event: React.MouseEvent) => {
     event.stopPropagation();
-    handleDeleteTask();
+    deleteTask(taskId);
     handleClose();
   };
 
