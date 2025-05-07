@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
 
-export const TaskTrashBadge = ({
+export const TaskCardTrashBadge = ({
   onClick,
   setIsTrashVisible,
 }: {
@@ -12,6 +12,7 @@ export const TaskTrashBadge = ({
     setIsTrashVisible(false);
     onClick();
   };
+
   return (
     <div
       className={`border border-primary/10 p-1 rounded-md cursor-pointer transition ease-in-out hover:scale-125 flex-shrink-0 h-fit`}

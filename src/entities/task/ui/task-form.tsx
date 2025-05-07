@@ -2,17 +2,14 @@ import { ReactNode } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { DatePicker } from "@/shared/ui/date-picker";
-import { InputFactory } from "@/shared/ui/input/input-factory";
+import { Input } from "@/shared/ui/input/input";
 import { Label } from "@/shared/ui/label";
 import { Select } from "@/shared/ui/select/select";
 
-import { CreateTask, UpdateTask } from "../../../../entities/task/model/types";
-import {
-  TaskPrioritiesItem,
-  taskPriorities,
-} from "../../consts/task-priorities";
-import { TaskStatusesItem, taskStatuses } from "../../consts/task-statuses";
-import { TaskDescriptionEditor } from "../task-description-editor/task-description-editor";
+import { TaskPrioritiesItem, taskPriorities } from "../consts/task-priorities";
+import { TaskStatusesItem, taskStatuses } from "../consts/task-statuses";
+import { CreateTask, UpdateTask } from "../model/types";
+import { TaskDescriptionEditor } from "./task-description-editor/task-description-editor";
 
 interface TaskFormProps {
   defaultValues?: CreateTask | UpdateTask;
@@ -40,13 +37,10 @@ export const TaskForm = ({
       onSubmit={handleSubmit(onSubmit)}
       onClick={(e) => e.stopPropagation()}
     >
-      <InputFactory
-        variant="labelAndError"
-        options={{
-          label: "Title",
-          error: formErrors.title?.message,
-        }}
-        register={register("title", {
+      <Input
+        label="Title"
+        error={formErrors.title?.message}
+        {...register("title", {
           required: "Title is required",
         })}
       />

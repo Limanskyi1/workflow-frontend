@@ -1,4 +1,4 @@
-import { useTasks } from "@/entities/task";
+import { TaskForm, useTasks } from "@/entities/task";
 import { CreateTask } from "@/entities/task/model/types";
 import { Button } from "@/shared/ui/button";
 import {
@@ -7,8 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/ui/dialog";
-
-import { TaskForm } from "../../../modules/task/ui/task-form/task-form";
 
 interface TaskCreateModalProps {
   onClose: () => void;

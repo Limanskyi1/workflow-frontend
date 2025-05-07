@@ -1,8 +1,8 @@
+import { LogoutBtn } from "@/features/auth";
 import { ThemeToggle } from "@/shared/lib/theming";
 import { Logo } from "@/shared/ui/logo";
 
 import { NAVIGATION_CONFIG } from "../consts/navigation-config";
-import { LogoutBtn } from "./logout-btn";
 import { SidebarLinks } from "./sidebar-links";
 
 export const Sidebar = () => {

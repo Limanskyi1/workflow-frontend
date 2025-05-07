@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/shared/ui/button";
-import { InputFactory } from "@/shared/ui/input/input-factory";
+import { Input } from "@/shared/ui/input/input";
+import { InputPassword } from "@/shared/ui/input/input-password";
 
 import { useRegister } from "../../hooks/use-register/use-register";
 import { AuthLayout } from "../../layouts/auth-layout";
@@ -25,23 +26,17 @@ export const RegisterForm = () => {
         <AuthHeader text="Sign up to Workflow" />
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
-            <InputFactory
-              variant="labelAndError"
-              options={{
-                label: "Name",
-                error: formErrors.name?.message,
-              }}
-              register={register("name", {
+            <Input
+              label="Name"
+              error={formErrors.name?.message}
+              {...register("name", {
                 required: "Name is required",
               })}
             />
-            <InputFactory
-              variant="labelAndError"
-              options={{
-                label: "Email",
-                error: formErrors.email?.message,
-              }}
-              register={register("email", {
+            <Input
+              label="Email"
+              error={formErrors.email?.message}
+              {...register("email", {
                 required: "Email is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -49,14 +44,10 @@ export const RegisterForm = () => {
                 },
               })}
             />
-            <InputFactory
-              variant="labelAndError"
-              type="password"
-              options={{
-                label: "Password",
-                error: formErrors.password?.message,
-              }}
-              register={register("password", {
+            <InputPassword
+              label="Password"
+              error={formErrors.password?.message}
+              {...register("password", {
                 required: "Password is required",
                 minLength: {
                   value: 6,

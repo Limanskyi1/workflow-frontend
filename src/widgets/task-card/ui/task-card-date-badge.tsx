@@ -2,7 +2,7 @@ import { Calendar } from "lucide-react";
 
 import { Badge } from "@/shared/ui/badge";
 
-export const TaskDateBadge = ({ taskDueDate }: { taskDueDate: Date }) => {
+export const TaskCardDateBadge = ({ taskDueDate }: { taskDueDate: Date }) => {
   const formatDate = (inputDate: Date) => {
     const date = new Date(inputDate);
     const day = date.getDate();

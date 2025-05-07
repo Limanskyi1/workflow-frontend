@@ -19,8 +19,12 @@ type GroupedTasks = {
 
 export const tasksApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getTasks: builder.query<GroupedTasks, void>({
-      query: () => "/tasks",
+    getTasks: builder.query<GroupedTasks, { title?: string }>({
+      query: ({ title }) => {
+        const params = new URLSearchParams();
+        if (title && title !== "") params.append("title", title);
+        return `/tasks?${params.toString()}`;
+      },
       providesTags: [{ type: "Task", id: "LIST" }],
       transformResponse: (tasks: Task[]): GroupedTasks => {
         return Object.values(TaskStatus).map((status, index) => ({

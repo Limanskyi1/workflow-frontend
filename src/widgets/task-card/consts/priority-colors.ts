@@ -1,4 +1,4 @@
-import { TaskPriority } from "../../../entities/task/model/types/task-priority";
+import { TaskPriority } from "@/entities/task/model/types";
 
 export const priorityColors: Record<TaskPriority, string> = {
   LOWEST: "bg-green-500/10 text-green-500",

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { UpdateDashboard } from "@/entities/dashboard/model/types";
 import { useOutsideClick } from "@/shared/hooks/use-outside-click";
-import { InputFactory } from "@/shared/ui/input/input-factory";
+import { Input } from "@/shared/ui/input/input";
 
 interface EditModeProps {
   title: string;
@@ -40,10 +40,9 @@ export const DashboardTitleEdit = ({
       })}
       ref={titleRef}
     >
-      <InputFactory
-        variant="default"
+      <Input
         className="border-none text-2xl font-bold"
-        register={register("title", {
+        {...register("title", {
           required: "Title is required",
         })}
       />

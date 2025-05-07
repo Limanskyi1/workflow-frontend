@@ -1,15 +1,15 @@
 import { MouseEvent, useRef } from "react";
 
+import { TaskPriority } from "@/entities/task";
 import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";
 
-import { useModals } from "../../../../app/providers/modal";
-import { TaskPriority } from "../../../../entities/task/model/types";
-import { priorityColors } from "../../consts/priority-colors";
-import { TaskActionsMenu } from "../task-actions-menu";
-import { TaskDateBadge } from "../task-date-badge/task-date-badge";
-import { TaskTrashBadge } from "../task-trash-badge/task-trash-badge";
+import { useModals } from "../../../app/providers/modal";
+import { priorityColors } from "../consts/priority-colors";
+import { TaskCardDateBadge } from "./task-card-date-badge";
+import { TaskCardMenu } from "./task-card-menu";
+import { TaskCardTrashBadge } from "./task-card-trash-badge";
 
 interface TaskCardProps {
   id: number;
@@ -74,20 +74,20 @@ export const TaskCard = ({
         <div
           className={`flex gap-2 ${isButtonsVisible ? "opacity-100" : "opacity-0"}`}
         >
-          <TaskActionsMenu
+          <TaskCardMenu
             isOpen={isActionsVisible}
             setIsOpen={toggleActions}
             onClickDelete={() => openDeleteTaskModal(id)}
             hideAll={hideAll}
             taskRelationId={taskRelationId}
           />
-          <TaskTrashBadge
+          <TaskCardTrashBadge
             setIsTrashVisible={toggleButtons}
             onClick={() => openDeleteTaskModal(id)}
           />
         </div>
       </div>
-      {dueDate && <TaskDateBadge taskDueDate={dueDate} />}
+      {dueDate && <TaskCardDateBadge taskDueDate={dueDate} />}
       <Badge
         variant="secondary"
         className={`${priorityColors[priority]} w-fit`}

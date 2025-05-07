@@ -1,9 +1,9 @@
 import { Plus } from "lucide-react";
 import { memo } from "react";
 
-import { TaskCard } from "@/modules/task";
-import { Task, TaskStatus } from "@/modules/task";
+import { Task, TaskStatus } from "@/entities/task";
 import { Button } from "@/shared/ui/button";
+import { TaskCard } from "@/widgets/task-card";
 
 import { useModals } from "../../../app/providers/modal";
 

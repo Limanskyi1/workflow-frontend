@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
 
-interface TaskActionsMenuProps {
+interface TaskCardMenuProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   onClickDelete: () => void;
@@ -17,11 +17,11 @@ interface TaskActionsMenuProps {
   taskRelationId: number | null;
 }
 
-export const TaskActionsMenu = ({
+export const TaskCardMenu = ({
   isOpen,
   setIsOpen,
   onClickDelete,
-}: TaskActionsMenuProps) => {
+}: TaskCardMenuProps) => {
   const handleClickTrigger = (e: MouseEvent) => {
     e.stopPropagation();
     setIsOpen(!isOpen);

@@ -1,10 +1,25 @@
 import { ComponentProps, forwardRef } from "react";
 
-import { cn } from "@/shared/utils/cn.ts";
+import { cn } from "@/shared/utils/cn";
 
-const Input = forwardRef<HTMLInputElement, ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
-    return (
+import { Label } from "../label";
+
+interface BaseInputProps extends ComponentProps<"input"> {}
+
+interface InputProps extends BaseInputProps {
+  label?: string;
+  error?: string;
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const { label, error, className, type, ...restProps } = props;
+  return (
+    <div>
+      {label && (
+        <Label className="mb-2 block" htmlFor={label.toLocaleLowerCase()}>
+          {label}
+        </Label>
+      )}
       <input
         type={type}
         className={cn(
@@ -12,11 +27,10 @@ const Input = forwardRef<HTMLInputElement, ComponentProps<"input">>(
           className,
         )}
         ref={ref}
-        {...props}
+        {...restProps}
       />
-    );
-  },
-);
+      {error && <span className="text-red-500 text-sm">{error}</span>}
+    </div>
+  );
+});
 Input.displayName = "Input";
-
-export { Input };

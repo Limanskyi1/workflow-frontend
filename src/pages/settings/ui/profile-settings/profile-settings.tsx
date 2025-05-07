@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import { UpdateUserDto } from "@/entities/user";
+import { UpdateUser } from "@/entities/user";
 import { Button } from "@/shared/ui/button";
 import {
   Card,
@@ -9,11 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { InputFactory } from "@/shared/ui/input/input-factory";
+import { Input } from "@/shared/ui/input/input";
 
 interface ProfileSettingsProps {
-  defaultData: UpdateUserDto | null;
-  onSubmit: (data: UpdateUserDto) => void;
+  defaultData: UpdateUser | null;
+  onSubmit: (data: UpdateUser) => void;
 }
 
 export const ProfileSettings = ({
@@ -24,7 +24,7 @@ export const ProfileSettings = ({
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<UpdateUserDto>({ defaultValues: { name: defaultData?.name } });
+  } = useForm<UpdateUser>({ defaultValues: { name: defaultData?.name } });
 
   return (
     <Card>
@@ -37,13 +37,12 @@ export const ProfileSettings = ({
       <CardContent>
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-2">
-            <InputFactory
-              variant="labelAndError"
-              options={{
-                label: "Name",
-                error: formErrors.name?.message,
-              }}
-              register={register("name", { required: "Name is required" })}
+            <Input
+              label="Name"
+              error={formErrors.name?.message}
+              {...register("name", {
+                required: "Name is required",
+              })}
             />
           </div>
           <Button type="submit">Save changes</Button>

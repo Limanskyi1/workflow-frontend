@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { InputFactory } from "@/shared/ui/input/input-factory";
+import { InputPassword } from "@/shared/ui/input/input-password";
 
 import { useChangePassword } from "../hooks/use-change-password";
 
@@ -48,13 +48,10 @@ export const ChangePassword = () => {
             reset();
           })}
         >
-          <InputFactory
-            variant="labelAndError"
-            options={{
-              label: "Current password",
-              error: formErrors.currentPassword?.message,
-            }}
-            register={register("currentPassword", {
+          <InputPassword
+            label="Current password"
+            error={formErrors.currentPassword?.message}
+            {...register("currentPassword", {
               required: "Current password is required",
               minLength: {
                 value: 6,
@@ -62,13 +59,10 @@ export const ChangePassword = () => {
               },
             })}
           />
-          <InputFactory
-            variant="labelAndError"
-            options={{
-              label: "New password",
-              error: formErrors.newPassword?.message,
-            }}
-            register={register("newPassword", {
+          <InputPassword
+            label="New password"
+            error={formErrors.newPassword?.message}
+            {...register("newPassword", {
               required: "New password is required",
               minLength: {
                 value: 6,
@@ -76,13 +70,10 @@ export const ChangePassword = () => {
               },
             })}
           />
-          <InputFactory
-            variant="labelAndError"
-            options={{
-              label: "Confirm new password",
-              error: formErrors.confirmNewPassword?.message,
-            }}
-            register={register("confirmNewPassword", {
+          <InputPassword
+            label="Confirm new password"
+            error={formErrors.confirmNewPassword?.message}
+            {...register("confirmNewPassword", {
               required: "Confirm password is required",
               minLength: {
                 value: 6,
