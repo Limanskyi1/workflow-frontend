@@ -14,7 +14,6 @@ interface TaskCardMenuProps {
   setIsOpen: (isOpen: boolean) => void;
   onClickDelete: () => void;
   hideAll: () => void;
-  taskRelationId: number | null;
 }
 
 export const TaskCardMenu = ({

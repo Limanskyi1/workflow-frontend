@@ -1,5 +1,4 @@
-import { Task } from "@/modules/task";
-import { TaskStatus } from "@/modules/task";
+import { Task, TaskStatus } from "@/entities/task";
 
 export interface Column {
   id: number;

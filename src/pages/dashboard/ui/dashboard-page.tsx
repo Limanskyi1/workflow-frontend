@@ -1,7 +1,7 @@
 import { useGetMyDashboardQuery } from "@/entities/dashboard";
 import { Dashboard } from "@/widgets/dashboard";
 
-import { DashboardPageLoader } from "./dashboard-page-loader/dashboard-page-loader";
+import { DashboardPageLoader } from "./dashboard-page-loader";
 
 export const DashboardPage = () => {
   const { data: dashboard, isLoading } = useGetMyDashboardQuery();
