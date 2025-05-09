@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import { memo } from "react";
 
 import { Task, TaskStatus } from "@/entities/task";
-import { ColumnDroppable } from "@/features/task-drag";
+import { ColumnDroppable } from "@/features/task";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/utils/cn";
 import { TaskCard } from "@/widgets/task-card";
@@ -14,7 +14,7 @@ interface ColumnProps {
   tasks: Task[];
 }
 
-export const Column = memo(({ status, tasks = [] }: ColumnProps) => {
+export const DashboardColumn = memo(({ status, tasks = [] }: ColumnProps) => {
   const { openAddTaskModal } = useModals();
 
   return (

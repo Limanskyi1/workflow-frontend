@@ -14,6 +14,7 @@ interface TaskCreateModalProps {
 
 export const TaskCreateModal = ({ onClose }: TaskCreateModalProps) => {
   const { createTask } = useTasks();
+
   const handleClose = (event: React.MouseEvent) => {
     event.stopPropagation();
     onClose();

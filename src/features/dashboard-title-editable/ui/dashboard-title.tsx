@@ -11,9 +11,10 @@ interface DashboardTitleProps {
 }
 
 export const DashboardTitle = ({ title, id }: DashboardTitleProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const { updateTitle } = useDashboard(id);
 
-  const [isEditing, setIsEditing] = useState(false);
   const setEditMode = (isEditable: boolean) => setIsEditing(isEditable);
 
   if (!isEditing) {

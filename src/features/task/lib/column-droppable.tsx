@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 import { useDrop } from "react-dnd";
 
-import { TaskStatus } from "@/entities/task";
+import { TaskStatus, useTasks } from "@/entities/task";
 import { Badge } from "@/shared/ui/badge";
 import { cn } from "@/shared/utils/cn";
 
 type DraggableTask = {
+  id: number;
   status: TaskStatus;
 };
 
@@ -15,11 +16,16 @@ interface ColumnDroppableProps {
 }
 
 export const ColumnDroppable = ({ status, children }: ColumnDroppableProps) => {
+  const { editTask } = useTasks();
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "TASK",
-    drop: (item: DraggableTask) => {
-      console.log("Перенесённый элемент:", item);
-      console.log("Статус:", status);
+    drop: async (item: DraggableTask) => {
+      if (item.status !== status) {
+        await editTask(item.id, {
+          status,
+        });
+      }
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),

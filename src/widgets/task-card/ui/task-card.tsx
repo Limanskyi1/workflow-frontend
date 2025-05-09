@@ -1,7 +1,7 @@
 import { MouseEvent, useRef } from "react";
 
 import { TaskPriority, TaskStatus } from "@/entities/task";
-import { TaskCardDraggable } from "@/features/task-drag";
+import { TaskCardDraggable } from "@/features/task";
 import { useVisibility } from "@/shared/hooks/use-visibility";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardTitle } from "@/shared/ui/card";

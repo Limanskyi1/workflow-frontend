@@ -1,8 +1,10 @@
 import { ReactNode, createContext, useState } from "react";
 
-import { TaskCreateModal } from "@/features/task-create";
-import { TaskDeleteModal } from "@/features/task-delete";
-import { TaskEditModal } from "@/features/task-edit";
+import {
+  TaskCreateModal,
+  TaskDeleteModal,
+  TaskEditModal,
+} from "@/features/task";
 
 import { useModalState } from "./hooks/use-modal-state";
 
