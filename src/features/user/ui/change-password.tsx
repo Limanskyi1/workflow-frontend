@@ -1,5 +1,12 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import {
+  UpdateUserPassword,
+  useChangeUserPasswordMutation,
+} from "@/entities/user";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
+import { ApiError } from "@/shared/types";
 import { Button } from "@/shared/ui/button";
 import {
   Card,
@@ -10,8 +17,6 @@ import {
 } from "@/shared/ui/card";
 import { InputPassword } from "@/shared/ui/input/input-password";
 
-import { useChangePassword } from "../hooks/use-change-password";
-
 interface ChangePasswordData {
   currentPassword: string;
   newPassword: string;
@@ -19,6 +24,7 @@ interface ChangePasswordData {
 }
 
 export const ChangePassword = () => {
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
@@ -29,8 +35,23 @@ export const ChangePassword = () => {
     mode: "onSubmit",
     reValidateMode: "onSubmit",
   });
+  const [changeUserPassword] = useChangeUserPasswordMutation();
+  const [error, setError] = useState<string | null>(null);
 
-  const { error, changePassword } = useChangePassword();
+  const onSubmit = async (data: ChangePasswordData) => {
+    const credentials: UpdateUserPassword = {
+      currentPassword: data.currentPassword,
+      newPassword: data.newPassword,
+    };
+    try {
+      await changeUserPassword(credentials).unwrap();
+      toast(TOAST_CONFIG.changePasswordSuccess);
+      setError(null);
+    } catch (error) {
+      console.error(error as ApiError);
+      setError((error as ApiError).data.message);
+    }
+  };
 
   return (
     <Card className="mt-8">
@@ -44,7 +65,7 @@ export const ChangePassword = () => {
         <form
           className="space-y-4"
           onSubmit={handleSubmit(async (data) => {
-            await changePassword(data);
+            await onSubmit(data);
             reset();
           })}
         >

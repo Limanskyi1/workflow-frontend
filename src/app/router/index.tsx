@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import { ConfirmCode, LoginForm, RegisterForm } from "@/features/auth";
 import { DashboardPage } from "@/pages/dashboard";
-import { LoginPage } from "@/pages/login";
-import { NotFoundPage } from "@/pages/not-found";
-import { RegisterPage } from "@/pages/register";
 import { SettingsPage } from "@/pages/settings";
 
 import { RootLayout } from "../layouts/root-layout";
@@ -30,18 +28,18 @@ export const router = createBrowserRouter([
           </RequireAuth>
         ),
       },
-      {
-        path: "*",
-        element: <NotFoundPage />,
-      },
     ],
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: <LoginForm />,
   },
   {
     path: "/register",
-    element: <RegisterPage />,
+    element: <RegisterForm />,
+  },
+  {
+    path: "/confirmation",
+    element: <ConfirmCode />,
   },
 ]);

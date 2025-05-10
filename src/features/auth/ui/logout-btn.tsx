@@ -2,6 +2,7 @@ import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { removeTokens } from "@/features/auth";
+import { baseApi } from "@/shared/api/baseApi";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import {
   AlertDialog,
@@ -23,6 +24,7 @@ export const LogoutBtn = () => {
   const handleLogout = () => {
     dispatch(removeTokens());
     navigate("/login");
+    dispatch(baseApi.util.resetApiState());
   };
 
   return (

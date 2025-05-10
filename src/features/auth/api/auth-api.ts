@@ -1,12 +1,8 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "@/shared/api/baseApi";
 
-import { baseQueryWithReauth } from "@/shared/api/baseQueryWithReauth";
+import { Confirm, Login, Register } from "../model/types";
 
-import { Login, Register } from "../model/types";
-
-export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery: baseQueryWithReauth,
+export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials: Login) => ({
@@ -22,7 +18,14 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    confirmCode: builder.mutation({
+      query: (credentials: Confirm) => ({
+        url: `/auth/confirm/`,
+        method: "POST",
+        body: credentials,
+      }),
+    }),
   }),
 });
-
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useConfirmCodeMutation } =
+  authApi;

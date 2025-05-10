@@ -8,3 +8,8 @@ export interface Register {
   email: string;
   password: string;
 }
+
+export interface Confirm {
+  email: string;
+  code: string;
+}

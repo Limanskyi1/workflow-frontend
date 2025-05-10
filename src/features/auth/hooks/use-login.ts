@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 
-import { useLoginMutation } from "../../api/auth-api";
-import { setTokens } from "../../model/slice/auth-slice";
-import { Login } from "../../model/types";
+import { useLoginMutation } from "../api/auth-api";
+import { setTokens } from "../model/slice/auth-slice";
+import { Login } from "../model/types";
 
 export const useLogin = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ export const useLogin = () => {
   const { toast } = useToast();
   const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = async (data: Login) => {
+  const submitLogin = async (data: Login) => {
     try {
       const response = await login(data).unwrap();
       dispatch(setTokens(response));
@@ -28,6 +28,6 @@ export const useLogin = () => {
 
   return {
     error,
-    onSubmit,
+    submitLogin,
   };
 };

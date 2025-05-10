@@ -10,7 +10,7 @@ import {
 } from "../api/taskApi";
 import { CreateTask, UpdateTask } from "../model/types";
 
-export const useTasks = (filters?: { title: string }) => {
+export const useTasks = (filters?: { title?: string }) => {
   const { data: tasks } = useGetTasksQuery(filters || {});
   const [editTaskMutation] = useEditTaskMutation();
   const [deleteTaskMutation] = useDeleteTaskMutation();

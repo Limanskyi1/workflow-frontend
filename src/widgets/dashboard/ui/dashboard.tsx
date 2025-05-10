@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 
 import { useTasks, useTasksFilters } from "@/entities/task";
-import { DashboardTitle } from "@/features/dashboard-title-editable";
+import { DashboardTitle } from "@/features/dashboard";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input/input";
 
@@ -9,11 +9,10 @@ import { useModals } from "../../../app/providers/modal";
 import { DashboardColumn } from "./dashboard-column";
 
 interface DashboardProps {
-  id: number;
   dashboardTitle: string;
 }
 
-export const Dashboard = ({ dashboardTitle, id }: DashboardProps) => {
+export const Dashboard = ({ dashboardTitle }: DashboardProps) => {
   const { openAddTaskModal } = useModals();
   const { title, debouncedTitle, onChangeTitle } = useTasksFilters();
   const { tasks: groupedTasks = [] } = useTasks({ title: debouncedTitle });
@@ -21,7 +20,7 @@ export const Dashboard = ({ dashboardTitle, id }: DashboardProps) => {
   return (
     <section className="h-full flex flex-col">
       <div className="flex items-center justify-between">
-        <DashboardTitle title={dashboardTitle} id={id} />
+        <DashboardTitle title={dashboardTitle} />
         <Button onClick={openAddTaskModal}>
           <Plus />
           <span>Add task</span>

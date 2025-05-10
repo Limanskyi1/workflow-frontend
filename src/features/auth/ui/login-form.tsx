@@ -5,34 +5,27 @@ import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input/input";
 import { InputPassword } from "@/shared/ui/input/input-password";
 
-import { useRegister } from "../../hooks/use-register/use-register";
-import { AuthLayout } from "../../layouts/auth-layout";
-import { Register } from "../../model/types";
-import { AuthError } from "../auth-error/auth-error";
-import { AuthHeader } from "../auth-header/auth-header";
+import { useLogin } from "../hooks/use-login";
+import { AuthLayout } from "../layouts/auth-layout";
+import { Login } from "../model/types";
+import { AuthError } from "./auth-error/auth-error";
+import { AuthHeader } from "./auth-header/auth-header";
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-  } = useForm<Register>();
+  } = useForm<Login>();
 
-  const { onSubmit, error } = useRegister();
+  const { submitLogin, error } = useLogin();
 
   return (
     <AuthLayout>
       <div className="w-full max-w-md space-y-8">
-        <AuthHeader text="Sign up to Workflow" />
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <AuthHeader text="Sign in to Workflow" />
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(submitLogin)}>
           <div className="space-y-4 rounded-md flex flex-col gap-4">
-            <Input
-              label="Name"
-              error={formErrors.name?.message}
-              {...register("name", {
-                required: "Name is required",
-              })}
-            />
             <Input
               label="Email"
               error={formErrors.email?.message}
@@ -56,20 +49,17 @@ export const RegisterForm = () => {
               })}
             />
           </div>
-
           <Button type="submit" className="w-full" size="lg">
-            Sign up
+            Sign in
           </Button>
-
           <AuthError errorText={error || undefined} />
-
           <p className="text-center text-sm">
-            Already have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
-              to="/login"
+              to="/register"
               className="font-medium text-primary hover:text-primary/80"
             >
-              Sign in
+              Sign up
             </Link>
           </p>
         </form>

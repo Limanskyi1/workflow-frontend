@@ -7,14 +7,12 @@ import { DashboardTitleView } from "./dashboard-title-view";
 
 interface DashboardTitleProps {
   title: string;
-  id: number;
 }
 
-export const DashboardTitle = ({ title, id }: DashboardTitleProps) => {
+export const DashboardTitle = ({ title }: DashboardTitleProps) => {
+  const { updateTitle } = useDashboard();
+
   const [isEditing, setIsEditing] = useState(false);
-
-  const { updateTitle } = useDashboard(id);
-
   const setEditMode = (isEditable: boolean) => setIsEditing(isEditable);
 
   if (!isEditing) {
