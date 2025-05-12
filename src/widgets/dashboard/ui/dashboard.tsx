@@ -2,6 +2,7 @@ import { Plus } from "lucide-react";
 
 import { useTasks, useTasksFilters } from "@/entities/task";
 import { DashboardTitle } from "@/features/dashboard";
+import { TaskActivityPanel } from "@/features/task-activity";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input/input";
 
@@ -26,13 +27,14 @@ export const Dashboard = ({ dashboardTitle }: DashboardProps) => {
           <span>Add task</span>
         </Button>
       </div>
-      <div>
+      <div className="flex items-center justify-between mt-2">
         <Input
           value={title}
           onChange={(e) => onChangeTitle(e.target.value)}
           className="mt-2 max-w-[300px]"
           placeholder="Search"
         />
+        <TaskActivityPanel />
       </div>
       <div className="grid grid-cols-6 gap-2 mt-4 flex-1">
         {groupedTasks.map((column) => (

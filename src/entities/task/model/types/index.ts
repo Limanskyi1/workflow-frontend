@@ -13,6 +13,22 @@ export interface Task {
   dueDate?: Date;
 }
 
+export enum TaskActivityType {
+  CREATE = "CREATE",
+  UPDATE = "UPDATE",
+  DELETE = "DELETE",
+}
+
+export interface TaskActivity {
+  id: number;
+  taskId: number;
+  userId: number;
+  type: TaskActivityType;
+  message: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export type CreateTask = Pick<
   Task,
   "title" | "description" | "status" | "priority" | "dueDate"

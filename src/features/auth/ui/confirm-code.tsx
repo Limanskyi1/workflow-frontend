@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import {
   InputOTP,
@@ -16,6 +16,10 @@ export const ConfirmCode = () => {
   const location = useLocation();
   const email = location.state?.email;
   const { error, submitConfirmationCode } = useRegister();
+
+  if (!email) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <AuthLayout>

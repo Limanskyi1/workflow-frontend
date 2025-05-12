@@ -1,6 +1,6 @@
 import { baseApi } from "@/shared/api/baseApi";
 
-import { CreateTask, Task, UpdateTask } from "../model/types";
+import { CreateTask, Task, TaskActivity, UpdateTask } from "../model/types";
 
 enum TaskStatus {
   IN_BOX = "IN_BOX",
@@ -33,6 +33,10 @@ export const tasksApi = baseApi.injectEndpoints({
           tasks: tasks.filter((task) => task.status === status),
         }));
       },
+    }),
+    getActivities: builder.query<TaskActivity[], void>({
+      query: () => "/tasks/activities",
+      providesTags: [{ type: "TaskActivity", id: "LIST" }],
     }),
     createTask: builder.mutation({
       query: (body: CreateTask) => ({
@@ -69,6 +73,7 @@ export const tasksApi = baseApi.injectEndpoints({
 
 export const {
   useGetTasksQuery,
+  useGetActivitiesQuery,
   useCreateTaskMutation,
   useEditTaskMutation,
   useDeleteTaskMutation,
