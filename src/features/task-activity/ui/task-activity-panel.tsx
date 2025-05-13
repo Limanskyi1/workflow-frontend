@@ -1,4 +1,4 @@
-import { Activity } from "lucide-react";
+import { Activity, Trash2 } from "lucide-react";
 
 import { useTasksActivities } from "@/entities/task";
 import { Button } from "@/shared/ui/button";
@@ -16,7 +16,7 @@ import {
 import { TaskActivityItem } from "./task-activity-item";
 
 export const TaskActivityPanel = () => {
-  const { activities } = useTasksActivities();
+  const { activities, deleteAllActivities } = useTasksActivities();
 
   return (
     <Sheet>
@@ -29,11 +29,11 @@ export const TaskActivityPanel = () => {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Activity History</SheetTitle>
-          <SheetDescription>
+          <SheetDescription className="mb-2">
             Here you can see your activity history.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 max-h-[70%] overflow-auto">
           {activities.map((activity) => (
             <TaskActivityItem
               key={activity.id}
@@ -43,7 +43,17 @@ export const TaskActivityPanel = () => {
             />
           ))}
         </div>
-        <SheetFooter>
+        <SheetFooter className="mt-4">
+          {activities.length > 0 && (
+            <Button
+              onClick={deleteAllActivities}
+              className="w-fit ml-auto"
+              variant="destructive"
+            >
+              <Trash2 />
+              <span>Clear</span>
+            </Button>
+          )}
           <SheetClose asChild>
             <Button>Close activities</Button>
           </SheetClose>
