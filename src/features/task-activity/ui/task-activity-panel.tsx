@@ -16,7 +16,8 @@ import {
 import { TaskActivityItem } from "./task-activity-item";
 
 export const TaskActivityPanel = () => {
-  const { activities, deleteAllActivities } = useTasksActivities();
+  const { activities, deleteActivity, deleteAllActivities } =
+    useTasksActivities();
 
   return (
     <Sheet>
@@ -37,9 +38,11 @@ export const TaskActivityPanel = () => {
           {activities.map((activity) => (
             <TaskActivityItem
               key={activity.id}
+              id={activity.id}
               type={activity.type}
               message={activity.message}
               createdAt={activity.createdAt}
+              onDelete={deleteActivity}
             />
           ))}
         </div>

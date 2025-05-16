@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 
 import { useTasks, useTasksFilters } from "@/entities/task";
 import { DashboardTitle } from "@/features/dashboard";
@@ -28,12 +28,20 @@ export const Dashboard = ({ dashboardTitle }: DashboardProps) => {
         </Button>
       </div>
       <div className="flex items-center justify-between mt-2">
-        <Input
-          value={title}
-          onChange={(e) => onChangeTitle(e.target.value)}
-          className="mt-2 max-w-[300px]"
-          placeholder="Search"
-        />
+        <div className="relative mt-2">
+          <Input
+            value={title}
+            onChange={(e) => onChangeTitle(e.target.value)}
+            className="max-w-[300px]"
+            placeholder="Search"
+          />
+          {title && (
+            <X
+              onClick={() => onChangeTitle("")}
+              className="w-4 h-4 top-[50%] right-2 absolute translate-y-[-50%] cursor-pointer hover:scale-[1.2] transition ease-in-out"
+            />
+          )}
+        </div>
         <TaskActivityPanel />
       </div>
       <div className="grid grid-cols-6 gap-2 mt-4 flex-1">

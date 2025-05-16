@@ -1,5 +1,11 @@
-import { BadgePlus, CircleFadingArrowUp, OctagonX, Timer } from "lucide-react";
-import { ReactNode } from "react";
+import {
+  BadgePlus,
+  CircleFadingArrowUp,
+  OctagonX,
+  Timer,
+  X,
+} from "lucide-react";
+import { ReactNode, useState } from "react";
 
 import { TaskActivityType } from "@/entities/task";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/shared/ui/card";
@@ -26,23 +32,33 @@ const TaskActivityUIConfig: Record<
 };
 
 interface TaskActivityItemProps {
-  message: string;
+  id: number;
   type: TaskActivityType;
+  message: string;
   createdAt: Date;
+  onDelete: (id: number) => void;
 }
 
 export const TaskActivityItem = (props: TaskActivityItemProps) => {
-  const { message, type, createdAt } = props;
+  const { id, message, type, createdAt, onDelete } = props;
   const { background, icon } = TaskActivityUIConfig[type];
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const onHover = () => setIsHovered(true);
+  const onLeave = () => setIsHovered(false);
+
   return (
-    <Card className={cn(`${background}`)}>
+    <Card
+      className={cn(`${background} relative`)}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
       <CardHeader className="p-3">
         <div className="flex items-center gap-2">
           {icon}
           <CardTitle className={`text-sm`}>{message}</CardTitle>
         </div>
-
         <CardFooter className="p-0">
           <div className="flex items-center gap-1">
             <Timer className="w-4 h-4" />
@@ -50,6 +66,13 @@ export const TaskActivityItem = (props: TaskActivityItemProps) => {
           </div>
         </CardFooter>
       </CardHeader>
+      <X
+        className={cn(
+          "w-4 h-4 absolute top-2 right-2 transition ease-in cursor-pointer",
+          isHovered ? "opacity-100" : "opacity-0",
+        )}
+        onClick={() => onDelete(id)}
+      />
     </Card>
   );
 };
