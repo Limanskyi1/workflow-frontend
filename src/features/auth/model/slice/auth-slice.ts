@@ -14,6 +14,13 @@ const initialState: AuthState = {
   isAuthenticated: !!Cookies.get("accessToken"),
 };
 
+const setAuthCookie = (name: string, token: string) => {
+  Cookies.set(name, token, {
+    secure: true,
+    sameSite: "strict",
+  });
+};
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -26,21 +33,13 @@ const authSlice = createSlice({
       state.accessToken = access_token;
       state.refreshToken = refresh_token;
       state.isAuthenticated = true;
-
-      Cookies.set("accessToken", access_token, {
-        secure: true,
-        sameSite: "strict",
-      });
-      Cookies.set("refreshToken", refresh_token, {
-        secure: true,
-        sameSite: "strict",
-      });
+      setAuthCookie("accessToken", access_token);
+      setAuthCookie("refreshToken", refresh_token);
     },
     removeTokens: (state) => {
       state.accessToken = null;
       state.refreshToken = null;
       state.isAuthenticated = false;
-
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
     },

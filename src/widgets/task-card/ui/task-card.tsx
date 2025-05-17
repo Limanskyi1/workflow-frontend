@@ -55,17 +55,13 @@ export const TaskCard = ({
     }
   };
 
-  const onMouseLeave = () => {
-    hideAll();
-  };
-
   return (
     <TaskCardDraggable id={id} status={status}>
       <Card
         className="p-3 cursor-pointer flex flex-col hover:bg-accent/40 transition ease-in-out"
         ref={cardRef}
         onMouseEnter={(e) => onMouseEnter(e)}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={hideAll}
         onClick={() => {
           openEditTaskModal(id);
           hideAll();

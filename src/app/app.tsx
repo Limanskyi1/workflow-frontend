@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@/shared/lib/theming";
 import { Toaster } from "@/shared/lib/toast";
 
+import "./lib/quill/change-quill-icons";
 import { ModalsProvider } from "./providers/modal";
 import { router } from "./router";
 import { store } from "./store";

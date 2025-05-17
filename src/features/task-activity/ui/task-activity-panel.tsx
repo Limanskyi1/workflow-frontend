@@ -4,7 +4,6 @@ import { useTasksActivities } from "@/entities/task";
 import { Button } from "@/shared/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -13,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/shared/ui/sheet";
 
+import { TaskActivityListAnimated } from "../lib/task-activity-list-animated";
 import { TaskActivityItem } from "./task-activity-item";
 
 export const TaskActivityPanel = () => {
@@ -35,18 +35,21 @@ export const TaskActivityPanel = () => {
           </SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4 max-h-[70%] overflow-auto">
-          {activities.map((activity) => (
-            <TaskActivityItem
-              key={activity.id}
-              id={activity.id}
-              type={activity.type}
-              message={activity.message}
-              createdAt={activity.createdAt}
-              onDelete={deleteActivity}
-            />
-          ))}
+          <TaskActivityListAnimated
+            activities={activities}
+            renderActivity={(activity) => (
+              <TaskActivityItem
+                key={activity.id}
+                id={activity.id}
+                type={activity.type}
+                message={activity.message}
+                createdAt={activity.createdAt}
+                onDelete={deleteActivity}
+              />
+            )}
+          />
         </div>
-        <SheetFooter className="mt-4">
+        <SheetFooter>
           {activities.length > 0 && (
             <Button
               onClick={deleteAllActivities}
@@ -57,9 +60,6 @@ export const TaskActivityPanel = () => {
               <span>Clear</span>
             </Button>
           )}
-          <SheetClose asChild>
-            <Button>Close activities</Button>
-          </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>

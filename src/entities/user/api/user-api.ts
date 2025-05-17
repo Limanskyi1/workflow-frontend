@@ -6,7 +6,7 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getMe: builder.query<User, void>({
       query: () => "/users/me",
-      providesTags: ["Users"],
+      providesTags: ["User"],
     }),
     updateUser: builder.mutation<User, UpdateUser>({
       query: (updatedUser) => ({
@@ -14,7 +14,7 @@ export const userApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: updatedUser,
       }),
-      invalidatesTags: ["Users"],
+      invalidatesTags: ["User"],
     }),
     changeUserPassword: builder.mutation<User, UpdateUserPassword>({
       query: (credentials) => ({
