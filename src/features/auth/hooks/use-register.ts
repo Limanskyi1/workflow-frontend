@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 
-import { useConfirmCodeMutation, useRegisterMutation } from "../../../shared/api/auth/auth-api";
+import {
+  useConfirmCodeMutation,
+  useRegisterMutation,
+} from "../../../shared/api/auth/auth-api";
 import { setTokens } from "../model/slice/auth-slice";
 import { Confirm, Register } from "../model/types";
 

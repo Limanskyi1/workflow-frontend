@@ -18,5 +18,3 @@ export interface Dashboard {
   createdAt: string;
   updatedAt: string;
 }
-
-export type UpdateDashboard = Pick<Dashboard, "title">;

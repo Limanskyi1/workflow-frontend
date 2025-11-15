@@ -1,5 +1,9 @@
 import { Task } from "@/entities/task";
-import { CreateTask, TaskActivity, UpdateTask } from "@/entities/task/model/types";
+import {
+  CreateTask,
+  TaskActivity,
+  UpdateTask,
+} from "@/entities/task/model/types";
 import { baseApi } from "@/shared/api/baseApi";
 
 enum TaskStatus {

@@ -1,13 +1,13 @@
 import { Plus, X } from "lucide-react";
 
 import { useTasks, useTasksFilters } from "@/entities/task";
+import { DashboardTitleEditable } from "@/features/dashboard/edit-dashboard-title";
 import { TaskActivityPanel } from "@/features/task-activity";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input/input";
 
 import { useModals } from "../../../app/providers/modal";
 import { DashboardColumn } from "./dashboard-column";
-import { DashboardTitleEditable } from "@/features/dashboard/dashboard-title-edit";
 
 interface DashboardProps {
   dashboardTitle: string;

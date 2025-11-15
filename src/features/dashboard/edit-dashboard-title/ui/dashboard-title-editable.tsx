@@ -1,15 +1,16 @@
 import { useState } from "react";
-
 import { DashboardTitleEdit } from "./dashboard-title-edit";
 import { DashboardTitleView } from "./dashboard-title-view";
-import { useDashboardTitleEdit } from "../model/hooks/use-dashboard-title-edit";
+import { useEditDashboardTitle } from "../model/hooks/use-edit-dashboard-title";
 
 interface DashboardTitleEditableProps {
   title: string;
 }
 
-export const DashboardTitleEditable = ({ title }: DashboardTitleEditableProps) => {
-  const { updateTitle } = useDashboardTitleEdit();
+export const DashboardTitleEditable = ({
+  title,
+}: DashboardTitleEditableProps) => {
+  const { updateTitle } = useEditDashboardTitle();
 
   const [isEditing, setIsEditing] = useState(false);
   const setEditMode = (isEditable: boolean) => setIsEditing(isEditable);

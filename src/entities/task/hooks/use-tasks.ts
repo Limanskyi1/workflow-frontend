@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 
-import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
-
 import {
   useCreateTaskMutation,
   useDeleteTaskMutation,
   useEditTaskMutation,
   useGetTasksQuery,
 } from "@/shared/api/tasks/tasks-api";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
+
 import { CreateTask, UpdateTask } from "../model/types";
 
 export const useTasks = (filters?: { title?: string }) => {

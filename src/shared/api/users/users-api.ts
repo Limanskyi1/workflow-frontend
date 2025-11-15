@@ -1,4 +1,8 @@
-import { UpdateUser, UpdateUserPassword, User } from "@/entities/user/model/types";
+import {
+  UpdateUser,
+  UpdateUserPassword,
+  User,
+} from "@/entities/user/model/types";
 import { baseApi } from "@/shared/api/baseApi";
 
 export const usersApi = baseApi.injectEndpoints({

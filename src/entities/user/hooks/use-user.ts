@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
-import { ApiError } from "@/shared/types";
-
 import {
   useChangeUserPasswordMutation,
   useGetMeQuery,
   useUpdateUserMutation,
 } from "@/shared/api/users/users-api";
+import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
+import { ApiError } from "@/shared/types";
+
 import { UpdateUser, UpdateUserPassword } from "../model/types";
 
 interface ChangePasswordData {
