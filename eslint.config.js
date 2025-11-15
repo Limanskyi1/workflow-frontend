@@ -26,7 +26,7 @@ export default [
         {
           patterns: [
             "@/app/*/*",
-            "@/features/*/*",
+            "@/features/*/*/*",
             "@/modules/*/*",
             "@/pages/*/*",
             "@/widgets/*/*",

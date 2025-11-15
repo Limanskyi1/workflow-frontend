@@ -1,8 +1,7 @@
+import { UpdateUser, UpdateUserPassword, User } from "@/entities/user/model/types";
 import { baseApi } from "@/shared/api/baseApi";
 
-import { UpdateUser, UpdateUserPassword, User } from "../model/types";
-
-export const userApi = baseApi.injectEndpoints({
+export const usersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getMe: builder.query<User, void>({
       query: () => "/users/me",
@@ -30,4 +29,4 @@ export const {
   useGetMeQuery,
   useUpdateUserMutation,
   useChangeUserPasswordMutation,
-} = userApi;
+} = usersApi;

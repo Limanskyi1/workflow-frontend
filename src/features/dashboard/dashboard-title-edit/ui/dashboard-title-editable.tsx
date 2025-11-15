@@ -1,16 +1,15 @@
 import { useState } from "react";
 
-import { useDashboard } from "@/entities/dashboard";
-
 import { DashboardTitleEdit } from "./dashboard-title-edit";
 import { DashboardTitleView } from "./dashboard-title-view";
+import { useDashboardTitleEdit } from "../model/hooks/use-dashboard-title-edit";
 
-interface DashboardTitleProps {
+interface DashboardTitleEditableProps {
   title: string;
 }
 
-export const DashboardTitle = ({ title }: DashboardTitleProps) => {
-  const { updateTitle } = useDashboard();
+export const DashboardTitleEditable = ({ title }: DashboardTitleEditableProps) => {
+  const { updateTitle } = useDashboardTitleEdit();
 
   const [isEditing, setIsEditing] = useState(false);
   const setEditMode = (isEditable: boolean) => setIsEditing(isEditable);

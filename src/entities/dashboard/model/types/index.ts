@@ -1,6 +1,6 @@
 import { Task, TaskStatus } from "@/entities/task";
 
-export interface Column {
+export interface DashboardColumn {
   id: number;
   name: string;
   status: TaskStatus;
@@ -14,7 +14,7 @@ export interface Dashboard {
   id: number;
   title: string;
   ownerId: number;
-  columns: Column[];
+  columns: DashboardColumn[];
   createdAt: string;
   updatedAt: string;
 }

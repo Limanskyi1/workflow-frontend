@@ -1,19 +1,19 @@
 import {
   useGetMyDashboardQuery,
   useUpdateDashboardMutation,
-} from "@/entities/dashboard/api/dashboard-api";
+} from "@/shared/api/dashboard/dashboard-api";
 import { UpdateDashboard } from "@/entities/dashboard/model/types";
 import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 
-export const useDashboard = () => {
+export const useDashboardTitleEdit = () => {
   const { toast } = useToast();
-  const { data: dashboard, isLoading } = useGetMyDashboardQuery();
+  const dashboardQuery = useGetMyDashboardQuery();
   const [updateDashboard] = useUpdateDashboardMutation();
 
   const updateTitle = async (data: UpdateDashboard) => {
     try {
       await updateDashboard({
-        id: dashboard?.id as number,
+        id: dashboardQuery.data?.id as number,
         data,
       });
       toast(TOAST_CONFIG.dashboardTitleUpdateSuccess);
@@ -24,8 +24,6 @@ export const useDashboard = () => {
   };
 
   return {
-    dashboard,
-    isDashboardLoading: isLoading,
     updateTitle,
   };
 };

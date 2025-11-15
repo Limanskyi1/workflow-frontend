@@ -1,14 +1,14 @@
-import { useDashboard } from "@/entities/dashboard";
 import { Dashboard } from "@/widgets/dashboard";
 
 import { DashboardPageLoader } from "./dashboard-page-loader";
+import { useGetMyDashboardQuery } from "@/shared/api/dashboard/dashboard-api";
 
 export const DashboardPage = () => {
-  const { dashboard, isDashboardLoading } = useDashboard();
+  const dashboardQuery = useGetMyDashboardQuery();
 
-  if (isDashboardLoading) {
+  if (dashboardQuery.isLoading) {
     return <DashboardPageLoader />;
   }
 
-  return <Dashboard dashboardTitle={dashboard?.title || ""} />;
+  return <Dashboard dashboardTitle={dashboardQuery.data?.title ?? ""} />;
 };

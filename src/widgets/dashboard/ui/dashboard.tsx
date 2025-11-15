@@ -1,13 +1,13 @@
 import { Plus, X } from "lucide-react";
 
 import { useTasks, useTasksFilters } from "@/entities/task";
-import { DashboardTitle } from "@/features/dashboard";
 import { TaskActivityPanel } from "@/features/task-activity";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input/input";
 
 import { useModals } from "../../../app/providers/modal";
 import { DashboardColumn } from "./dashboard-column";
+import { DashboardTitleEditable } from "@/features/dashboard/dashboard-title-edit";
 
 interface DashboardProps {
   dashboardTitle: string;
@@ -21,7 +21,7 @@ export const Dashboard = ({ dashboardTitle }: DashboardProps) => {
   return (
     <section className="h-full flex flex-col">
       <div className="flex items-center justify-between">
-        <DashboardTitle title={dashboardTitle} />
+        <DashboardTitleEditable title={dashboardTitle} />
         <Button onClick={openAddTaskModal}>
           <Plus />
           <span>Add task</span>

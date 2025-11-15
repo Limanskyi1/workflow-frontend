@@ -1,6 +1,5 @@
+import { Dashboard, UpdateDashboard } from "@/entities/dashboard/model/types";
 import { baseApi } from "@/shared/api/baseApi";
-
-import { Dashboard, UpdateDashboard } from "../model/types";
 
 export const dashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

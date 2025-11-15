@@ -2,7 +2,7 @@ import {
   useDeleteActivitiesMutation,
   useDeleteTaskActivityMutation,
   useGetActivitiesQuery,
-} from "../api/taskApi";
+} from "@/shared/api/tasks/tasks-api";
 
 export const useTasksActivities = () => {
   const { data: activities = [] } = useGetActivitiesQuery(undefined, {

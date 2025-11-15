@@ -1,6 +1,6 @@
+import { Task } from "@/entities/task";
+import { CreateTask, TaskActivity, UpdateTask } from "@/entities/task/model/types";
 import { baseApi } from "@/shared/api/baseApi";
-
-import { CreateTask, Task, TaskActivity, UpdateTask } from "../model/types";
 
 enum TaskStatus {
   IN_BOX = "IN_BOX",
@@ -73,14 +73,14 @@ export const tasksApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: task,
       }),
-      invalidatesTags: (result, error, { id }) => [
+      invalidatesTags: (_, __, { id }) => [
         { type: "Task", id },
         { type: "Task", id: "LIST" },
       ],
     }),
     getTaskById: builder.query<Task, number>({
       query: (taskId: number) => `/tasks/${taskId}`,
-      providesTags: (result, error, taskId) => [{ type: "Task", id: taskId }],
+      providesTags: (_, __, taskId) => [{ type: "Task", id: taskId }],
     }),
   }),
 });

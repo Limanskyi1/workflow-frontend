@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
 
-import { useLoginMutation } from "../api/auth-api";
+import { useLoginMutation } from "../../../shared/api/auth/auth-api";
 import { setTokens } from "../model/slice/auth-slice";
 import { Login } from "../model/types";
 

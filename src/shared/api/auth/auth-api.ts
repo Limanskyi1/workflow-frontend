@@ -1,6 +1,6 @@
 import { baseApi } from "@/shared/api/baseApi";
 
-import { Confirm, Login, Register } from "../model/types";
+import { Confirm, Login, Register } from "../../../features/auth/model/types";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

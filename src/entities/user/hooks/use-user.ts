@@ -7,7 +7,7 @@ import {
   useChangeUserPasswordMutation,
   useGetMeQuery,
   useUpdateUserMutation,
-} from "../api/user-api";
+} from "@/shared/api/users/users-api";
 import { UpdateUser, UpdateUserPassword } from "../model/types";
 
 interface ChangePasswordData {

@@ -6,7 +6,7 @@ import { UpdateDashboard } from "@/entities/dashboard/model/types";
 import { useOutsideClick } from "@/shared/hooks/use-outside-click";
 import { Input } from "@/shared/ui/input/input";
 
-interface EditModeProps {
+interface DashboardTitleEditProps {
   title: string;
   setEditMode: (isEditable: boolean) => void;
   onSubmit: (data: UpdateDashboard) => Promise<void>;
@@ -16,7 +16,7 @@ export const DashboardTitleEdit = ({
   title,
   setEditMode,
   onSubmit,
-}: EditModeProps) => {
+}: DashboardTitleEditProps) => {
   const titleRef = useRef<HTMLFormElement>(null);
 
   const { register, handleSubmit, reset } = useForm({

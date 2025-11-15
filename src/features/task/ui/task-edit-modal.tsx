@@ -1,6 +1,7 @@
-import { TaskForm, useGetTaskByIdQuery } from "@/entities/task";
+import { TaskForm } from "@/entities/task";
 import { useTasks } from "@/entities/task";
 import { UpdateTask } from "@/entities/task/model/types";
+import { useGetTaskByIdQuery } from "@/shared/api/tasks/tasks-api";
 import { Button } from "@/shared/ui/button";
 import {
   Dialog,
