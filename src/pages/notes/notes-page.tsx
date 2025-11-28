@@ -28,7 +28,7 @@ export const NotesPage = () => {
 
   const debouncedChange = useCallback(
     debounce((val: string) => {
-     console.log(val);
+      console.log(val);
     }, 2000),
     [],
   );
@@ -51,10 +51,7 @@ export const NotesPage = () => {
           />
         ))}
       </div>
-      <NoteEditor
-        value={value}
-        onChange={handleChange}
-      />
+      <NoteEditor value={value} onChange={handleChange} />
     </div>
   );
 };

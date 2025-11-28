@@ -3,6 +3,7 @@ import {
   useUpdateDashboardMutation,
 } from "@/shared/api/dashboard/dashboard-api";
 import { TOAST_CONFIG, useToast } from "@/shared/lib/toast";
+
 import { EditDashboardTitleBodyRequest } from "../types/edit-dashboard-title-types";
 
 export const useEditDashboardTitle = () => {

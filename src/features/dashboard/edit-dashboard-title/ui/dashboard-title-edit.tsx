@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { useOutsideClick } from "@/shared/hooks/use-outside-click";
 import { Input } from "@/shared/ui/input/input";
+
 import { EditDashboardTitleBodyRequest } from "../model/types/edit-dashboard-title-types";
 
 interface DashboardTitleEditProps {

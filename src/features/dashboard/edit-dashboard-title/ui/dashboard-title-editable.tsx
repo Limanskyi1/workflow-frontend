@@ -1,7 +1,8 @@
 import { useState } from "react";
+
+import { useEditDashboardTitle } from "../model/hooks/use-edit-dashboard-title";
 import { DashboardTitleEdit } from "./dashboard-title-edit";
 import { DashboardTitleView } from "./dashboard-title-view";
-import { useEditDashboardTitle } from "../model/hooks/use-edit-dashboard-title";
 
 interface DashboardTitleEditableProps {
   title: string;
