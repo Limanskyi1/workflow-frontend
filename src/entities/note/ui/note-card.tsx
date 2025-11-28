@@ -11,7 +11,7 @@ export interface NoteProps {
   time: string;
 }
 
-export const Note = (props: NoteProps) => {
+export const NoteCard = (props: NoteProps) => {
   const { title, subtitle, time } = props;
   return (
     <Card>

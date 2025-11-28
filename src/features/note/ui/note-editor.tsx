@@ -1,9 +1,6 @@
-import ReactQuill from "react-quill";
+import ReactQuill, { ReactQuillProps } from "react-quill";
 
-interface NoteEditorProps {
-  value: string;
-  setValue: (value: string) => void;
-}
+import { cn } from "@/shared/utils/cn";
 
 const toolbarOptions = [
   ["bold", "italic", "underline", "strike"],
@@ -18,13 +15,15 @@ const modules = {
   toolbar: toolbarOptions,
 };
 
-export const NoteEditor = (props: NoteEditorProps) => {
-  const { value, setValue } = props;
+export const NoteEditor = (props: ReactQuillProps) => {
+  const { className, ...rest } = props;
   return (
     <ReactQuill
-      className="activeQuill flex-1"
-      value={value}
-      onChange={setValue}
+      {...rest}
+      className={cn(
+        "activeQuill flex-1 [&>.ql-container]:h-full [&>.ql-container]:border-0",
+        className,
+      )}
       modules={modules}
     />
   );
